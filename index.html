@@ -1735,9 +1735,9 @@
     </script>
 
     <!-- 图片放大模态框 -->
-    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()" oncontextmenu="return false;">
         <span class="image-modal-close">&times;</span>
-        <img id="modalImage" class="image-modal-content">
+        <img id="modalImage" class="image-modal-content" oncontextmenu="return false;" draggable="false">
         <div id="modalCaption" class="image-modal-caption"></div>
     </div>
 </body>
