@@ -339,17 +339,16 @@
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-header" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">筛选</span>
+                        <span class="nav-group-title">快速跳转</span>
                         <span class="nav-toggle">▼</span>
                     </div>
                     <div class="nav-group-content">
-                        <a href="#" class="nav-item" onclick="filterByClass('all')">全部职业</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('guandao')">观道</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('yudao')">御道</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('shadao')">杀道</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('yudao2')">愈道</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('guidao')">诡道</a>
-                        <a href="#" class="nav-item" onclick="filterByClass('tongdao')">通道</a>
+                        <a href="#zhejing" class="nav-item">折镜队</a>
+                        <a href="#bma" class="nav-item">BMA</a>
+                        <a href="#lin" class="nav-item">林氏家族</a>
+                        <a href="#jingguang" class="nav-item">净光宗</a>
+                        <a href="#xuanqing" class="nav-item">玄清观</a>
+                        <a href="#yin" class="nav-item">阴界势力</a>
                     </div>
                 </div>
             </nav>
@@ -581,9 +580,10 @@
                 element: '阴',
                 faction: '折镜队',
                 color: '#22d3ee',
-                meta: ['本名：林晚照', '年龄：24岁', '瞳色：淡金（阴阳眼）', '发色：白色及腰'],
-                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。',
-                quote: '"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"'
+                meta: ['本名：林晚照', '年龄：24岁', '瞳色：淡金（阴阳眼）', '发色：白色及腰', '体质：至阴体质'],
+                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。<br><br><strong>12岁转折点：</strong>中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。<br><br><strong>核心特征：</strong>白发金瞳，外冷内热。从被家族抛弃的混血女成长为独当一面的队长。表面冷酷，内心珍视每一个队友。',
+                quote: '"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"',
+                image: 'images/linxi.png'
             },
             guanfeng: {
                 name: '关锋',
@@ -664,9 +664,13 @@
             if (!char) return;
 
             const modalBody = document.getElementById('modalBody');
+            const avatarContent = char.image ?
+                `<img src="${char.image}" alt="${char.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='${char.avatar}'">` :
+                char.avatar;
+
             modalBody.innerHTML = `
                 <div class="modal-header">
-                    <div class="modal-avatar" style="border-color: ${char.color}">${char.avatar}</div>
+                    <div class="modal-avatar" style="border-color: ${char.color}; overflow: hidden;">${avatarContent}</div>
                     <div class="modal-info">
                         <h2>${char.name} <span style="font-size: 1rem; color: var(--text-secondary); font-weight: normal;">| ${char.title}</span></h2>
                         <div class="modal-meta">
@@ -706,34 +710,46 @@
             }
         }
 
+        // 当前筛选状态
+        let currentClassFilter = 'all';
+        let currentElementFilter = 'all';
+
         // 筛选功能
         function filterByClass(className) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                if (btn.textContent.includes('观道') || btn.textContent.includes('御道') || 
-                    btn.textContent.includes('杀道') || btn.textContent.includes('愈道') ||
-                    btn.textContent.includes('诡道') || btn.textContent.includes('通道') ||
-                    btn.textContent === '全部') {
-                    btn.classList.remove('active');
-                }
-            });
+            event.preventDefault();
+            currentClassFilter = className;
+
+            // 更新职业按钮状态
+            const classButtons = document.querySelectorAll('.filter-group:first-child .filter-btn');
+            classButtons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
+            applyFilters();
+        }
+
+        function filterByElement(element) {
+            event.preventDefault();
+            currentElementFilter = element;
+
+            // 更新元素按钮状态
+            const elementButtons = document.querySelectorAll('.filter-group:last-child .filter-btn');
+            elementButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            applyFilters();
+        }
+
+        function applyFilters() {
             document.querySelectorAll('.character-thumb').forEach(thumb => {
-                if (className === 'all' || thumb.dataset.class.includes(className)) {
+                const classMatch = currentClassFilter === 'all' || thumb.dataset.class.includes(currentClassFilter);
+                const elementMatch = currentElementFilter === 'all' || thumb.dataset.element === currentElementFilter;
+
+                if (classMatch && elementMatch) {
                     thumb.style.display = 'block';
                 } else {
                     thumb.style.display = 'none';
                 }
             });
-        }
-
-        function filterByElement(element) {
-            // 简化处理，实际项目中可以更复杂
-            if (element === 'all') {
-                document.querySelectorAll('.character-thumb').forEach(thumb => {
-                    thumb.style.display = 'block';
-                });
-            }
         }
     </script>
 </body>
