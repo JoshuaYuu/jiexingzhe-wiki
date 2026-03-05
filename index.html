@@ -105,6 +105,124 @@
             opacity: 0.9;
         }
 
+        /* 可折叠目录样式 */
+        .nav-group {
+            position: relative;
+        }
+
+        .nav-group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            user-select: none;
+        }
+
+        .nav-group-header:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-group-header.active {
+            background: var(--bg-hover);
+            color: var(--accent-cyan);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .nav-group-header .nav-group-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-group-header .toggle-arrow {
+            font-size: 0.75rem;
+            transition: transform 0.3s;
+            color: var(--text-secondary);
+        }
+
+        .nav-group-header.active .toggle-arrow {
+            color: var(--accent-cyan);
+        }
+
+        .nav-group.collapsed .toggle-arrow {
+            transform: rotate(-90deg);
+        }
+
+        .nav-group-content {
+            display: block;
+        }
+
+        .nav-group.collapsed .nav-group-content {
+            display: none;
+        }
+
+        .nav-group-content .nav-item {
+            padding-left: 48px;
+        }
+
+        .nav-group-content .nav-item.level-2 {
+            padding-left: 48px;
+        }
+
+        .nav-group-content .nav-item.level-3 {
+            padding-left: 64px;
+        }
+
+        /* 二级子菜单样式 */
+        .nav-subgroup {
+            margin: 0;
+        }
+
+        .nav-subgroup .nav-group-header {
+            padding: 10px 24px 10px 40px;
+            font-size: 0.9rem;
+        }
+
+        .nav-subgroup .nav-group-header.level-2-header {
+            padding-left: 40px;
+        }
+
+        .nav-subgroup .nav-group-header .nav-group-title {
+            font-weight: normal;
+        }
+
+        .nav-subgroup .nav-group-content .nav-item.level-3 {
+            padding-left: 72px;
+            font-size: 0.9rem;
+        }
+
+        .nav-subgroup .toggle-arrow {
+            font-size: 0.7rem;
+        }
+
+        /* 三级子菜单样式 */
+        .nav-subgroup-2 {
+            margin: 0;
+        }
+
+        .nav-subgroup-2 .nav-group-header {
+            padding: 8px 24px 8px 56px;
+            font-size: 0.85rem;
+        }
+
+        .nav-subgroup-2 .nav-group-header.level-3-header {
+            padding-left: 56px;
+        }
+
+        .nav-subgroup-2 .nav-group-content .nav-item.level-4 {
+            padding-left: 88px;
+            font-size: 0.85rem;
+        }
+
+        .nav-subgroup-2 .toggle-arrow {
+            font-size: 0.65rem;
+        }
+
         /* 主内容区 */
         .main-content {
             flex: 1;
@@ -488,42 +606,117 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="#core" class="nav-item">📌 核心概念</a>
-                <a href="#core-world" class="nav-item level-2">世界架构</a>
-                <a href="#core-walker" class="nav-item level-2">界行者</a>
-                <a href="#core-situation" class="nav-item level-2">当前局势</a>
-                
-                <a href="#yang" class="nav-item">一、阳界势力</a>
-                <a href="#bma" class="nav-item level-2">界域管理局</a>
-                <a href="#lin" class="nav-item level-2">林氏驱魔世家</a>
-                <a href="#jingguang" class="nav-item level-2">净光宗</a>
-                <a href="#xuanqing" class="nav-item level-2">玄清会</a>
-                
-                <a href="#yin" class="nav-item">二、阴界势力</a>
-                <a href="#fengdu" class="nav-item level-2">酆都鬼城</a>
-                <a href="#baigui" class="nav-item level-2">百鬼夜行</a>
-                <a href="#mirror" class="nav-item level-2">镜中界</a>
-                <a href="#guiyi" class="nav-item level-2">归一者教团</a>
-                <a href="#shijie" class="nav-item level-2">噬界者</a>
-                
-                <a href="#characters" class="nav-item">三、角色档案</a>
-                <a href="#char-bma-section" class="nav-item level-2">🏛️ 界域管理局</a>
-                <a href="#char-linxi" class="nav-item level-3">林夕</a>
-                <a href="#char-guanfeng" class="nav-item level-3">关锋</a>
-                <a href="#char-duanxian" class="nav-item level-3">断弦队</a>
-                <a href="#char-bufeng" class="nav-item level-3">捕风队</a>
-                <a href="#char-lin-section" class="nav-item level-2">🏮 林氏驱魔世家</a>
-                <a href="#char-jingguang-section" class="nav-item level-2">✨ 净光宗</a>
-                <a href="#char-xuanqing-section" class="nav-item level-2">☯️ 玄清会</a>
-                <a href="#char-yin-section" class="nav-item level-2">👻 阴界势力</a>
-                <a href="#char-shijie-card" class="nav-item level-3">噬界者</a>
-                
-                <a href="#terms" class="nav-item">四、专有名词</a>
-                <a href="#term-jieyu" class="nav-item level-2">界域</a>
-                <a href="#term-jieyao" class="nav-item level-2">界钥</a>
-                <a href="#term-jiexingzhe" class="nav-item level-2">界行者</a>
-                <a href="#term-yinyangyan" class="nav-item level-2">阴阳眼</a>
-                <a href="#todo" class="nav-item">五、待办事项</a>
+                <!-- 核心概念 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">📌 核心概念</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#core-world" class="nav-item level-2">世界架构</a>
+                        <a href="#core-walker" class="nav-item level-2">界行者</a>
+                        <a href="#core-situation" class="nav-item level-2">当前局势</a>
+                    </div>
+                </div>
+
+                <!-- 阳界势力 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">一、阳界势力</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#bma" class="nav-item level-2">界域管理局</a>
+                        <a href="#lin" class="nav-item level-2">林氏驱魔世家</a>
+                        <a href="#jingguang" class="nav-item level-2">净光宗</a>
+                        <a href="#xuanqing" class="nav-item level-2">玄清会</a>
+                    </div>
+                </div>
+
+                <!-- 阴界势力 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">二、阴界势力</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#fengdu" class="nav-item level-2">酆都鬼城</a>
+                        <a href="#baigui" class="nav-item level-2">百鬼夜行</a>
+                        <a href="#mirror" class="nav-item level-2">镜中界</a>
+                        <a href="#guiyi" class="nav-item level-2">归一者教团</a>
+                        <a href="#shijie" class="nav-item level-2">噬界者</a>
+                    </div>
+                </div>
+
+                <!-- 角色档案 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">三、角色档案</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <!-- 界域管理局子菜单 -->
+                        <div class="nav-group nav-subgroup">
+                            <div class="nav-group-header level-2-header" onclick="toggleNavGroup(this)">
+                                <span class="nav-group-title">🏛️ 界域管理局</span>
+                                <span class="toggle-arrow">▼</span>
+                            </div>
+                            <div class="nav-group-content">
+                                <!-- 折镜队子菜单 -->
+                                <div class="nav-group nav-subgroup-2">
+                                    <div class="nav-group-header level-3-header" onclick="toggleNavGroup(this)">
+                                        <span class="nav-group-title">🪞 折镜队</span>
+                                        <span class="toggle-arrow">▼</span>
+                                    </div>
+                                    <div class="nav-group-content">
+                                        <a href="#char-linxi" class="nav-item level-4">林夕</a>
+                                        <a href="#char-guanfeng" class="nav-item level-4">关锋</a>
+                                    </div>
+                                </div>
+                                <a href="#char-duanxian" class="nav-item level-3">❓ 断弦队</a>
+                                <a href="#char-bufeng" class="nav-item level-3">❓ 捕风队</a>
+                            </div>
+                        </div>
+                        <a href="#char-lin-section" class="nav-item level-2">🏮 林氏驱魔世家</a>
+                        <a href="#char-jingguang-section" class="nav-item level-2">✨ 净光宗</a>
+                        <a href="#char-xuanqing-section" class="nav-item level-2">☯️ 玄清会</a>
+                        <!-- 阴界势力子菜单 -->
+                        <div class="nav-group nav-subgroup">
+                            <div class="nav-group-header level-2-header" onclick="toggleNavGroup(this)">
+                                <span class="nav-group-title">👻 阴界势力</span>
+                                <span class="toggle-arrow">▼</span>
+                            </div>
+                            <div class="nav-group-content">
+                                <a href="#char-shijie-card" class="nav-item level-3">噬界者</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 专有名词 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">四、专有名词</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#term-jieyu" class="nav-item level-2">界域</a>
+                        <a href="#term-jieyao" class="nav-item level-2">界钥</a>
+                        <a href="#term-jiexingzhe" class="nav-item level-2">界行者</a>
+                        <a href="#term-yinyangyan" class="nav-item level-2">阴阳眼</a>
+                    </div>
+                </div>
+
+                <!-- 待办事项 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">五、待办事项</span>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#todo" class="nav-item level-2">设计任务清单</a>
+                    </div>
+                </div>
             </nav>
         </aside>
 
@@ -992,6 +1185,49 @@
                                 <strong>核心特征：</strong>白发金瞳，外冷内热。从被家族抛弃的混血女成长为独当一面的队长。
                             </div>
 
+                            <!-- 林夕角色概念图 -->
+                            <div class="character-gallery" style="margin-top: 20px;">
+                                <h5 style="color: var(--accent-gold); margin-bottom: 12px;">📷 角色视觉设定</h5>
+                                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                                    <div class="image-card">
+                                        <img src="林夕/g3pip2k-1772694074387-593f4bc9.jpg" alt="林夕全身立绘" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">全身立绘 - 月夜持符</div>
+                                    </div>
+                                    <div class="image-card">
+                                        <img src="林夕/download_1772695763194.png" alt="林夕表情与姿态设定" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">四格设定 - 表情与姿态</div>
+                                    </div>
+                                </div>
+                                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px;">
+                                    <div class="image-card">
+                                        <img src="林夕/ai-image-2026-03-05-0fc59607.jpg" alt="林夕特写1" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">战斗姿态</div>
+                                    </div>
+                                    <div class="image-card">
+                                        <img src="林夕/ai-image-2026-03-05-0601c711.jpg" alt="林夕特写2" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">凝视</div>
+                                    </div>
+                                    <div class="image-card">
+                                        <img src="林夕/NanoBanana-2026-03-05.png" alt="丝袜细节" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">云纹丝袜细节</div>
+                                    </div>
+                                </div>
+                                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px;">
+                                    <div class="image-card">
+                                        <img src="林夕/Gemini_Generated_Image_lttttalttttalttt.png" alt="林夕战斗场景" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">战斗场景 - 荒野月夜</div>
+                                    </div>
+                                    <div class="image-card">
+                                        <img src="林夕/Gemini_Generated_Image_ho2boeho2boeho2b.png" alt="林夕施法" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">施法场景 - 摇铃驱邪</div>
+                                    </div>
+                                    <div class="image-card">
+                                        <img src="林夕/Gemini_Generated_Image_dzl01sdzl01sdzl0.png" alt="林夕剧情分镜" style="width: 100%; border-radius: 8px; display: block;">
+                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">剧情分镜 - 日常/战斗/虚弱/渡气</div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <h4 style="margin-top: 20px; color: var(--accent-gold);">👕 外观设定</h4>
                             <table style="margin: 12px 0;">
                                 <tr><th>部位</th><th>设计</th></tr>
@@ -1370,6 +1606,13 @@
             sidebar.classList.toggle('open');
         }
 
+        // 切换导航组折叠
+        function toggleNavGroup(header) {
+            const group = header.parentElement;
+            group.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
         // 切换待办事项
         function toggleTodo(checkbox) {
             checkbox.classList.toggle('checked');
@@ -1382,7 +1625,7 @@
             item.addEventListener('click', function() {
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 // 移动端关闭侧边栏
                 if (window.innerWidth <= 768) {
                     document.getElementById('sidebar').classList.remove('open');
@@ -1394,13 +1637,20 @@
         document.addEventListener('click', function(e) {
             const sidebar = document.getElementById('sidebar');
             const toggle = document.querySelector('.menu-toggle');
-            
-            if (window.innerWidth <= 768 && 
+
+            if (window.innerWidth <= 768 &&
                 sidebar.classList.contains('open') &&
-                !sidebar.contains(e.target) && 
+                !sidebar.contains(e.target) &&
                 !toggle.contains(e.target)) {
                 sidebar.classList.remove('open');
             }
+        });
+
+        // 初始化：默认展开所有导航组
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-group-header').forEach(header => {
+                header.classList.add('active');
+            });
         });
     </script>
 </body>
