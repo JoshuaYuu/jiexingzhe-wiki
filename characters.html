@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>角色档案 - 界行者Wiki</title>
+    <title>角色档案 - 林夕、折镜队、全角色资料 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》全角色档案：林夕（白发修罗）、陈默（主角）、关锋、折镜队全员。包含角色背景故事、外观设定、能力技能、人物关系。">
+    <meta name="keywords" content="界行者角色, 林夕, 陈默, 折镜队, 白发修罗, 阴阳眼, 角色档案, 人物设定">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="角色档案 - 界行者Wiki">
+    <meta property="og:description" content="了解界行者世界的所有角色，探索他们的故事。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/characters.html">
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* 角色图鉴专用样式 */
@@ -307,7 +315,7 @@
     <nav class="top-nav">
         <div class="top-nav-left">
             <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
-            <div class="search-box"><input type="text" placeholder="搜索角色..."></div>
+            <form action="search.html" method="get" class="search-box" style="margin: 0;"><input type="text" name="q" placeholder="搜索角色..." autocomplete="off"></form>
         </div>
         <div class="top-nav-right">
             <a href="world.html" class="nav-link">核心世界观</a>
@@ -322,6 +330,15 @@
     <div class="main-container">
         <aside class="sidebar">
             <div class="sidebar-title">目录</div>
+            
+            <!-- Canon状态图例 -->
+            <div class="canon-legend">
+                <div class="canon-legend-title">Canon状态说明</div>
+                <span class="canon-badge canon-established">已确定</span>
+                <span class="canon-badge canon-proposed">提议中</span>
+                <span class="canon-badge canon-speculative">推测</span>
+            </div>
+            
             <nav class="nav-menu">
                 <div class="nav-group">
                     <div class="nav-group-header active" onclick="toggleNavGroup(this)">
@@ -342,6 +359,13 @@
         </aside>
 
         <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">👥 角色图鉴</span>
+            </nav>
+
             <h1 class="page-title"><span>👥</span>角色图鉴</h1>
             <p class="page-desc">界行者世界中的主要角色一览</p>
 
@@ -374,20 +398,21 @@
                 <div class="faction-header">
                     <div class="faction-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">🪞</div>
                     <div>
-                        <div class="faction-title">折镜队</div>
+                        <div class="faction-title">折镜队 <span class="canon-badge canon-established">已确定</span></div>
                         <div class="faction-desc">BMA亚太分部 · 外勤三队 · 精英行动小组</div>
                     </div>
                 </div>
                 <div class="character-grid" data-faction="zhejing">
-                    <div class="character-thumb" data-class="guandao shadao" data-element="yin" onclick="openModal('linxi')">
-                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">🌙
+                    <a href="characters/linxi.html" class="character-thumb" data-class="guandao shadao" data-element="yin" style="text-decoration: none; color: inherit;">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); overflow: hidden;">
+                            <img src="林夕/avatar.png" alt="林夕" style="width: 100%; height: 100%; object-fit: cover;">
                             <span class="character-thumb-element">☯️</span>
                         </div>
                         <div class="character-thumb-info">
                             <div class="character-thumb-name">林夕</div>
                             <div class="character-thumb-class">观道/杀道 · 队长</div>
                         </div>
-                    </div>
+                    </a>
                     <div class="character-thumb" data-class="shadao" data-element="yang" onclick="openModal('guanfeng')">
                         <div class="character-thumb-img" style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);">⚔️
                             <span class="character-thumb-element">☀️</span>
@@ -450,7 +475,7 @@
                 <div class="faction-header">
                     <div class="faction-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">🏢</div>
                     <div>
-                        <div class="faction-title">BMA 界管局</div>
+                        <div class="faction-title">BMA 界管局 <span class="canon-badge canon-established">已确定</span></div>
                         <div class="faction-desc">Boundary Management Agency · 国际界域管理机构</div>
                     </div>
                 </div>
@@ -481,7 +506,7 @@
                 <div class="faction-header">
                     <div class="faction-icon" style="background: linear-gradient(135deg, #701a75 0%, #a855f7 100%);">🏛️</div>
                     <div>
-                        <div class="faction-title">林氏家族</div>
+                        <div class="faction-title">林氏家族 <span class="canon-badge canon-established">已确定</span></div>
                         <div class="faction-desc">江南驱魔世家 · 千年传承</div>
                     </div>
                 </div>
@@ -512,7 +537,7 @@
                 <div class="faction-header">
                     <div class="faction-icon" style="background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);">👻</div>
                     <div>
-                        <div class="faction-title">阴界势力</div>
+                        <div class="faction-title">阴界势力 <span class="canon-badge canon-established">已确定</span></div>
                         <div class="faction-desc">酆都、百鬼夜行、噬界者</div>
                     </div>
                 </div>
@@ -567,8 +592,8 @@
                 element: '阴',
                 faction: '折镜队',
                 color: '#22d3ee',
-                meta: ['本名：林晚照', '年龄：24岁', '身高：165cm', '瞳色：淡金（阴阳眼）', '发色：白色及腰', '体质：至阴体质（RH阴性血）'],
-                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。<br><br><strong>12岁转折点：</strong>中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。<br><br><strong>成长经历：</strong><br>• <strong>12-20岁</strong>：在纸扎店帮忙，疯狂自学驱魔术，16岁开始接"小活儿"，人称"白发小先生"<br>• <strong>20岁</strong>：处理"镜中鬼"事件被BMA注意，张老天师收为关门弟子，入走阴司改名"林夕"，在龙虎山修炼四年<br>• <strong>24岁</strong>：外勤三队成立，任队长<br><br><strong>性格特征：</strong>外冷内热，嘴硬心软；害怕被抛弃（童年阴影）。任务中冷静果断，面对鬼怪凌厉危险，有"白发修罗"的绰号。',
+                meta: ['本名：林晚照', '年龄：24岁', '身高：165cm', '瞳色：淡金（<a href="world.html#terms" class="wiki-link">阴阳眼</a>）', '发色：白色及腰', '体质：至阴体质（RH阴性血）'],
+                story: '林夕出生于江南水乡的<a href="factions.html#lin" class="wiki-link">林氏驱魔世家</a>，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。<br><br><strong>12岁转折点：</strong>中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她<a href="system.html#awakening" class="wiki-link">觉醒</a>了<a href="world.html#terms" class="wiki-link">阴阳眼</a>，也白了头发。随后被逐出家族。<br><br><strong>成长经历：</strong><br>• <strong>12-20岁</strong>：在纸扎店帮忙，疯狂自学驱魔术，16岁开始接"小活儿"，人称"白发小先生"<br>• <strong>20岁</strong>：处理"镜中鬼"事件被<a href="factions.html#bma" class="wiki-link">BMA</a>注意，张老天师收为关门弟子，入走阴司改名"林夕"，在龙虎山修炼四年<br>• <strong>24岁</strong>：外勤三队成立，任<a href="characters.html#zhejing" class="wiki-link">折镜队</a>队长<br><br><strong>性格特征：</strong>外冷内热，嘴硬心软；害怕被抛弃（童年阴影）。任务中冷静果断，面对鬼怪凌厉危险，有"白发修罗"的绰号。<br><br><strong>相关：</strong><a href="factions.html#lin" class="wiki-link">林氏家族</a> | <a href="world.html#terms" class="wiki-link">阴阳眼</a> | <a href="system.html#six-paths" class="wiki-link">观道/杀道</a> | <a href="story.html#chapter1" class="wiki-link">第一章</a>',
                 quote: '"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"',
                 images: [
                     {src: '林夕/download_1772695763194.png', caption: '四格设定 - 表情与姿态', type: 'horizontal'},
@@ -604,8 +629,8 @@
                 element: '阳',
                 faction: '折镜队',
                 color: '#ef4444',
-                meta: ['出身：退伍军人', '背景：净光宗还俗武者', '血脉：关羽后人'],
-                story: '因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与林夕形成"一动一静"互补。手持青龙偃月刀残魂具现的武器，是队伍中的主要战力。',
+                meta: ['出身：退伍军人', '背景：<a href="factions.html#jingguang" class="wiki-link">净光宗</a>还俗武者', '血脉：关羽后人'],
+                story: '因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与<a href="characters.html#linxi" class="wiki-link">林夕</a>形成"一动一静"互补。手持青龙偃月刀残魂具现的武器，是<a href="characters.html#zhejing" class="wiki-link">队伍</a>中的主要战力。<br><br><strong>相关：</strong><a href="system.html#shadao" class="wiki-link">杀道</a> | <a href="factions.html#jingguang" class="wiki-link">净光宗</a> | <a href="characters.html#zhejing" class="wiki-link">折镜队</a> | <a href="story.html#chapter2" class="wiki-link">第二章</a>',
                 quote: '"刀在人在，刀亡人亡。关某虽还俗，斩妖除魔之心不改。"'
             },
             chenmo: {
@@ -616,8 +641,8 @@
                 element: '阴',
                 faction: '折镜队',
                 color: '#94a3b8',
-                meta: ['年龄：22岁', '身份：民俗学研究生', '觉醒：强制觉醒'],
-                story: '民俗学研究生，意外卷入界域事件后觉醒成为界行者。性格观察型，话不多但关键时刻可靠。作为玩家视角角色，其成长与两界平衡紧密相连。',
+                meta: ['年龄：22岁', '身份：民俗学研究生', '<a href="system.html#awakening" class="wiki-link">觉醒</a>：<a href="system.html#awakening" class="wiki-link">强制觉醒</a>'],
+                story: '民俗学研究生，意外卷入<a href="world.html#boundary" class="wiki-link">界域</a>事件后<a href="system.html#awakening" class="wiki-link">觉醒</a>成为<a href="world.html#terms" class="wiki-link">界行者</a>。性格观察型，话不多但关键时刻可靠。作为玩家视角角色，其成长与<a href="world.html" class="wiki-link">两界平衡</a>紧密相连。<br><br><strong>相关：</strong><a href="system.html#guandao" class="wiki-link">观道</a> | <a href="characters.html#zhejing" class="wiki-link">折镜队</a> | <a href="story.html#chapter1" class="wiki-link">第一章</a> | <a href="story.html#chapter5" class="wiki-link">第五章（中点）</a> | <a href="story.html#final" class="wiki-link">最终章</a>',
                 quote: '"我只是个普通人，但既然看到了这个世界的真相，就不能装作没看见。"'
             },
             tieshan: {

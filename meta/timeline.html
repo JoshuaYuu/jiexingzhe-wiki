@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界时间线 - 界行者历史大事记 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》世界完整时间线：从混沌初开到现代，记录阳界与阴界的重要历史事件、关键人物登场、势力兴衰变迁。">
+    <meta name="keywords" content="界行者时间线, 世界历史, 两界平衡, 噬界者, 锚点, 历史事件">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="世界时间线 - 界行者Wiki">
+    <meta property="og:description" content="探索界行者世界的完整历史脉络。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/meta/timeline.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .timeline-hero {
+            text-align: center;
+            padding: 48px 24px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-darker) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--boundary-cyan) 0%, var(--yin-purple) 50%, var(--yang-gold) 100%);
+        }
+
+        .timeline-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--boundary-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline-hero p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline-filter {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .timeline-filter-btn {
+            padding: 10px 20px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .timeline-filter-btn:hover {
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+        }
+
+        .timeline-filter-btn.active {
+            background: rgba(34, 211, 238, 0.15);
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 0 0 0 40px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--boundary-cyan) 0%, var(--yin-purple) 50%, var(--yang-gold) 100%);
+        }
+
+        .timeline-era {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-era-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-left: 8px;
+        }
+
+        .timeline-era-marker {
+            position: absolute;
+            left: -33px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-card);
+            border: 3px solid var(--boundary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--boundary-cyan);
+            z-index: 1;
+        }
+
+        .timeline-era-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-era-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s;
+        }
+
+        .timeline-event:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateX(8px);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            background: var(--boundary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--boundary-cyan);
+        }
+
+        .timeline-event-date {
+            font-size: 0.875rem;
+            color: var(--boundary-cyan);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-event-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-event-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .timeline-event-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-event-tag {
+            padding: 4px 10px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .timeline-event-tag.character {
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--boundary-cyan);
+        }
+
+        .timeline-event-tag.faction {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--yin-purple);
+        }
+
+        .timeline-event-tag.world {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--yang-gold);
+        }
+
+        .timeline-event-tag.story {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--success);
+        }
+
+        .timeline-legend {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .timeline-legend-dot.character { background: var(--boundary-cyan); }
+        .timeline-legend-dot.faction { background: var(--yin-purple); }
+        .timeline-legend-dot.world { background: var(--yang-gold); }
+        .timeline-legend-dot.story { background: var(--success); }
+
+        @media (max-width: 768px) {
+            .timeline-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .timeline-container {
+                padding-left: 24px;
+            }
+
+            .timeline-container::before {
+                left: 7px;
+            }
+
+            .timeline-era-marker {
+                left: -24px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-event::before {
+                left: -22px;
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="../index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span>界行者Wiki</span>
+            </a>
+            <form action="../search.html" method="get" class="search-box" style="margin: 0;">
+                <input type="text" name="q" placeholder="搜索..." autocomplete="off">
+            </form>
+        </div>
+        <div class="top-nav-right">
+            <a href="../world.html" class="nav-link">核心世界观</a>
+            <a href="../system.html" class="nav-link">界行者系统</a>
+            <a href="../factions.html" class="nav-link">势力设定</a>
+            <a href="../characters.html" class="nav-link">角色档案</a>
+            <a href="../map.html" class="nav-link">世界地图</a>
+            <a href="../story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">时间线导航</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">历史时代</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#chaos" class="nav-item">混沌时代</a>
+                        <a href="#ancient" class="nav-item">远古时代</a>
+                        <a href="#medieval" class="nav-item">中古时代</a>
+                        <a href="#modern" class="nav-item">近现代</a>
+                        <a href="#present" class="nav-item">当代</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">快速链接</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="../world.html" class="nav-item">核心世界观</a>
+                        <a href="../factions.html" class="nav-item">势力设定</a>
+                        <a href="../story.html" class="nav-item">剧情大纲</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="../index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    首页
+                </a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    世界时间线
+                </span>
+            </nav>
+
+            <!-- 时间线头部 -->
+            <div class="timeline-hero">
+                <h1>世界时间线</h1>
+                <p>从混沌初开到现代，记录界行者世界的重要历史时刻</p>
+            </div>
+
+            <!-- 图例 -->
+            <div class="timeline-legend">
+                <div class="timeline-legend-item">
+                    <div class="timeline-legend-dot character"></div>
+                    <span>角色事件</span>
+                </div>
+                <div class="timeline-legend-item">
+                    <div class="timeline-legend-dot faction"></div>
+                    <span>势力事件</span>
+                </div>
+                <div class="timeline-legend-item">
+                    <div class="timeline-legend-dot world"></div>
+                    <span>世界事件</span>
+                </div>
+                <div class="timeline-legend-item">
+                    <div class="timeline-legend-dot story"></div>
+                    <span>剧情事件</span>
+                </div>
+            </div>
+
+            <!-- 筛选按钮 -->
+            <div class="timeline-filter">
+                <button class="timeline-filter-btn active" onclick="filterEvents('all')">全部</button>
+                <button class="timeline-filter-btn" onclick="filterEvents('character')">角色</button>
+                <button class="timeline-filter-btn" onclick="filterEvents('faction')">势力</button>
+                <button class="timeline-filter-btn" onclick="filterEvents('world')">世界</button>
+                <button class="timeline-filter-btn" onclick="filterEvents('story')">剧情</button>
+            </div>
+
+            <!-- 时间线内容 -->
+            <div class="timeline-container">
+                <!-- 混沌时代 -->
+                <div class="timeline-era" id="chaos">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">混沌时代</div>
+                            <div class="timeline-era-desc">两界未分，万物同源</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">不可考</div>
+                        <div class="timeline-event-title">混沌初开</div>
+                        <div class="timeline-event-desc">
+                            世界处于混沌状态，阴阳未分，生死无异。<a href="../world.html#chaos-realm" class="wiki-link">混沌界</a>是唯一的存在。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">不可考</div>
+                        <div class="timeline-event-title">两界分离</div>
+                        <div class="timeline-event-desc">
+                            第一次大分离发生，<a href="../world.html#yang-realm" class="wiki-link">阳界</a>与<a href="../world.html#yin-realm" class="wiki-link">阴界</a>形成。生者归于阳，亡者归于阴，两界开始各自演化。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">不可考</div>
+                        <div class="timeline-event-title">噬界者诞生</div>
+                        <div class="timeline-event-desc">
+                            以界域为食的古老生物<a href="../factions.html#shijie" class="wiki-link">噬界者</a>在混沌中诞生，开始吞噬两界之间的薄弱地带。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">噬界者</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 远古时代 -->
+                <div class="timeline-era" id="ancient">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">远古时代</div>
+                            <div class="timeline-era-desc">界行者出现，锚点体系建立</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">约5000年前</div>
+                        <div class="timeline-event-title">第一位界行者</div>
+                        <div class="timeline-event-desc">
+                            人类中首次出现能够感知并穿越<a href="../world.html#boundary" class="wiki-link">界域</a>的个体，被称为"界行者"。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">约4000年前</div>
+                        <div class="timeline-event-title">锚点体系建立</div>
+                        <div class="timeline-event-desc">
+                            发现某些特殊个体能够稳定两界边界，第一代<a href="../world.html#terms" class="wiki-link">锚点</a>出现，开始世代传承的宿命。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">锚点</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">约3000年前</div>
+                        <div class="timeline-event-title">酆都鬼城建立</div>
+                        <div class="timeline-event-desc">
+                            <a href="../factions.html#fengdu" class="wiki-link">酆都鬼城</a>在阴界建立，成为亡者世界的统治中心。十位阎君分治各方。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">约2500年前</div>
+                        <div class="timeline-event-title">噬界者被封印</div>
+                        <div class="timeline-event-desc">
+                            第13代锚点牺牲自己，将噬界者封印于<a href="../world.html#boundary" class="wiki-link">镜中界</a>。封印需要每代锚点持续加固。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">锚点</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 中古时代 -->
+                <div class="timeline-era" id="medieval">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">中古时代</div>
+                            <div class="timeline-era-desc">驱魔组织兴起，BMA前身成立</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">明朝</div>
+                        <div class="timeline-event-title">镇邪会成立</div>
+                        <div class="timeline-event-desc">
+                            各地驱魔世家联合成立"镇邪会"，这是<a href="../factions/bma.html" class="wiki-link">BMA</a>的前身，共同应对日益严重的界域事件。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">清朝</div>
+                        <div class="timeline-event-title">镇邪会官方化</div>
+                        <div class="timeline-desc">
+                            镇邪会获得朝廷认可，成为半官方组织，建立了初步的组织架构和规章制度。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">18世纪末</div>
+                        <div class="timeline-event-title">林氏驱魔世家崛起</div>
+                        <div class="timeline-desc">
+                            <a href="../factions.html#lin" class="wiki-link">林氏驱魔世家</a>在江南地区崛起，以其独特的"阴阳眼"血脉传承闻名。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">林氏</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 近现代 -->
+                <div class="timeline-era" id="modern">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">近现代</div>
+                            <div class="timeline-era-desc">BMA现代化，界域科学兴起</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">20世纪初</div>
+                        <div class="timeline-event-title">BMA现代化改革</div>
+                        <div class="timeline-event-desc">
+                            引入现代科学方法研究<a href="../world.html#boundary" class="wiki-link">界域</a>现象，建立界域科学体系，开始国际化进程。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">二战后</div>
+                        <div class="timeline-event-title">BMA正式成立</div>
+                        <div class="timeline-event-desc">
+                            正式成立界域管理局（BMA），成为跨国机构，建立全球七大分部体系。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">2000年</div>
+                        <div class="timeline-event-title">林夕出生</div>
+                        <div class="timeline-event-desc">
+                            <a href="../characters/linxi.html" class="wiki-link">林夕</a>（林晚照）出生于林氏驱魔世家，天生拥有<a href="../world.html#terms" class="wiki-link">阴阳眼</a>。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">林夕</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">2015年</div>
+                        <div class="timeline-event-title">林夕入走阴司</div>
+                        <div class="timeline-event-desc">
+                            15岁的林夕被父亲送入<a href="../factions/bma.html" class="wiki-link">BMA</a>走阴司，开始接受系统的界行者训练。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">林夕</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">2020年</div>
+                        <div class="timeline-event-title">折镜队成立</div>
+                        <div class="timeline-event-desc">
+                            <a href="../characters.html#zhejing" class="wiki-link">折镜队</a>在BMA亚太分部成立，林夕担任队长。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">折镜队</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 当代 -->
+                <div class="timeline-era" id="present">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">当代</div>
+                            <div class="timeline-era-desc">故事开始，命运交织</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="story">
+                        <div class="timeline-event-date">2026年春</div>
+                        <div class="timeline-event-title">数据幽灵事件</div>
+                        <div class="timeline-event-desc">
+                            <a href="../story.html#chapter1" class="wiki-link">第一章：东亚篇</a>开始。陈默收到神秘邮件，前往东京调查数据鬼怪异常聚集事件，首次与折镜队相遇。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag story">剧情</span>
+                            <span class="timeline-event-tag">第一章</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">2026年春</div>
+                        <div class="timeline-event-title">陈默觉醒</div>
+                        <div class="timeline-event-desc">
+                            陈默在数据鬼姬事件中<a href="../system.html#awakening" class="wiki-link">觉醒</a>为界行者（观道），正式加入折镜队。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">陈默</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="story">
+                        <div class="timeline-event-date">2026年夏</div>
+                        <div class="timeline-event-title">百鬼熔炉事件</div>
+                        <div class="timeline-event-desc">
+                            <a href="../story.html#chapter2" class="wiki-link">第二章：北美篇</a>。纽约发生百鬼熔炉事件，折镜队前往支援，新伙伴萨拉·陈加入。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag story">剧情</span>
+                            <span class="timeline-event-tag">第二章</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="story">
+                        <div class="timeline-event-date">2026年秋</div>
+                        <div class="timeline-event-title">诸神黄昏预警</div>
+                        <div class="timeline-event-desc">
+                            <a href="../story.html#chapter3" class="wiki-link">第三章：欧洲篇</a>。冰岛检测到诸神黄昏级能量波动，北欧神话的真相逐渐揭开。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag story">剧情</span>
+                            <span class="timeline-event-tag">第三章</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="story">
+                        <div class="timeline-event-date">2026年冬</div>
+                        <div class="timeline-event-title">中点转折</div>
+                        <div class="timeline-event-desc">
+                            <a href="../story.html#chapter5" class="wiki-link">第五章：非洲篇</a>。陈默的真实身份揭晓——他是第49代锚点，故事从"探索世界"转向"面对命运"。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag story">剧情</span>
+                            <span class="timeline-event-tag">中点转折</span>
+                            <span class="timeline-event-tag">锚点</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部说明 -->
+            <div class="info-box" style="margin-top: 48px;">
+                <strong>关于时间线</strong><br>
+                本时间线记录了《界行者》世界的重要历史事件。标注为"推测"的事件基于现有设定推断，可能在后续更新中调整。点击上方筛选按钮可按类别查看事件。
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        // 移动端侧边栏切换
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        // 事件筛选
+        function filterEvents(category) {
+            // 更新按钮状态
+            document.querySelectorAll('.timeline-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 显示/隐藏事件
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                if (category === 'all' || event.dataset.category === category) {
+                    event.style.display = 'block';
+                    setTimeout(() => {
+                        event.style.opacity = '1';
+                        event.style.transform = 'translateX(0)';
+                    }, 10);
+                } else {
+                    event.style.opacity = '0';
+                    event.style.transform = 'translateX(-20px)';
+                    setTimeout(() => {
+                        event.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            // 如果没有可见事件，隐藏时代标题
+            document.querySelectorAll('.timeline-era').forEach(era => {
+                const visibleEvents = era.querySelectorAll('.timeline-event[style*="display: block"], .timeline-event:not([style*="display: none"])');
+                if (visibleEvents.length === 0) {
+                    era.style.display = 'none';
+                } else {
+                    era.style.display = 'block';
+                }
+            });
+        }
+
+        // 滚动触发动画
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.timeline-event').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林夕 - 折镜队队长、白发修罗、阴阳眼 | 角色档案 | 界行者Wiki</title>
+    <meta name="description" content="林夕，界行者女主角，折镜队队长，拥有阴阳眼的驱魔师。了解她的背景故事、外观设定、能力技能和人物关系。">
+    <meta name="keywords" content="林夕, 界行者, 白发修罗, 阴阳眼, 折镜队, 驱魔师, 林晚照, 角色设定">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="林夕 - 折镜队队长 | 界行者Wiki">
+    <meta property="og:description" content="白发修罗，阴阳眼驱魔师，折镜队队长林夕的完整档案。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/characters/linxi.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .character-header {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-darker) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--boundary-cyan) 0%, var(--yin-purple) 100%);
+        }
+
+        .character-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            flex-shrink: 0;
+            border: 3px solid var(--boundary-cyan);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .character-info {
+            flex: 1;
+        }
+
+        .character-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--boundary-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .character-title {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .character-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .character-tag {
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .character-tag.primary {
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--boundary-cyan);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        .character-tag.secondary {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--yin-purple-light);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .character-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .character-meta-item {
+            padding: 12px 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+        }
+
+        .character-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .character-meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+
+        .section-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .section-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+
+        .section-tab.active {
+            color: var(--boundary-cyan);
+            background: rgba(34, 211, 238, 0.1);
+            border-color: rgba(34, 211, 238, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .story-section {
+            margin-bottom: 24px;
+        }
+
+        .story-section h4 {
+            color: var(--boundary-cyan);
+            margin-bottom: 12px;
+            font-size: 1.125rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--boundary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--boundary-cyan);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 24px;
+            bottom: -20px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-age {
+            font-size: 0.875rem;
+            color: var(--boundary-cyan);
+            font-weight: 600;
+            min-width: 60px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .appearance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .appearance-item {
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--boundary-cyan);
+        }
+
+        .appearance-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .appearance-value {
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .ability-card {
+            padding: 20px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .ability-card:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .ability-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .ability-type {
+            font-size: 0.6875rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--boundary-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ability-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .ability-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .quote-box {
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.08) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-left: 4px solid var(--boundary-cyan);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 24px 0;
+        }
+
+        .quote-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .quote-author {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* 图片画廊 */
+        .gallery-section {
+            margin-bottom: 32px;
+        }
+
+        .gallery-row {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .gallery-row.horizontal {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-row.vertical {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-row.vertical .gallery-item img {
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        /* 图片模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .image-modal img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-modal-caption {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .image-modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-row.horizontal,
+            .gallery-row.vertical {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .relations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .relation-card {
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .relation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .relation-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+        }
+
+        .relation-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .relation-type {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        @media (max-width: 768px) {
+            .character-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+            }
+
+            .character-avatar {
+                margin: 0 auto;
+            }
+
+            .character-name {
+                font-size: 1.875rem;
+            }
+
+            .section-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .section-tab {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="../index.html" class="logo">
+                <span>🌌</span>
+                <span>界行者Wiki</span>
+            </a>
+            <form action="../search.html" method="get" class="search-box" style="margin: 0;">
+                <input type="text" name="q" placeholder="搜索..." autocomplete="off">
+            </form>
+        </div>
+        <div class="top-nav-right">
+            <a href="../world.html" class="nav-link">核心世界观</a>
+            <a href="../system.html" class="nav-link">界行者系统</a>
+            <a href="../factions.html" class="nav-link">势力设定</a>
+            <a href="../characters.html" class="nav-link" style="color: var(--accent-cyan);">角色档案</a>
+            <a href="../map.html" class="nav-link">世界地图</a>
+            <a href="../story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">角色信息</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#overview" class="nav-item">概览</a>
+                        <a href="#story" class="nav-item">背景故事</a>
+                        <a href="#appearance" class="nav-item">外观设定</a>
+                        <a href="#abilities" class="nav-item">能力技能</a>
+                        <a href="#relations" class="nav-item">人物关系</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">相关链接</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="../characters.html" class="nav-item">← 返回角色列表</a>
+                        <a href="../factions.html#lin" class="nav-item">林氏家族</a>
+                        <a href="../characters.html#zhejing" class="nav-item">折镜队</a>
+                        <a href="../story.html#chapter1" class="nav-item">第一章剧情</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="../index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="../characters.html">👥 角色图鉴</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">🌙 林夕</span>
+            </nav>
+
+            <!-- 角色头部信息 -->
+            <div class="character-header" id="overview">
+                <div class="character-avatar">
+                    <img src="../林夕/avatar.png" alt="林夕头像" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+                </div>
+                <div class="character-info">
+                    <h1 class="character-name">林夕</h1>
+                    <p class="character-title">折镜队队长 · 白发修罗</p>
+                    <div class="character-tags">
+                        <span class="character-tag primary">观道/杀道</span>
+                        <span class="character-tag secondary">阴属性</span>
+                        <span class="character-tag" style="background: rgba(251, 191, 36, 0.15); color: var(--yang-gold); border: 1px solid rgba(251, 191, 36, 0.3);">至阴体质</span>
+                    </div>
+                    <div class="character-meta-grid">
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">本名</div>
+                            <div class="character-meta-value">林晚照</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">年龄</div>
+                            <div class="character-meta-value">24岁</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">身高</div>
+                            <div class="character-meta-value">165cm</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">瞳色</div>
+                            <div class="character-meta-value">淡金色</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">发色</div>
+                            <div class="character-meta-value">白色及腰</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">体质</div>
+                            <div class="character-meta-value">RH阴性血</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 标签页导航 -->
+            <div class="section-tabs">
+                <button class="section-tab active" onclick="switchTab('story')">📖 背景故事</button>
+                <button class="section-tab" onclick="switchTab('appearance')">👤 外观设定</button>
+                <button class="section-tab" onclick="switchTab('abilities')">✨ 能力技能</button>
+                <button class="section-tab" onclick="switchTab('relations')">👥 人物关系</button>
+            </div>
+
+            <!-- 背景故事 -->
+            <div class="tab-content active" id="story">
+                <!-- 角色图片画廊 -->
+                <div class="gallery-section">
+                    <h4>角色设定图</h4>
+                    <!-- 横版图片行 -->
+                    <div class="gallery-row horizontal">
+                        <div class="gallery-item" onclick="openImageModal('../林夕/download_1772695763194.png', '四格设定 - 表情与姿态')">
+                            <img src="../林夕/download_1772695763194.png" alt="四格设定">
+                            <div class="gallery-caption">四格设定 - 表情与姿态</div>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('../林夕/ai-image-2026-03-05-0fc59607.jpg', '剧情CG')">
+                            <img src="../林夕/ai-image-2026-03-05-0fc59607.jpg" alt="剧情CG">
+                            <div class="gallery-caption">剧情CG</div>
+                        </div>
+                    </div>
+                    <!-- 竖版图片行 -->
+                    <div class="gallery-row vertical">
+                        <div class="gallery-item" onclick="openImageModal('../林夕/Gemini_Generated_Image_lttttalttttalttt.png', '全身立绘 - 月夜持符')">
+                            <img src="../林夕/Gemini_Generated_Image_lttttalttttalttt.png" alt="全身立绘">
+                            <div class="gallery-caption">全身立绘 - 月夜持符</div>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('../林夕/Gemini_Generated_Image_vzocxvvzocxvvzoc.png', '休息中')">
+                            <img src="../林夕/Gemini_Generated_Image_vzocxvvzocxvvzoc.png" alt="休息中">
+                            <div class="gallery-caption">休息中</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>出身与童年</h4>
+                    <p>林夕出生于江南水乡的<a href="../factions.html#lin" class="wiki-link">林氏驱魔世家</a>，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。</p>
+                    <p>童年时期，林夕因"混血"身份备受歧视。嫡系子弟不与她玩耍，长辈对她冷眼相待。但她性格倔强，从不低头，常常偷偷翻阅家族禁书学习驱魔术。</p>
+                </div>
+
+                <div class="story-section">
+                    <h4>12岁转折点</h4>
+                    <p>中元节那天，林夕偷溜进祖坟，遭遇百年厉鬼。凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。</p>
+                    <p>那一夜，她觉醒了<a href="../world.html#terms" class="wiki-link">阴阳眼</a>，也白了头发。随后被逐出家族，成为家族禁忌。</p>
+                </div>
+
+                <div class="story-section">
+                    <h4>成长经历</h4>
+                    <div class="timeline-item">
+                        <span class="timeline-age">12-20岁</span>
+                        <div class="timeline-content">
+                            <strong>流浪岁月</strong><br>
+                            在纸扎店帮忙，疯狂自学驱魔术。16岁开始接"小活儿"，人称"白发小先生"。独自处理过多起小型<a href="../world.html#boundary" class="wiki-link">界域</a>事件。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-age">20岁</span>
+                        <div class="timeline-content">
+                            <strong>被BMA注意</strong><br>
+                            处理"镜中鬼"事件展现惊人天赋，被<a href="../factions.html#bma" class="wiki-link">BMA</a>注意。张老天师收为关门弟子，入走阴司改名"林夕"，在龙虎山修炼四年。
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-age">24岁</span>
+                        <div class="timeline-content">
+                            <strong>折镜队成立</strong><br>
+                            外勤三队"折镜队"成立，任队长。带领队伍处理高危界域事件，获得"白发修罗"绰号。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    <p class="quote-text">"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"</p>
+                    <p class="quote-author">—— 林夕对归一者的宣言</p>
+                </div>
+
+                <div class="story-section">
+                    <h4>性格特征</h4>
+                    <p><strong>外冷内热，嘴硬心软。</strong>任务中冷静果断，面对鬼怪凌厉危险，有"白发修罗"的绰号。但私下会偷偷帮助弱小的鬼魂超度，而非简单粗暴地消灭。</p>
+                    <p><strong>害怕被抛弃。</strong>童年被家族驱逐的阴影让她对"被抛弃"极度敏感。一旦认定伙伴，会不惜一切代价保护。</p>
+                </div>
+            </div>
+
+            <!-- 外观设定 -->
+            <div class="tab-content" id="appearance">
+                <div class="story-section">
+                    <h4>整体风格</h4>
+                    <p>现代机能风与传统中式元素的结合。以黑白为主色调，点缀青色光效，体现"阴阳眼"与"界行者"的身份特征。</p>
+                </div>
+
+                <div class="appearance-grid">
+                    <div class="appearance-item">
+                        <div class="appearance-label">外衣</div>
+                        <div class="appearance-value">白色短款中式立领开衫（盘扣），短款露腰，敞开穿，袖口宽大飘逸</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">内搭</div>
+                        <div class="appearance-value">黑色运动内衣（长款），盖住腹部，只露腰线</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">配饰</div>
+                        <div class="appearance-value">简约黑色皮质choker（无吊坠）</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">下装</div>
+                        <div class="appearance-value">黑色高腰战术短裤（修身剪裁）</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">丝袜</div>
+                        <div class="appearance-value">左腿：黑色丝袜配白色云纹印花（布满整腿）；右腿：纯黑色丝袜</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">鞋子</div>
+                        <div class="appearance-value">黑色时尚马丁靴（侧边拉链，厚底）</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">腰带</div>
+                        <div class="appearance-value">黑色皮质腰带，挂三枚小青铜铃铛（施法媒介）</div>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 24px;">
+                    <strong>🎨 设计要点</strong><br>
+                    • 不对称设计（左右腿不同）体现"阴阳"主题<br>
+                    • 短款上衣+高腰裤显腿长，符合现代审美<br>
+                    • 青铜铃铛既是武器也是装饰，战斗时会发出清脆声响
+                </div>
+            </div>
+
+            <!-- 能力技能 -->
+            <div class="tab-content" id="abilities">
+                <div class="abilities-grid">
+                    <div class="ability-card">
+                        <div class="ability-header">
+                            <span class="ability-type">天赋</span>
+                            <span class="ability-name">阴阳眼</span>
+                        </div>
+                        <p class="ability-desc">淡金色瞳孔，可看破阴阳、感知阴气、看穿鬼怪本质。情绪激动时会发出微光。是成为<a href="../world.html#terms" class="wiki-link">界行者</a>最核心的天赋。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="ability-header">
+                            <span class="ability-type">天赋</span>
+                            <span class="ability-name">至阴体质</span>
+                        </div>
+                        <p class="ability-desc">RH阴性血，对阴气亲和力极高，修炼阴属性功法事半功倍。但也易被阴物觊觎，需要特别防护。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="ability-header">
+                            <span class="ability-type">战斗</span>
+                            <span class="ability-name">寻龙定穴</span>
+                        </div>
+                        <p class="ability-desc">观察地势气流，找到阴地的"眼"和"门"。可快速定位界域核心、发现隐藏通道、预判鬼怪出现位置。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="ability-header">
+                            <span class="ability-type">战斗</span>
+                            <span class="ability-name">铃铛术</span>
+                        </div>
+                        <p class="ability-desc">以青铜铃为媒介，施展摄魂（控制鬼怪）、定位（追踪阴气）、音波攻击等多种术法。三枚铃铛可组合使用。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="ability-header">
+                            <span class="ability-type">特殊</span>
+                            <span class="ability-name">渡气</span>
+                        </div>
+                        <p class="ability-desc">将自身阴气渡给濒死之人，可暂时维持生命体征。代价是自己会虚弱一段时间。与主角的定情技能。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 人物关系 -->
+            <div class="tab-content" id="relations">
+                <div class="relations-grid">
+                    <div class="relation-card">
+                        <div class="relation-avatar">👤</div>
+                        <div class="relation-name">陈默</div>
+                        <div class="relation-type">折镜队成员 / 羁绊</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">⚔️</div>
+                        <div class="relation-name">关锋</div>
+                        <div class="relation-type">副队长 / 搭档</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">🛡️</div>
+                        <div class="relation-name">铁山</div>
+                        <div class="relation-type">折镜队成员</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">💚</div>
+                        <div class="relation-name">苏晚晴</div>
+                        <div class="relation-type">折镜队成员</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">🎭</div>
+                        <div class="relation-name">叶小柒</div>
+                        <div class="relation-type">折镜队成员</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">🌀</div>
+                        <div class="relation-name">云渺</div>
+                        <div class="relation-type">折镜队成员</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">👔</div>
+                        <div class="relation-name">张玄</div>
+                        <div class="relation-type">师父 / BMA总局长</div>
+                    </div>
+                    <div class="relation-card">
+                        <div class="relation-avatar">🏯</div>
+                        <div class="relation-name">林氏家族</div>
+                        <div class="relation-type">已断绝关系</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 返回按钮 -->
+            <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);">
+                <a href="../characters.html" class="wiki-link" style="font-size: 1rem;">← 返回角色列表</a>
+            </div>
+        </main>
+    </div>
+
+    <!-- 图片模态框 -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        function switchTab(tabName) {
+            // 隐藏所有标签内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 移除所有标签按钮的激活状态
+            document.querySelectorAll('.section-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 激活选中的标签
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 图片模态框功能
+        function openImageModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImage');
+            const cap = document.getElementById('modalCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>

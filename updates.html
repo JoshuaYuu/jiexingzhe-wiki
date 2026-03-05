@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最近更新 - 版本历史、更新日志 | 界行者Wiki</title>
+    <meta name="description" content="界行者Wiki的更新日志与版本历史。查看最新添加的角色、剧情章节、系统设定等内容更新。">
+    <meta name="keywords" content="界行者更新, Wiki更新, 版本历史, 游戏资料更新">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="最近更新 - 界行者Wiki">
+    <meta property="og:description" content="查看界行者Wiki的最新更新内容。">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://jiexingzhe.wiki/updates.html">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .update-timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .update-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--boundary-cyan) 0%, var(--yin-purple) 100%);
+            border-radius: 1px;
+        }
+
+        .update-item {
+            position: relative;
+            margin-bottom: 32px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .update-item:hover {
+            border-color: var(--border-light);
+            box-shadow: var(--shadow-md);
+            transform: translateX(8px);
+        }
+
+        .update-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 24px;
+            width: 12px;
+            height: 12px;
+            background: var(--boundary-cyan);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 0 2px var(--boundary-cyan);
+        }
+
+        .update-item.major::before {
+            background: var(--yang-gold);
+            box-shadow: 0 0 0 2px var(--yang-gold), 0 0 12px var(--yang-gold);
+        }
+
+        .update-date {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .update-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .update-type.add {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--success);
+        }
+
+        .update-type.update {
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--boundary-cyan);
+        }
+
+        .update-type.fix {
+            background: rgba(248, 113, 113, 0.15);
+            color: var(--danger);
+        }
+
+        .update-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .update-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .update-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .update-link {
+            font-size: 0.875rem;
+            color: var(--boundary-cyan);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+
+        .update-link:hover {
+            color: var(--yang-gold);
+            transform: translateX(4px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--boundary-cyan);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo">
+                <span>🌌</span>
+                <span>界行者Wiki</span>
+            </a>
+            <form action="search.html" method="get" class="search-box" style="margin: 0;">
+                <input type="text" name="q" placeholder="搜索..." autocomplete="off">
+            </form>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">更新日志</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#stats" class="nav-item">更新统计</a>
+                        <a href="#timeline" class="nav-item">时间线</a>
+                        <a href="#march-2026" class="nav-item">2026年3月</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">📰 最近更新</span>
+            </nav>
+
+            <h1 class="page-title">
+                <span>📰</span>
+                最近更新
+            </h1>
+            <p class="page-desc">界行者 Wiki 的更新日志与版本历史</p>
+
+            <!-- 统计卡片 -->
+            <div class="stats-grid" id="stats">
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">总页面数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">设定条目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">角色档案</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">章节规划</div>
+                </div>
+            </div>
+
+            <!-- 更新时间线 -->
+            <div class="update-timeline" id="timeline">
+                <h3 style="margin-bottom: 24px;">📅 2026年3月</h3>
+
+                <div class="update-item major" id="march-2026">
+                    <div class="update-date">
+                        <span>2026-03-06</span>
+                        <span class="update-type add">新增</span>
+                    </div>
+                    <div class="update-title">Canon 状态系统与交叉引用上线</div>
+                    <div class="update-desc">
+                        为所有 Wiki 页面添加了 Canon 状态标记系统，包括已确定、提议中、推测等状态。
+                        同时建立了完整的交叉引用系统，角色、派系、地点之间可以相互跳转。
+                    </div>
+                    <div class="update-links">
+                        <a href="world.html" class="update-link">→ 核心世界观</a>
+                        <a href="factions.html" class="update-link">→ 势力设定</a>
+                        <a href="system.html" class="update-link">→ 界行者系统</a>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-date">
+                        <span>2026-03-06</span>
+                        <span class="update-type update">更新</span>
+                    </div>
+                    <div class="update-title">视觉系统全面升级</div>
+                    <div class="update-desc">
+                        重新设计了配色系统，建立界域青、阴界紫、阳界金的三色体系。
+                        优化了字体系统、添加了页面加载动画和悬停交互效果。
+                    </div>
+                    <div class="update-links">
+                        <a href="index.html" class="update-link">→ 查看首页</a>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-date">
+                        <span>2026-03-05</span>
+                        <span class="update-type add">新增</span>
+                    </div>
+                    <div class="update-title">林夕角色档案完整版</div>
+                    <div class="update-desc">
+                        添加了主角林夕的完整角色设定，包括背景故事、外观设定、能力技能、日常喜好等详细信息。
+                        同时上传了多张角色设定图。
+                    </div>
+                    <div class="update-links">
+                        <a href="characters.html#linxi" class="update-link">→ 查看角色</a>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-date">
+                        <span>2026-03-05</span>
+                        <span class="update-type add">新增</span>
+                    </div>
+                    <div class="update-title">第二章北美篇"百鬼熔炉"设定</div>
+                    <div class="update-desc">
+                        完成第二章的剧情大纲设计，包括纽约地图设定、百鬼熔炉事件、新角色萨拉·陈的引入等。
+                    </div>
+                    <div class="update-links">
+                        <a href="story.html#chapter2" class="update-link">→ 第二章</a>
+                        <a href="map.html#north-america" class="update-link">→ 北美分部</a>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-date">
+                        <span>2026-03-04</span>
+                        <span class="update-type add">新增</span>
+                    </div>
+                    <div class="update-title">六大职业与九大元素系统</div>
+                    <div class="update-desc">
+                        建立了完整的职业系统（观道、御道、杀道、愈道、诡道、通道）和元素克制系统（阴阳木火水土雷冰魂）。
+                    </div>
+                    <div class="update-links">
+                        <a href="system.html#six-paths" class="update-link">→ 六大职业</a>
+                        <a href="system.html#nine-elements" class="update-link">→ 九大元素</a>
+                    </div>
+                </div>
+
+                <div class="update-item major">
+                    <div class="update-date">
+                        <span>2026-03-01</span>
+                        <span class="update-type add">新增</span>
+                    </div>
+                    <div class="update-title">Wiki 多页面架构重构完成</div>
+                    <div class="update-desc">
+                        从单页应用重构为多页面 Wiki 架构，包括核心世界观、界行者系统、势力设定、角色档案、世界地图、剧情大纲六大板块。
+                    </div>
+                    <div class="update-links">
+                        <a href="index.html" class="update-link">→ 返回首页</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部导航 -->
+            <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center;">
+                <p style="color: var(--text-tertiary);">
+                    <a href="sitemap.html" class="wiki-link">站点地图</a>
+                    <span style="margin: 0 16px;">|</span>
+                    <a href="categories.html" class="wiki-link">分类索引</a>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

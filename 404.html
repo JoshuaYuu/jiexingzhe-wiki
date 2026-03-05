@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 - 界域迷失 | 界行者Wiki</title>
+    <meta name="description" content="抱歉，您访问的页面不存在。返回界行者Wiki首页，或查看站点地图找到您需要的内容。">
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--boundary-cyan) 0%, var(--yin-purple) 50%, var(--yang-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        }
+
+        .error-title {
+            font-size: 1.75rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .error-desc {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .error-btn:hover {
+            border-color: var(--boundary-cyan);
+            box-shadow: var(--shadow-glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        .error-btn.primary {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+            border-color: var(--boundary-cyan);
+        }
+
+        .error-suggestions {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .error-suggestions h4 {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .suggestion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .suggestion-item {
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.25s;
+        }
+
+        .suggestion-item:hover {
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+            transform: translateY(-4px);
+        }
+
+        .suggestion-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .suggestion-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .error-quote {
+            margin-top: 48px;
+            padding: 20px 32px;
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 3px solid var(--yin-purple);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            max-width: 500px;
+        }
+
+        .error-quote p {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 0;
+        }
+
+        .error-quote .author {
+            margin-top: 8px;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            font-style: normal;
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-title {
+                font-size: 1.375rem;
+            }
+            .error-desc {
+                font-size: 1rem;
+            }
+            .suggestion-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">🌑</div>
+        <div class="error-code">404</div>
+        <h1 class="error-title">界域迷失</h1>
+        <p class="error-desc">
+            你似乎进入了不存在的界域。<br>
+            这个页面可能已被侵蚀，或是从未存在过。
+        </p>
+        
+        <div class="error-actions">
+            <a href="index.html" class="error-btn primary">
+                <span>🏠</span> 返回首页
+            </a>
+            <a href="sitemap.html" class="error-btn">
+                <span>🗺️</span> 站点地图
+            </a>
+            <a href="search.html" class="error-btn">
+                <span>🔍</span> 搜索
+            </a>
+        </div>
+
+        <div class="error-suggestions">
+            <h4>你可能想找</h4>
+            <div class="suggestion-grid">
+                <a href="characters/linxi.html" class="suggestion-item">
+                    <div class="suggestion-icon">🌙</div>
+                    <div class="suggestion-text">林夕</div>
+                </a>
+                <a href="world.html" class="suggestion-item">
+                    <div class="suggestion-icon">🌍</div>
+                    <div class="suggestion-text">世界观</div>
+                </a>
+                <a href="factions.html" class="suggestion-item">
+                    <div class="suggestion-icon">🏛️</div>
+                    <div class="suggestion-text">势力</div>
+                </a>
+                <a href="system.html" class="suggestion-item">
+                    <div class="suggestion-icon">⚔️</div>
+                    <div class="suggestion-text">职业</div>
+                </a>
+                <a href="story.html" class="suggestion-item">
+                    <div class="suggestion-icon">📖</div>
+                    <div class="suggestion-text">剧情</div>
+                </a>
+                <a href="updates.html" class="suggestion-item">
+                    <div class="suggestion-icon">📰</div>
+                    <div class="suggestion-text">更新</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="error-quote">
+            <p>"有些界域，本就不该被找到。但既然你已至此，便随我来吧。"</p>
+            <div class="author">—— 某位不愿透露姓名的界行者</div>
+        </div>
+    </div>
+
+    <script>
+        // 记录404错误（可选，用于分析）
+        console.log('404 Error:', window.location.pathname);
+
+        // 添加键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.key === 'h' || e.key === 'H') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

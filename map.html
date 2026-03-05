@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>世界地图 - 界行者Wiki</title>
+    <title>世界地图 - BMA全球七大分部、章节架构 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》世界地图：BMA全球七大分部（东亚、北美、欧洲、澳洲、非洲、南美）、章节地图架构、各地文化风格与视觉主题。">
+    <meta name="keywords" content="界行者地图, BMA分部, 东京, 纽约, 雷克雅未克, 全球地图, 游戏地图">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="世界地图 - 界行者Wiki">
+    <meta property="og:description" content="探索BMA全球七大分部，开启环球驱魔之旅。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/map.html">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="top-nav">
         <div class="top-nav-left">
             <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
-            <div class="search-box"><input type="text" placeholder="搜索..."></div>
+            <form action="search.html" method="get" class="search-box" style="margin: 0;"><input type="text" name="q" placeholder="搜索..." autocomplete="off"></form>
         </div>
         <div class="top-nav-right">
             <a href="world.html" class="nav-link">核心世界观</a>
@@ -25,6 +33,15 @@
     <div class="main-container">
         <aside class="sidebar">
             <div class="sidebar-title">目录</div>
+            
+            <!-- Canon状态图例 -->
+            <div class="canon-legend">
+                <div class="canon-legend-title">Canon状态说明</div>
+                <span class="canon-badge canon-established">已确定</span>
+                <span class="canon-badge canon-proposed">提议中</span>
+                <span class="canon-badge canon-speculative">推测</span>
+            </div>
+            
             <nav class="nav-menu">
                 <div class="nav-group">
                     <div class="nav-group-header active" onclick="toggleNavGroup(this)">
@@ -54,19 +71,35 @@
         </aside>
 
         <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">🌍 世界地图</span>
+            </nav>
+
             <h1 class="page-title"><span>🌍</span>世界地图</h1>
             <p class="page-desc">BMA全球七大分部与章节架构</p>
 
             <div class="section" id="global-overview">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">🌐</span>全球架构概览</div>
+                    <div class="section-title">
+                        <span class="section-icon">🌐</span>全球架构概览
+                        <span class="canon-badge canon-proposed">提议中</span>
+                    </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-proposed">提议中</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 地图 / 全球架构</div>
+                    </div>
                     <div class="info-box">
                         <strong>设计理念</strong><br>
                         参考《崩坏：星穹铁道》《鸣潮》等成功二游，每个大章节采用完全不同的文化风格与视觉主题，保持玩家的新鲜感。
                     </div>
+                    <p><strong>相关：</strong><a href="story.html" class="wiki-link">剧情大纲</a> | <a href="factions.html#bma" class="wiki-link">BMA</a> | <a href="characters.html" class="wiki-link">角色档案</a></p>
 
                     <table>
                         <tr>
@@ -124,28 +157,45 @@
             <!-- 东亚分部 -->
             <div class="section" id="east-asia">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">🌸</span>东亚分部</div>
+                    <div class="section-title">
+                        <span class="section-icon">🌸</span>东亚分部
+                        <span class="canon-badge canon-established">已确定</span>
+                    </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 地图 / 分部</div>
+                    </div>
                     <div class="info-box">
                         <strong>分部信息</strong><br>
                         <strong>管辖城市：</strong>东京/上海双总部<br>
                         <strong>视觉风格：</strong>霓虹灯 + 符箓全息投影<br>
                         <strong>文化基础：</strong>东亚都市 + 赛博朋克
                     </div>
-                    <p>东亚分部是BMA历史最悠久的分部之一，负责管理东亚地区的界域事务。东京和上海设有双总部，分别处理日本列岛和中国大陆的灵异事件。</p>
+                    <p>东亚分部是<a href="factions.html#bma" class="wiki-link">BMA</a>历史最悠久的分部之一，负责管理东亚地区的<a href="world.html#boundary" class="wiki-link">界域</a>事务。东京和上海设有双总部，分别处理日本列岛和中国大陆的灵异事件。</p>
                     <p>该分部以"科技驱魔"闻名，将传统符箓与现代全息技术结合，创造出独特的赛博朋克式驱魔风格。</p>
+                    <p><strong>相关：</strong><a href="story.html#chapter1" class="wiki-link">第一章：东亚篇</a> | <a href="characters.html#zhejing" class="wiki-link">折镜队</a> | <a href="factions.html#bma" class="wiki-link">BMA</a></p>
                 </div>
             </div>
 
             <!-- 北美分部 -->
             <div class="section" id="north-america">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">🗽</span>北美分部</div>
+                    <div class="section-title">
+                        <span class="section-icon">🗽</span>北美分部
+                        <span class="canon-badge canon-proposed">提议中</span>
+                    </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-proposed">提议中</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 地图 / 分部</div>
+                    </div>
                     <div class="info-box">
                         <strong>分部信息</strong><br>
                         <strong>管辖城市：</strong>纽约市<br>
@@ -160,10 +210,18 @@
             <!-- 欧洲分部 -->
             <div class="section" id="europe">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">❄️</span>欧洲分部</div>
+                    <div class="section-title">
+                        <span class="section-icon">❄️</span>欧洲分部
+                        <span class="canon-badge canon-proposed">提议中</span>
+                    </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-proposed">提议中</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 地图 / 分部</div>
+                    </div>
                     <div class="info-box">
                         <strong>分部信息</strong><br>
                         <strong>管辖城市：</strong>雷克雅未克（冰岛）<br>
@@ -178,10 +236,18 @@
             <!-- 其他分部 -->
             <div class="section" id="other-branches">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">🌏</span>其他分部</div>
+                    <div class="section-title">
+                        <span class="section-icon">🌏</span>其他分部
+                        <span class="canon-badge canon-speculative">推测</span>
+                    </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-speculative">推测</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 地图 / 分部</div>
+                    </div>
                     <table>
                         <tr>
                             <th>分部</th>

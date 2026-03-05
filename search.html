@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 - 角色、派系、术语 | 界行者Wiki</title>
+    <meta name="description" content="在界行者Wiki中搜索角色、派系、术语、地点等内容。快速找到林夕、折镜队、界域、阴阳眼等游戏资料。">
+    <meta name="keywords" content="界行者搜索, 林夕, 折镜队, 界域, 阴阳眼, BMA, 游戏资料">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="搜索 - 界行者Wiki">
+    <meta property="og:description" content="搜索界行者Wiki的全部内容。">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://jiexingzhe.wiki/search.html">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box-large {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .search-box-large input {
+            width: 100%;
+            padding: 16px 24px 16px 56px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: 1.125rem;
+            transition: all 0.3s;
+        }
+
+        .search-box-large input:focus {
+            outline: none;
+            border-color: var(--boundary-cyan);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .search-box-large::before {
+            content: "🔍";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+        }
+
+        .search-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .search-filter {
+            padding: 8px 16px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-filter:hover {
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+        }
+
+        .search-filter.active {
+            background: rgba(34, 211, 238, 0.15);
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+        }
+
+        .search-stats {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+
+        .search-results {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-result {
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .search-result:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateX(8px);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+
+        .search-result-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .search-result-icon {
+            font-size: 1.5rem;
+        }
+
+        .search-result-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .search-result-category {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-sm);
+            color: var(--text-tertiary);
+        }
+
+        .search-result-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .search-result-match {
+            font-size: 0.875rem;
+            color: var(--boundary-cyan);
+        }
+
+        .search-result-match::before {
+            content: "匹配: ";
+            color: var(--text-tertiary);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 48px;
+            color: var(--text-tertiary);
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .search-suggestions {
+            margin-top: 32px;
+        }
+
+        .search-suggestions h4 {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+        }
+
+        .suggestion-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .suggestion-tag {
+            padding: 8px 16px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .suggestion-tag:hover {
+            border-color: var(--yang-gold);
+            color: var(--yang-gold);
+        }
+
+        .highlight {
+            background: rgba(34, 211, 238, 0.3);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo">
+                <span>🌌</span>
+                <span>界行者Wiki</span>
+            </a>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">搜索筛选</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active">
+                        <span class="nav-group-title">分类</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#" class="nav-item" onclick="filterByCategory('all'); return false;">全部</a>
+                        <a href="#" class="nav-item" onclick="filterByCategory('character'); return false;">👤 角色</a>
+                        <a href="#" class="nav-item" onclick="filterByCategory('faction'); return false;">🏛️ 势力</a>
+                        <a href="#" class="nav-item" onclick="filterByCategory('term'); return false;">📖 术语</a>
+                        <a href="#" class="nav-item" onclick="filterByCategory('location'); return false;">🗺️ 地点</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">🔍 搜索</span>
+            </nav>
+
+            <h1 class="page-title">
+                <span>🔍</span>
+                搜索
+            </h1>
+
+            <div class="search-container">
+                <!-- 搜索框 -->
+                <div class="search-box-large">
+                    <input type="text" id="searchInput" placeholder="搜索角色、派系、术语..." autocomplete="off">
+                </div>
+
+                <!-- 筛选标签 -->
+                <div class="search-filters">
+                    <button class="search-filter active" data-category="all" onclick="filterByCategory('all')">全部</button>
+                    <button class="search-filter" data-category="character" onclick="filterByCategory('character')">👤 角色</button>
+                    <button class="search-filter" data-category="faction" onclick="filterByCategory('faction')">🏛️ 势力</button>
+                    <button class="search-filter" data-category="term" onclick="filterByCategory('term')">📖 术语</button>
+                    <button class="search-filter" data-category="location" onclick="filterByCategory('location')">🗺️ 地点</button>
+                </div>
+
+                <!-- 搜索结果统计 -->
+                <div class="search-stats" id="searchStats">输入关键词开始搜索</div>
+
+                <!-- 搜索结果 -->
+                <div class="search-results" id="searchResults">
+                    <!-- 默认显示搜索建议 -->
+                    <div class="search-suggestions">
+                        <h4>🔥 热门搜索</h4>
+                        <div class="suggestion-tags">
+                            <span class="suggestion-tag" onclick="quickSearch('林夕')">林夕</span>
+                            <span class="suggestion-tag" onclick="quickSearch('折镜队')">折镜队</span>
+                            <span class="suggestion-tag" onclick="quickSearch('界域')">界域</span>
+                            <span class="suggestion-tag" onclick="quickSearch('阴阳眼')">阴阳眼</span>
+                            <span class="suggestion-tag" onclick="quickSearch('BMA')">BMA</span>
+                            <span class="suggestion-tag" onclick="quickSearch('六大职业')">六大职业</span>
+                            <span class="suggestion-tag" onclick="quickSearch('噬界者')">噬界者</span>
+                            <span class="suggestion-tag" onclick="quickSearch('第一章')">第一章</span>
+                        </div>
+                    </div>
+
+                    <div class="search-suggestions">
+                        <h4>📁 快速导航</h4>
+                        <div class="suggestion-tags">
+                            <span class="suggestion-tag" onclick="location.href='characters.html'">角色图鉴</span>
+                            <span class="suggestion-tag" onclick="location.href='factions.html'">势力设定</span>
+                            <span class="suggestion-tag" onclick="location.href='world.html#terms'">专有名词</span>
+                            <span class="suggestion-tag" onclick="location.href='system.html'">游戏系统</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // 搜索索引数据
+        const searchIndex = [
+            // 角色
+            { id: 'linxi', name: '林夕', category: 'character', icon: '🌙', desc: '折镜队队长，白发修罗，拥有阴阳眼的驱魔师', url: 'characters/linxi.html', keywords: ['林夕', '林晚照', '白发', '阴阳眼', '折镜队', '队长', '观道', '杀道'] },
+            { id: 'chenmo', name: '陈默', category: 'character', icon: '👤', desc: '主角，新晋界行者，民俗学研究生', url: 'characters.html', keywords: ['陈默', '主角', '观道', '研究生'] },
+            { id: 'guanfeng', name: '关锋', category: 'character', icon: '⚔️', desc: '折镜队副队长，退伍军人，关羽后人', url: 'characters.html', keywords: ['关锋', '副队长', '杀道', '青龙偃月', '净光宗'] },
+            { id: 'tieshan', name: '铁山', category: 'character', icon: '🛡️', desc: '折镜队防御位，御道职业', url: 'characters.html', keywords: ['铁山', '御道', '防御'] },
+            { id: 'suwanqing', name: '苏晚晴', category: 'character', icon: '💚', desc: '折镜队医疗，愈道职业', url: 'characters.html', keywords: ['苏晚晴', '愈道', '医疗'] },
+            { id: 'yexiaoqi', name: '叶小柒', category: 'character', icon: '🎭', desc: '折镜队技术，诡道职业', url: 'characters.html', keywords: ['叶小柒', '诡道', '技术'] },
+            { id: 'yunmiao', name: '云渺', category: 'character', icon: '🌀', desc: '折镜队机动，通道职业', url: 'characters.html', keywords: ['云渺', '通道', '机动'] },
+
+            // 势力
+            { id: 'bma', name: '界域管理局 (BMA)', category: 'faction', icon: '🛡️', desc: '国际性界域管理机构，负责维护两界平衡', url: 'factions.html#bma', keywords: ['BMA', '界管局', '官方', '机构'] },
+            { id: 'lin', name: '林氏驱魔世家', category: 'faction', icon: '🏯', desc: '江南驱魔世家，林夕的出身家族', url: 'factions.html#lin', keywords: ['林氏', '驱魔世家', '家族'] },
+            { id: 'jingguang', name: '净光宗', category: 'faction', icon: '🕯️', desc: '佛教驱魔宗派，主张净化而非消灭', url: 'factions.html#jingguang', keywords: ['净光宗', '佛教', '宗派'] },
+            { id: 'xuanqing', name: '玄清观', category: 'faction', icon: '⚔️', desc: '道教剑修组织，追求一剑破万法', url: 'factions.html#xuanqing', keywords: ['玄清观', '道教', '剑修'] },
+            { id: 'fengdu', name: '酆都鬼城', category: 'faction', icon: '👑', desc: '阴界统治中心，十位阎君各自为政', url: 'factions.html#fengdu', keywords: ['酆都', '鬼城', '阴界', '阎君'] },
+            { id: 'baigui', name: '百鬼夜行', category: 'faction', icon: '👻', desc: '不愿受酆都管束的鬼怪联盟', url: 'factions.html#baigui', keywords: ['百鬼', '鬼怪', '联盟'] },
+            { id: 'guiyi', name: '归一者教团', category: 'faction', icon: '☠️', desc: '极端组织，主张两界合一', url: 'factions.html#guiyi', keywords: ['归一者', '教团', '极端'] },
+            { id: 'shijie', name: '噬界者', category: 'faction', icon: '🌑', desc: '最终BOSS，以界域为食的古老生物', url: 'factions.html#shijie', keywords: ['噬界者', 'BOSS', '最终'] },
+
+            // 术语
+            { id: 'boundary', name: '界域', category: 'term', icon: '🌀', desc: '阳界与阴界重叠产生的异空间', url: 'world.html#boundary', keywords: ['界域', '重叠', '异空间'] },
+            { id: 'jieyao', name: '界钥', category: 'term', icon: '🗝️', desc: '开启两界通道的关键物品', url: 'world.html#terms', keywords: ['界钥', '钥匙', '通道'] },
+            { id: 'jiexingzhe', name: '界行者', category: 'term', icon: '👤', desc: '能穿梭两界的特殊存在', url: 'world.html#terms', keywords: ['界行者', '驱魔师', '能力者'] },
+            { id: 'yinyangyan', name: '阴阳眼', category: 'term', icon: '👁️', desc: '能看破阴阳的特殊视力', url: 'world.html#terms', keywords: ['阴阳眼', '天眼', '视力'] },
+            { id: 'yangrealm', name: '阳界', category: 'term', icon: '☀️', desc: '生者世界，现实世界', url: 'world.html#yang-realm', keywords: ['阳界', '生者', '现实'] },
+            { id: 'yinrealm', name: '阴界', category: 'term', icon: '🌙', desc: '亡者归宿，鬼魂世界', url: 'world.html#yin-realm', keywords: ['阴界', '亡者', '鬼魂'] },
+            { id: 'chaosrealm', name: '混沌界', category: 'term', icon: '🌑', desc: '两界未分时的原始状态', url: 'world.html#chaos-realm', keywords: ['混沌', '原始'] },
+            { id: 'erosion', name: '侵蚀', category: 'term', icon: '⚠️', desc: '超过界域频率适应度导致的精神损伤', url: 'world.html#erosion', keywords: ['侵蚀', '精神', '损伤'] },
+
+            // 职业
+            { id: 'guandao', name: '观道', category: 'term', icon: '👁️', desc: '侦查/辅助/控场职业', url: 'system.html#guandao', keywords: ['观道', '侦查', '辅助'] },
+            { id: 'yudao', name: '御道', category: 'term', icon: '🛡️', desc: '坦克/保护/控制职业', url: 'system.html#yudao', keywords: ['御道', '坦克', '防御'] },
+            { id: 'shadao', name: '杀道', category: 'term', icon: '⚔️', desc: '输出/爆发/斩杀职业', url: 'system.html#shadao', keywords: ['杀道', '输出', '攻击'] },
+            { id: 'yudao2', name: '愈道', category: 'term', icon: '💚', desc: '治疗/净化/辅助职业', url: 'system.html#yudao2', keywords: ['愈道', '治疗', '医疗'] },
+            { id: 'guidao', name: '诡道', category: 'term', icon: '🎭', desc: '控制/干扰/辅助输出职业', url: 'system.html#guidao', keywords: ['诡道', '控制', '幻术'] },
+            { id: 'tongdao', name: '通道', category: 'term', icon: '🌀', desc: '机动/支援/战术职业', url: 'system.html#tongdao', keywords: ['通道', '机动', '传送'] },
+
+            // 地点
+            { id: 'eastasia', name: '东亚分部', category: 'location', icon: '🌸', desc: '东京/上海双总部，赛博朋克风格', url: 'map.html#east-asia', keywords: ['东亚', '东京', '上海', '分部'] },
+            { id: 'northamerica', name: '北美分部', category: 'location', icon: '🗽', desc: '纽约分部，百鬼熔炉', url: 'map.html#north-america', keywords: ['北美', '纽约', '分部'] },
+            { id: 'europe', name: '欧洲分部', category: 'location', icon: '❄️', desc: '雷克雅未克分部，北欧神话风格', url: 'map.html#europe', keywords: ['欧洲', '雷克雅未克', '冰岛'] },
+
+            // 章节
+            { id: 'chapter1', name: '第一章：东亚篇', category: 'term', icon: '🌸', desc: '数据幽灵，科技与古老的碰撞', url: 'story.html#chapter1', keywords: ['第一章', '东亚篇', '数据幽灵'] },
+            { id: 'chapter2', name: '第二章：北美篇', category: 'term', icon: '🗽', desc: '百鬼熔炉，多元文化碰撞', url: 'story.html#chapter2', keywords: ['第二章', '北美篇', '百鬼熔炉'] },
+            { id: 'final', name: '最终章', category: 'term', icon: '🔥', desc: '两界归一，最终决战', url: 'story.html#final', keywords: ['最终章', '决战', '结局'] },
+        ];
+
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // 搜索输入监听
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            searchQuery = e.target.value.trim();
+            performSearch();
+        });
+
+        // 执行搜索
+        function performSearch() {
+            const resultsContainer = document.getElementById('searchResults');
+            const statsContainer = document.getElementById('searchStats');
+
+            if (!searchQuery) {
+                showDefaultSuggestions();
+                return;
+            }
+
+            // 过滤结果
+            let results = searchIndex.filter(item => {
+                // 分类筛选
+                if (currentCategory !== 'all' && item.category !== currentCategory) {
+                    return false;
+                }
+                // 关键词匹配
+                return item.keywords.some(kw => kw.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                       item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+            });
+
+            // 更新统计
+            statsContainer.textContent = `找到 ${results.length} 个结果`;
+
+            // 显示结果
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">😕</div>
+                        <p>没有找到与 "${searchQuery}" 相关的内容</p>
+                        <p style="font-size: 0.875rem; margin-top: 8px;">试试其他关键词？</p>
+                    </div>
+                `;
+            } else {
+                resultsContainer.innerHTML = results.map(item => `
+                    <a href="${item.url}" class="search-result">
+                        <div class="search-result-header">
+                            <span class="search-result-icon">${item.icon}</span>
+                            <span class="search-result-title">${highlightMatch(item.name)}</span>
+                            <span class="search-result-category">${getCategoryName(item.category)}</span>
+                        </div>
+                        <div class="search-result-desc">${highlightMatch(item.desc)}</div>
+                        <div class="search-result-match">${item.keywords.slice(0, 5).join(', ')}</div>
+                    </a>
+                `).join('');
+            }
+        }
+
+        // 高亮匹配文本
+        function highlightMatch(text) {
+            if (!searchQuery) return text;
+            const regex = new RegExp(`(${searchQuery})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        // 获取分类名称
+        function getCategoryName(category) {
+            const names = {
+                'character': '角色',
+                'faction': '势力',
+                'term': '术语',
+                'location': '地点'
+            };
+            return names[category] || category;
+        }
+
+        // 分类筛选
+        function filterByCategory(category) {
+            currentCategory = category;
+
+            // 更新按钮状态
+            document.querySelectorAll('.search-filter').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // 更新侧边栏
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            performSearch();
+        }
+
+        // 快速搜索
+        function quickSearch(term) {
+            document.getElementById('searchInput').value = term;
+            searchQuery = term;
+            performSearch();
+        }
+
+        // 显示默认建议
+        function showDefaultSuggestions() {
+            document.getElementById('searchStats').textContent = '输入关键词开始搜索';
+            document.getElementById('searchResults').innerHTML = `
+                <div class="search-suggestions">
+                    <h4>🔥 热门搜索</h4>
+                    <div class="suggestion-tags">
+                        <span class="suggestion-tag" onclick="quickSearch('林夕')">林夕</span>
+                        <span class="suggestion-tag" onclick="quickSearch('折镜队')">折镜队</span>
+                        <span class="suggestion-tag" onclick="quickSearch('界域')">界域</span>
+                        <span class="suggestion-tag" onclick="quickSearch('阴阳眼')">阴阳眼</span>
+                        <span class="suggestion-tag" onclick="quickSearch('BMA')">BMA</span>
+                        <span class="suggestion-tag" onclick="quickSearch('六大职业')">六大职业</span>
+                        <span class="suggestion-tag" onclick="quickSearch('噬界者')">噬界者</span>
+                        <span class="suggestion-tag" onclick="quickSearch('第一章')">第一章</span>
+                    </div>
+                </div>
+                <div class="search-suggestions">
+                    <h4>📁 快速导航</h4>
+                    <div class="suggestion-tags">
+                        <span class="suggestion-tag" onclick="location.href='characters.html'">角色图鉴</span>
+                        <span class="suggestion-tag" onclick="location.href='factions.html'">势力设定</span>
+                        <span class="suggestion-tag" onclick="location.href='world.html#terms'">专有名词</span>
+                        <span class="suggestion-tag" onclick="location.href='system.html'">游戏系统</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 页面加载时检查URL参数
+        window.addEventListener('load', function() {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            if (query) {
+                document.getElementById('searchInput').value = query;
+                searchQuery = query;
+                performSearch();
+            }
+        });
+
+        // 侧边栏导航
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

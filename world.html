@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>核心世界观 - 界行者Wiki</title>
+    <title>核心世界观 - 三界九重、界域频率、阴阳两界 | 界行者Wiki</title>
+    <meta name="description" content="深入了解《界行者》的世界观设定：三界-九重模型、界域频率系统、阳界与阴界的平衡、界壁与封印机制。">
+    <meta name="keywords" content="界行者世界观, 三界九重, 界域, 阳界, 阴界, 混沌界, 界壁, 阴阳眼, 驱魔">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="核心世界观 - 界行者Wiki">
+    <meta property="og:description" content="三界九重，界域频率，阴阳交织的宏大世界。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/world.html">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- 顶部导航 -->
     <nav class="top-nav">
         <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
             <a href="index.html" class="logo">
-                <span>🌌</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                 <span>界行者Wiki</span>
             </a>
-            <div class="search-box">
-                <input type="text" placeholder="搜索...">
-            </div>
+            <form action="search.html" method="get" class="search-box" style="margin: 0;">
+                <input type="text" name="q" placeholder="搜索..." autocomplete="off">
+            </form>
         </div>
         <div class="top-nav-right">
             <a href="world.html" class="nav-link" style="color: var(--accent-cyan);">核心世界观</a>
@@ -28,11 +39,23 @@
         </div>
     </nav>
 
+    <!-- 移动端侧边栏遮罩 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
     <!-- 主体 -->
     <div class="main-container">
         <!-- 侧边栏 -->
         <aside class="sidebar">
             <div class="sidebar-title">目录</div>
+            
+            <!-- Canon状态图例 -->
+            <div class="canon-legend">
+                <div class="canon-legend-title">Canon状态说明</div>
+                <span class="canon-badge canon-established">已确定</span>
+                <span class="canon-badge canon-proposed">提议中</span>
+                <span class="canon-badge canon-speculative">推测</span>
+            </div>
+            
             <nav class="nav-menu">
                 <div class="nav-group">
                     <div class="nav-group-header active" onclick="toggleNavGroup(this)">
@@ -73,22 +96,50 @@
 
         <!-- 主内容 -->
         <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    首页
+                </a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    核心世界观
+                </span>
+            </nav>
+
             <h1 class="page-title">
-                <span>🌍</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                 核心世界观
             </h1>
             <p class="page-desc">三界九重，界域频率，阴阳交织的宏大世界</p>
 
             <!-- 三界-九重模型（合并版） -->
-            <div class="section" id="world-overview">
+            <div class="section scroll-animate" id="world-overview">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">🌌</span>
                         三界-九重模型
+                        <span class="canon-badge canon-established">已确定</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <!-- 元数据栏 -->
+                    <div class="entry-meta">
+                        <div class="entry-meta-item">
+                            <strong>Canon状态:</strong>
+                            <span class="canon-badge canon-established">已确定</span>
+                        </div>
+                        <div class="entry-meta-item">
+                            <strong>最后更新:</strong> 2026-03-06
+                        </div>
+                        <div class="entry-meta-item">
+                            <strong>类别:</strong> 世界架构
+                        </div>
+                    </div>
+                    
                     <div class="info-box">
                         <strong>核心概念</strong><br>
                         世界由<strong>阳界</strong>、<strong>阴界</strong>、<strong>混沌界</strong>三界构成，每界分三层，加上混沌原核，共称<strong>"三界-九重"</strong>。
@@ -174,15 +225,22 @@
             </div>
 
             <!-- 阳界 -->
-            <div class="section" id="yang-realm">
+            <div class="section scroll-animate" id="yang-realm">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">☀️</span>
                         阳界
+                        <span class="canon-badge canon-established">已确定</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 世界架构 / 三界</div>
+                    </div>
+                    
                     <div class="info-box" style="border-left-color: var(--accent-gold);">
                         <strong>☀️ 阳界（The Yang Realm）</strong><br>
                         <strong>生者居住的世界</strong>，遵循物理法则，但深层隐藏着修行者秘境。
@@ -213,15 +271,22 @@
             </div>
 
             <!-- 界域 -->
-            <div class="section" id="boundary">
+            <div class="section scroll-animate" id="boundary">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">⚡</span>
                         界域
+                        <span class="canon-badge canon-established">已确定</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 世界架构 / 核心系统</div>
+                    </div>
+                    
                     <div class="info-box" style="border-left-color: var(--accent-cyan);">
                         <strong>⚡ 界域（The Boundary）</strong><br>
                         <strong>阳界与阴界之间的夹缝</strong>，不稳定、危险、充满机遇。以<strong>频率（Hz）</strong>衡量活跃度。
@@ -283,15 +348,22 @@
             </div>
 
             <!-- 阴界 -->
-            <div class="section" id="yin-realm">
+            <div class="section scroll-animate" id="yin-realm">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">🌙</span>
                         阴界
+                        <span class="canon-badge canon-established">已确定</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 世界架构 / 三界</div>
+                    </div>
+                    
                     <div class="info-box" style="border-left-color: var(--accent-purple);">
                         <strong>🌙 阴界（The Yin Realm）</strong><br>
                         <strong>亡者归宿之地</strong>，没有物理法则，以"频率"和"执念"为存在基础。
@@ -322,15 +394,22 @@
             </div>
 
             <!-- 混沌界 -->
-            <div class="section" id="chaos-realm">
+            <div class="section scroll-animate" id="chaos-realm">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">🌑</span>
                         混沌界
+                        <span class="canon-badge canon-speculative">推测</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-speculative">推测</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 世界架构 / 三界</div>
+                    </div>
+                    
                     <div class="info-box danger">
                         <strong>🌑 混沌界（The Chaos Realm）</strong><br>
                         <strong>两界未分时的原始状态</strong>，现在作为噬界者的囚笼存在。
@@ -357,15 +436,22 @@
             </div>
 
             <!-- 侵蚀机制 -->
-            <div class="section" id="erosion">
+            <div class="section scroll-animate" id="erosion">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">⚠️</span>
                         侵蚀机制
+                        <span class="canon-badge canon-proposed">提议中</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-proposed">提议中</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 游戏系统 / 机制</div>
+                    </div>
+                    
                     <p>长时间处于高频率环境会导致：</p>
                     <div class="info-box warning">
                         <strong>对普通人</strong><br>
@@ -385,37 +471,47 @@
             </div>
 
             <!-- 专有名词 -->
-            <div class="section" id="terms">
+            <div class="section scroll-animate" id="terms">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
                         <span class="section-icon">📖</span>
                         专有名词
+                        <span class="canon-badge canon-established">已确定</span>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="entry-meta">
+                        <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span></div>
+                        <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-06</div>
+                        <div class="entry-meta-item"><strong>类别:</strong> 术语 / 名词解释</div>
+                    </div>
+
                     <div class="character-card" style="border-left: 4px solid var(--accent-cyan);">
-                        <h4 style="color: var(--accent-cyan); margin-top: 0;">🌀 界域</h4>
+                        <h4 style="color: var(--accent-cyan); margin-top: 0;">🌀 界域 <span class="canon-badge canon-established">已确定</span></h4>
                         <p><strong>定义：</strong>两界重叠的危险异空间</p>
-                        <p>界域是阳界与阴界发生重叠时产生的特殊空间，其中阴阳二气交错混乱，常伴随各种异常现象。界域有大有小，小者仅一间房屋，大者可覆盖整个街区。界域内部时间流速、空间结构均可能与现实世界不同。</p>
+                        <p>界域是<a href="world.html#yang-realm" class="wiki-link">阳界</a>与<a href="world.html#yin-realm" class="wiki-link">阴界</a>发生重叠时产生的特殊空间，其中阴阳二气交错混乱，常伴随各种异常现象。界域有大有小，小者仅一间房屋，大者可覆盖整个街区。界域内部时间流速、空间结构均可能与现实世界不同。</p>
+                        <p><strong>相关：</strong><a href="system.html#six-paths" class="wiki-link">界行者职业</a> | <a href="factions.html#bma" class="wiki-link">BMA</a></p>
                     </div>
 
                     <div class="character-card" style="border-left: 4px solid var(--accent-purple);">
-                        <h4 style="color: var(--accent-purple); margin-top: 0;">🗝️ 界钥</h4>
+                        <h4 style="color: var(--accent-purple); margin-top: 0;">🗝️ 界钥 <span class="canon-badge canon-proposed">提议中</span></h4>
                         <p><strong>定义：</strong>开启两界通道的关键物品</p>
-                        <p>界钥是打开或稳定界域通道的媒介，形态各异，可能是古物、法器，甚至是特定的人或生物。持有界钥者可以主动开启或关闭界域入口，是界行者执行任务时的重要工具。</p>
+                        <p>界钥是打开或稳定<a href="world.html#terms" class="wiki-link">界域</a>通道的媒介，形态各异，可能是古物、法器，甚至是特定的人或生物。持有界钥者可以主动开启或关闭界域入口，是<a href="characters.html" class="wiki-link">界行者</a>执行任务时的重要工具。</p>
                     </div>
 
                     <div class="character-card" style="border-left: 4px solid var(--accent-gold);">
-                        <h4 style="color: var(--accent-gold); margin-top: 0;">👤 界行者</h4>
+                        <h4 style="color: var(--accent-gold); margin-top: 0;">👤 界行者 <span class="canon-badge canon-established">已确定</span></h4>
                         <p><strong>定义：</strong>能穿梭两界的特殊存在</p>
-                        <p>界行者是指能够自由往返于阳界与阴界之间的特殊人群。成为界行者的途径包括：先天觉醒阴阳眼、后天与阴界存在签订契约、或出身驱魔世家继承血脉能力。界行者通常具有感知阴阳、对抗鬼怪的能力。</p>
+                        <p>界行者是指能够自由往返于<a href="world.html#yang-realm" class="wiki-link">阳界</a>与<a href="world.html#yin-realm" class="wiki-link">阴界</a>之间的特殊人群。成为界行者的途径包括：先天觉醒<a href="world.html#terms" class="wiki-link">阴阳眼</a>、后天与阴界存在签订契约、或出身<a href="factions.html#lin" class="wiki-link">驱魔世家</a>继承血脉能力。界行者通常具有感知阴阳、对抗鬼怪的能力。</p>
+                        <p><strong>代表角色：</strong><a href="characters.html#zhejing" class="wiki-link">折镜队</a> | <a href="characters.html#linxi" class="wiki-link">林夕</a></p>
                     </div>
 
                     <div class="character-card" style="border-left: 4px solid var(--success);">
-                        <h4 style="color: var(--success); margin-top: 0;">👁️ 阴阳眼</h4>
+                        <h4 style="color: var(--success); margin-top: 0;">👁️ 阴阳眼 <span class="canon-badge canon-established">已确定</span></h4>
                         <p><strong>定义：</strong>能看破阴阳的特殊视力</p>
-                        <p>阴阳眼是界行者最核心的天赋能力之一，拥有者可以看见常人无法察觉的阴气、鬼怪、以及两界重叠之处。阴阳眼觉醒时通常伴有明显的生理特征，如林夕觉醒后头发变白、瞳孔变为淡金色。情绪激动时，阴阳眼会发出微光。</p>
+                        <p>阴阳眼是<a href="world.html#terms" class="wiki-link">界行者</a>最核心的天赋能力之一，拥有者可以看见常人无法察觉的阴气、鬼怪、以及两界重叠之处。阴阳眼觉醒时通常伴有明显的生理特征，如<a href="characters.html#linxi" class="wiki-link">林夕</a>觉醒后头发变白、瞳孔变为淡金色。情绪激动时，阴阳眼会发出微光。</p>
+                        <p><strong>相关：</strong><a href="system.html#awakening" class="wiki-link">觉醒方式</a> | <a href="factions.html#lin" class="wiki-link">林氏家族</a></p>
                     </div>
                 </div>
             </div>
@@ -435,12 +531,41 @@
             header.classList.toggle('active');
         }
 
+        // 移动端侧边栏切换
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        // 滚动触发动画
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-scale').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
             });
         });
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
     </script>
 </body>
 </html>

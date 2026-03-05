@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站点地图 - 全部页面索引 | 界行者Wiki</title>
+    <meta name="description" content="界行者Wiki完整站点地图。浏览所有页面：世界观、角色、势力、地图、剧情等分类索引。">
+    <meta name="keywords" content="界行者站点地图, Wiki地图, 页面索引, 网站导航">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="站点地图 - 界行者Wiki">
+    <meta property="og:description" content="界行者Wiki完整页面索引。">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://jiexingzhe.wiki/sitemap.html">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .sitemap-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sitemap-category:hover {
+            border-color: var(--border-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .sitemap-header {
+            padding: 16px 20px;
+            background: linear-gradient(90deg, var(--bg-hover) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sitemap-icon {
+            font-size: 1.5rem;
+        }
+
+        .sitemap-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sitemap-count {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+        }
+
+        .sitemap-list {
+            padding: 12px 0;
+        }
+
+        .sitemap-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .sitemap-item:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border-left-color: var(--boundary-cyan);
+            padding-left: 24px;
+        }
+
+        .sitemap-item-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sitemap-item-text {
+            flex: 1;
+        }
+
+        .sitemap-item-title {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .sitemap-item-desc {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+        }
+
+        .sitemap-item-canon {
+            font-size: 0.625rem;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+        }
+
+        .sitemap-item-canon.established {
+            background: var(--canon-established-bg);
+            color: var(--canon-established);
+        }
+
+        .sitemap-item-canon.proposed {
+            background: var(--canon-proposed-bg);
+            color: var(--canon-proposed);
+        }
+
+        .sitemap-item-canon.speculative {
+            background: var(--canon-speculative-bg);
+            color: var(--canon-speculative);
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .quick-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .quick-link:hover {
+            border-color: var(--boundary-cyan);
+            color: var(--boundary-cyan);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo">
+                <span>🌌</span>
+                <span>界行者Wiki</span>
+            </a>
+            <div class="search-box">
+                <input type="text" placeholder="搜索...">
+            </div>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">站点地图</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#quick" class="nav-item">快速入口</a>
+                        <a href="#world" class="nav-item">世界观</a>
+                        <a href="#system" class="nav-item">系统</a>
+                        <a href="#factions" class="nav-item">势力</a>
+                        <a href="#characters" class="nav-item">角色</a>
+                        <a href="#map" class="nav-item">地图</a>
+                        <a href="#story" class="nav-item">剧情</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="index.html">🏠 首页</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">🗺️ 站点地图</span>
+            </nav>
+
+            <h1 class="page-title">
+                <span>🗺️</span>
+                站点地图
+            </h1>
+            <p class="page-desc">界行者 Wiki 全部页面索引</p>
+
+            <!-- 快速入口 -->
+            <div class="quick-links" id="quick">
+                <a href="index.html" class="quick-link">
+                    <span>🏠</span> 首页
+                </a>
+                <a href="updates.html" class="quick-link">
+                    <span>📰</span> 最近更新
+                </a>
+                <a href="categories.html" class="quick-link">
+                    <span>📑</span> 分类索引
+                </a>
+                <a href="world.html#terms" class="quick-link">
+                    <span>📖</span> 专有名词
+                </a>
+            </div>
+
+            <!-- 站点地图网格 -->
+            <div class="sitemap-grid">
+                <!-- 核心世界观 -->
+                <div class="sitemap-category" id="world">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">🌍</span>
+                        <span class="sitemap-title">核心世界观</span>
+                        <span class="sitemap-count">6</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="world.html#world-overview" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌌</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">三界-九重模型</div>
+                                <div class="sitemap-item-desc">世界架构基础</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="world.html#yang-realm" class="sitemap-item">
+                            <span class="sitemap-item-icon">☀️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">阳界</div>
+                                <div class="sitemap-item-desc">生者世界</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="world.html#boundary" class="sitemap-item">
+                            <span class="sitemap-item-icon">⚡</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">界域</div>
+                                <div class="sitemap-item-desc">频率系统</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="world.html#yin-realm" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌙</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">阴界</div>
+                                <div class="sitemap-item-desc">亡者归宿</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="world.html#chaos-realm" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌑</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">混沌界</div>
+                                <div class="sitemap-item-desc">原始状态</div>
+                            </span>
+                            <span class="sitemap-item-canon speculative">推测</span>
+                        </a>
+                        <a href="world.html#terms" class="sitemap-item">
+                            <span class="sitemap-item-icon">📖</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">专有名词</div>
+                                <div class="sitemap-item-desc">术语解释</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 界行者系统 -->
+                <div class="sitemap-category" id="system">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">⚔️</span>
+                        <span class="sitemap-title">界行者系统</span>
+                        <span class="sitemap-count">4</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="system.html#six-paths" class="sitemap-item">
+                            <span class="sitemap-item-icon">⚔️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">六大职业</div>
+                                <div class="sitemap-item-desc">观道/御道/杀道/愈道/诡道/通道</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="system.html#nine-elements" class="sitemap-item">
+                            <span class="sitemap-item-icon">🔮</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">九大元素</div>
+                                <div class="sitemap-item-desc">属性克制系统</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="system.html#awakening" class="sitemap-item">
+                            <span class="sitemap-item-icon">✨</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">觉醒方式</div>
+                                <div class="sitemap-item-desc">四种觉醒途径</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="system.html#frequency-adapt" class="sitemap-item">
+                            <span class="sitemap-item-icon">📊</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">频率适应</div>
+                                <div class="sitemap-item-desc">等级体系 E-S</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 势力设定 -->
+                <div class="sitemap-category" id="factions">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">🏛️</span>
+                        <span class="sitemap-title">势力设定</span>
+                        <span class="sitemap-count">8</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="factions.html#bma" class="sitemap-item">
+                            <span class="sitemap-item-icon">🛡️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">界域管理局 (BMA)</div>
+                                <div class="sitemap-item-desc">官方机构</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="factions.html#lin" class="sitemap-item">
+                            <span class="sitemap-item-icon">🏯</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">林氏驱魔世家</div>
+                                <div class="sitemap-item-desc">江南驱魔家族</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="factions.html#jingguang" class="sitemap-item">
+                            <span class="sitemap-item-icon">🕯️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">净光宗</div>
+                                <div class="sitemap-item-desc">佛教驱魔宗派</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="factions.html#xuanqing" class="sitemap-item">
+                            <span class="sitemap-item-icon">⚔️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">玄清观</div>
+                                <div class="sitemap-item-desc">道教剑修</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="factions.html#fengdu" class="sitemap-item">
+                            <span class="sitemap-item-icon">👑</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">酆都鬼城</div>
+                                <div class="sitemap-item-desc">阴界统治中心</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="factions.html#baigui" class="sitemap-item">
+                            <span class="sitemap-item-icon">👻</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">百鬼夜行</div>
+                                <div class="sitemap-item-desc">鬼怪联盟</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="factions.html#guiyi" class="sitemap-item">
+                            <span class="sitemap-item-icon">☠️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">归一者教团</div>
+                                <div class="sitemap-item-desc">极端组织</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="factions.html#shijie" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌑</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">噬界者</div>
+                                <div class="sitemap-item-desc">最终BOSS</div>
+                            </span>
+                            <span class="sitemap-item-canon speculative">推测</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 角色档案 -->
+                <div class="sitemap-category" id="characters">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">👥</span>
+                        <span class="sitemap-title">角色档案</span>
+                        <span class="sitemap-count">4</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="characters.html#zhejing" class="sitemap-item">
+                            <span class="sitemap-item-icon">🪞</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">折镜队</div>
+                                <div class="sitemap-item-desc">BMA外勤三队</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="characters.html#bma" class="sitemap-item">
+                            <span class="sitemap-item-icon">🏢</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">BMA界管局</div>
+                                <div class="sitemap-item-desc">管理机构</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="characters.html#lin" class="sitemap-item">
+                            <span class="sitemap-item-icon">🏛️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">林氏家族</div>
+                                <div class="sitemap-item-desc">驱魔世家</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="characters.html#yin" class="sitemap-item">
+                            <span class="sitemap-icon">👻</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">阴界势力</div>
+                                <div class="sitemap-item-desc">酆都/百鬼</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 世界地图 -->
+                <div class="sitemap-category" id="map">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">🗺️</span>
+                        <span class="sitemap-title">世界地图</span>
+                        <span class="sitemap-count">4</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="map.html#global-overview" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌐</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">全球架构</div>
+                                <div class="sitemap-item-desc">七大分部概览</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="map.html#east-asia" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌸</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">东亚分部</div>
+                                <div class="sitemap-item-desc">东京/上海</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="map.html#north-america" class="sitemap-item">
+                            <span class="sitemap-item-icon">🗽</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">北美分部</div>
+                                <div class="sitemap-item-desc">纽约</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="map.html#europe" class="sitemap-item">
+                            <span class="sitemap-item-icon">❄️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">欧洲分部</div>
+                                <div class="sitemap-item-desc">雷克雅未克</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 剧情大纲 -->
+                <div class="sitemap-category" id="story">
+                    <div class="sitemap-header">
+                        <span class="sitemap-icon">📖</span>
+                        <span class="sitemap-title">剧情大纲</span>
+                        <span class="sitemap-count">8</span>
+                    </div>
+                    <div class="sitemap-list">
+                        <a href="story.html#story-structure" class="sitemap-item">
+                            <span class="sitemap-item-icon">📚</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">九界篇章</div>
+                                <div class="sitemap-item-desc">整体架构</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#chapter1" class="sitemap-item">
+                            <span class="sitemap-item-icon">🌸</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第一章：东亚篇</div>
+                                <div class="sitemap-item-desc">数据幽灵</div>
+                            </span>
+                            <span class="sitemap-item-canon established">已确定</span>
+                        </a>
+                        <a href="story.html#chapter2" class="sitemap-item">
+                            <span class="sitemap-item-icon">🗽</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第二章：北美篇</div>
+                                <div class="sitemap-item-desc">百鬼熔炉</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#chapter3" class="sitemap-item">
+                            <span class="sitemap-item-icon">❄️</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第三章：欧洲篇</div>
+                                <div class="sitemap-item-desc">诸神黄昏</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#chapter4" class="sitemap-item">
+                            <span class="sitemap-item-icon">🦘</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第四章：澳洲篇</div>
+                                <div class="sitemap-item-desc">梦境时代</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#chapter5" class="sitemap-item">
+                            <span class="sitemap-item-icon">🦁</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第五章：非洲篇</div>
+                                <div class="sitemap-item-desc">祖先之路（中点）</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#chapter6" class="sitemap-item">
+                            <span class="sitemap-item-icon">💀</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">第六章：南美篇</div>
+                                <div class="sitemap-item-desc">亡灵节</div>
+                            </span>
+                            <span class="sitemap-item-canon proposed">提议中</span>
+                        </a>
+                        <a href="story.html#final" class="sitemap-item">
+                            <span class="sitemap-item-icon">🔥</span>
+                            <span class="sitemap-item-text">
+                                <div class="sitemap-item-title">最终章</div>
+                                <div class="sitemap-item-desc">两界归一</div>
+                            </span>
+                            <span class="sitemap-item-canon speculative">推测</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
