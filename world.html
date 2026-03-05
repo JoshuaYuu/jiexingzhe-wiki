@@ -36,12 +36,15 @@
             <nav class="nav-menu">
                 <div class="nav-group">
                     <div class="nav-group-header active" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">世界概述</span>
+                        <span class="nav-group-title">世界架构</span>
                         <span class="nav-toggle">▼</span>
                     </div>
                     <div class="nav-group-content">
                         <a href="#world-overview" class="nav-item">三界-九重模型</a>
-                        <a href="#three-realms" class="nav-item">三界简介</a>
+                        <a href="#yang-realm" class="nav-item">阳界</a>
+                        <a href="#boundary" class="nav-item">界域</a>
+                        <a href="#yin-realm" class="nav-item">阴界</a>
+                        <a href="#chaos-realm" class="nav-item">混沌界</a>
                     </div>
                 </div>
 
@@ -52,21 +55,7 @@
                     </div>
                     <div class="nav-group-content">
                         <a href="#frequency" class="nav-item">界域频率系统</a>
-                        <a href="#boundary-types" class="nav-item">界域类型</a>
                         <a href="#erosion" class="nav-item">侵蚀机制</a>
-                    </div>
-                </div>
-
-                <div class="nav-group">
-                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">九重详解</span>
-                        <span class="nav-toggle">▼</span>
-                    </div>
-                    <div class="nav-group-content">
-                        <a href="#level1" class="nav-item">第1-2重：阳界</a>
-                        <a href="#level3" class="nav-item">第3重：界域</a>
-                        <a href="#level4" class="nav-item">第4-6重：阴界</a>
-                        <a href="#level7" class="nav-item">第7-9重：混沌</a>
                     </div>
                 </div>
 
@@ -91,7 +80,7 @@
             </h1>
             <p class="page-desc">三界九重，界域频率，阴阳交织的宏大世界</p>
 
-            <!-- 世界概述 -->
+            <!-- 三界-九重模型（合并版） -->
             <div class="section" id="world-overview">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
@@ -111,63 +100,73 @@
                         <tr>
                             <th>层级</th>
                             <th>名称</th>
+                            <th>所属</th>
                             <th>特征</th>
                             <th>危险度</th>
                         </tr>
                         <tr>
                             <td>第9重</td>
                             <td>混沌原核</td>
+                            <td>混沌</td>
                             <td>一切存在的源头与终点，不可知不可达</td>
                             <td style="color: var(--danger);">☠️☠️☠️☠️☠️</td>
                         </tr>
                         <tr>
                             <td>第8重</td>
                             <td>混沌界</td>
+                            <td>混沌</td>
                             <td>噬界者囚笼，两界未分时的原始状态</td>
                             <td style="color: var(--danger);">☠️☠️☠️☠️☠️</td>
                         </tr>
                         <tr>
                             <td>第7重</td>
                             <td>阴界深层</td>
+                            <td>阴界</td>
                             <td>酆都核心、阎罗殿、镜中界底层</td>
                             <td style="color: var(--danger);">☠️☠️☠️☠️</td>
                         </tr>
                         <tr>
                             <td>第6重</td>
                             <td>阴界中层</td>
+                            <td>阴界</td>
                             <td>百鬼夜行领地、五大鬼城</td>
                             <td style="color: var(--accent-gold);">☠️☠️☠️</td>
                         </tr>
                         <tr>
                             <td>第5重</td>
                             <td>阴界表层</td>
+                            <td>阴界</td>
                             <td>迷途荒原、游魂野鬼</td>
                             <td style="color: var(--accent-gold);">☠️☠️</td>
                         </tr>
                         <tr style="background: linear-gradient(90deg, rgba(34,211,238,0.1) 0%, rgba(139,92,246,0.1) 100%);">
-                            <td colspan="4" style="text-align: center; font-weight: 600; color: var(--accent-cyan);">【界域】频率30-100Hz · 不稳定重叠区</td>
+                            <td colspan="5" style="text-align: center; font-weight: 600; color: var(--accent-cyan);">【界域】频率30-100Hz · 不稳定重叠区</td>
                         </tr>
                         <tr>
                             <td>第4重</td>
                             <td>阳界深层</td>
+                            <td>阳界</td>
                             <td>修行者秘境、洞天福地、封印之地</td>
                             <td style="color: var(--accent-gold);">☠️☠️</td>
                         </tr>
                         <tr>
                             <td>第3重</td>
                             <td>阳界中层</td>
+                            <td>阳界</td>
                             <td>七大都市、BMA总部、修行者社会</td>
                             <td style="color: var(--success);">☠️</td>
                         </tr>
                         <tr>
                             <td>第2重</td>
                             <td>阳界表层</td>
+                            <td>阳界</td>
                             <td>普通人生活、日常世界</td>
                             <td>☆</td>
                         </tr>
                         <tr>
                             <td>第1重</td>
                             <td>物质基盘</td>
+                            <td>阳界</td>
                             <td>物理法则、科学认知的边界</td>
                             <td>☆</td>
                         </tr>
@@ -175,104 +174,186 @@
                 </div>
             </div>
 
-            <!-- 三界简介 -->
-            <div class="section" id="three-realms">
+            <!-- 阳界 -->
+            <div class="section" id="yang-realm">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
-                        <span class="section-icon">☯️</span>
-                        三界简介
+                        <span class="section-icon">☀️</span>
+                        阳界
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
                     <div class="info-box" style="border-left-color: var(--accent-gold);">
                         <strong>☀️ 阳界（The Yang Realm）</strong><br>
-                        <strong>生者居住的世界</strong>，遵循物理法则，但深层隐藏着修行者秘境。<br><br>
-                        <strong>表层：</strong>普通人生活的世界，对界域和阴界一无所知<br>
-                        <strong>中层：</strong>觉醒者、修行者、界行者活动的层面，BMA、林氏、净光宗、玄清会<br>
-                        <strong>深层：</strong>物理法则与界域法则交织，龙虎山秘境、昆仑封印、归墟之眼
+                        <strong>生者居住的世界</strong>，遵循物理法则，但深层隐藏着修行者秘境。
+                    </div>
+                    
+                    <h4>阳界三层</h4>
+                    <div class="character-card" style="border-left: 4px solid #94a3b8;">
+                        <h5 style="color: #94a3b8; margin-top: 0;">第1-2重：阳界表层</h5>
+                        <p><strong>特征：</strong>普通人生活的世界，对界域和阴界一无所知</p>
+                        <p><strong>居民：</strong>99%的人类，完全不知晓界域存在</p>
+                        <p><strong>BMA工作：</strong>记忆清除、事件掩盖，维持"普通世界"的表象</p>
                     </div>
 
-                    <div class="info-box" style="border-left-color: var(--accent-purple);">
-                        <strong>🌙 阴界（The Yin Realm）</strong><br>
-                        <strong>亡者归宿之地</strong>，没有物理法则，以"频率"和"执念"为存在基础。<br><br>
-                        <strong>表层：</strong>迷途荒原，刚死亡的灵魂首先到达的区域，混乱无序<br>
-                        <strong>中层：</strong>百鬼之城，酆都鬼城、青丘、红叶林，有组织的鬼怪社会<br>
-                        <strong>深层：</strong>酆都核心与镜中界底层，十殿阎罗殿、噬界者封印
+                    <div class="character-card" style="border-left: 4px solid var(--accent-cyan);">
+                        <h5 style="color: var(--accent-cyan); margin-top: 0;">第3重：阳界中层</h5>
+                        <p><strong>特征：</strong>觉醒者、修行者、界行者活动的层面</p>
+                        <p><strong>主要势力：</strong>BMA、林氏、净光宗、玄清会</p>
+                        <p><strong>地点：</strong>七大都市、BMA总部、修行者社会</p>
                     </div>
 
-                    <div class="info-box" style="border-left-color: var(--accent-cyan);">
-                        <strong>⚡ 界域（The Boundary）</strong><br>
-                        <strong>阳界与阴界之间的夹缝</strong>，不稳定、危险、充满机遇。以<strong>频率（Hz）</strong>衡量活跃度。<br><br>
-                        <strong>安全区</strong>（0-30Hz）：与阳界无异<br>
-                        <strong>觉醒区</strong>（31-60Hz）：界行者能力增强，低阶鬼怪虚影<br>
-                        <strong>危险区</strong>（61-90Hz）：鬼怪完全实体化，现实法则崩坏<br>
-                        <strong>混沌区</strong>（91-100Hz）：接近混沌界，理智丧失
-                    </div>
-
-                    <div class="info-box danger">
-                        <strong>🌑 混沌界（The Chaos Realm）</strong><br>
-                        <strong>两界未分时的原始状态</strong>，现在作为噬界者的囚笼存在。<br><br>
-                        <strong>混沌界表层：</strong>囚笼外围，无空间概念，时间非线性，理智持续流失<br>
-                        <strong>混沌原核：</strong>不可知之地，一切存在的源头与终点
+                    <div class="character-card" style="border-left: 4px solid var(--accent-purple);">
+                        <h5 style="color: var(--accent-purple); margin-top: 0;">第4重：阳界深层</h5>
+                        <p><strong>特征：</strong>物理法则与界域法则交织</p>
+                        <p><strong>地点：</strong>龙虎山秘境、昆仑封印、归墟之眼</p>
+                        <p><strong>危险：</strong>高频率区域，需要特殊保护才能进入</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 界域频率系统 -->
-            <div class="section" id="frequency">
+            <!-- 界域 -->
+            <div class="section" id="boundary">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
-                        <span class="section-icon">📊</span>
-                        界域频率系统
+                        <span class="section-icon">⚡</span>
+                        界域
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
+                    <div class="info-box" style="border-left-color: var(--accent-cyan);">
+                        <strong>⚡ 界域（The Boundary）</strong><br>
+                        <strong>阳界与阴界之间的夹缝</strong>，不稳定、危险、充满机遇。以<strong>频率（Hz）</strong>衡量活跃度。
+                    </div>
+
+                    <h4>界域频率层级</h4>
                     <table>
                         <tr>
                             <th>频率(Hz)</th>
                             <th>层级名称</th>
                             <th>环境特征</th>
+                            <th>存在形态</th>
                             <th>危险等级</th>
                         </tr>
                         <tr>
                             <td>0-30</td>
                             <td>安全区</td>
                             <td>与阳界无异</td>
+                            <td>无异常</td>
                             <td>☆☆☆☆☆</td>
                         </tr>
                         <tr style="background: rgba(34,211,238,0.1);">
                             <td>31-45</td>
                             <td>觉醒区</td>
                             <td>轻微扭曲，敏感者可感知</td>
+                            <td>低阶鬼怪虚影</td>
                             <td>★☆☆☆☆</td>
                         </tr>
                         <tr style="background: rgba(34,211,238,0.2);">
                             <td>46-60</td>
                             <td>活跃区</td>
                             <td>明显异常，空间不稳定</td>
+                            <td>鬼怪可短暂实体化</td>
                             <td>★★☆☆☆</td>
                         </tr>
                         <tr style="background: rgba(245,158,11,0.2);">
                             <td>61-75</td>
                             <td>危险区</td>
                             <td>现实法则崩坏，物理失效</td>
+                            <td>鬼怪完全实体化</td>
                             <td>★★★☆☆</td>
                         </tr>
                         <tr style="background: rgba(244,63,94,0.2);">
                             <td>76-90</td>
                             <td>崩溃区</td>
                             <td>阴阳两界重叠，混乱</td>
+                            <td>高阶鬼怪/妖魔</td>
                             <td>★★★★☆</td>
                         </tr>
                         <tr style="background: rgba(139,92,246,0.3);">
                             <td>91-100</td>
                             <td>混沌区</td>
                             <td>接近混沌界，理智丧失</td>
+                            <td>不可名状之物</td>
                             <td>★★★★★</td>
                         </tr>
                     </table>
+                </div>
+            </div>
+
+            <!-- 阴界 -->
+            <div class="section" id="yin-realm">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title">
+                        <span class="section-icon">🌙</span>
+                        阴界
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box" style="border-left-color: var(--accent-purple);">
+                        <strong>🌙 阴界（The Yin Realm）</strong><br>
+                        <strong>亡者归宿之地</strong>，没有物理法则，以"频率"和"执念"为存在基础。
+                    </div>
+
+                    <h4>阴界三层</h4>
+                    <div class="character-card" style="border-left: 4px solid #94a3b8;">
+                        <h5 style="color: #94a3b8; margin-top: 0;">第5重：阴界表层</h5>
+                        <p><strong>特征：</strong>迷途荒原，刚死亡的灵魂首先到达的区域，混乱无序</p>
+                        <p><strong>居民：</strong>游魂野鬼、迷途者</p>
+                        <p><strong>危险：</strong>灵魂易迷失，被恶鬼吞噬</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid var(--accent-purple);">
+                        <h5 style="color: var(--accent-purple); margin-top: 0;">第6重：阴界中层</h5>
+                        <p><strong>特征：</strong>百鬼之城，有组织的鬼怪社会</p>
+                        <p><strong>主要势力：</strong>酆都鬼城、青丘、红叶林</p>
+                        <p><strong>特点：</strong>鬼怪建立了自己的秩序和文明</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid var(--danger);">
+                        <h5 style="color: var(--danger); margin-top: 0;">第7重：阴界深层</h5>
+                        <p><strong>特征：</strong>酆都核心与镜中界底层</p>
+                        <p><strong>地点：</strong>十殿阎罗殿、噬界者封印</p>
+                        <p><strong>危险：</strong>极高，需要特殊许可才能进入</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 混沌界 -->
+            <div class="section" id="chaos-realm">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title">
+                        <span class="section-icon">🌑</span>
+                        混沌界
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box danger">
+                        <strong>🌑 混沌界（The Chaos Realm）</strong><br>
+                        <strong>两界未分时的原始状态</strong>，现在作为噬界者的囚笼存在。
+                    </div>
+
+                    <h4>混沌两层</h4>
+                    <div class="character-card" style="border-left: 4px solid var(--danger);">
+                        <h5 style="color: var(--danger); margin-top: 0;">第8重：混沌界表层</h5>
+                        <p><strong>特征：</strong>囚笼外围，无空间概念，时间非线性</p>
+                        <p><strong>效果：</strong>理智持续流失，需特殊保护</p>
+                        <p><strong>进入条件：</strong>【甲级】以上界行者 + 锚定物</p>
+                        <p><strong>时间流速：</strong>阳界1小时 = 混沌界体感1年</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid #1f2937;">
+                        <h5 style="color: #6b7280; margin-top: 0;">第9重：混沌原核</h5>
+                        <p><strong>特征：</strong>一切存在的源头与终点</p>
+                        <p><strong>不可知：</strong>知晓即疯狂</p>
+                        <p><strong>不可视：</strong>看见即消散</p>
+                        <p><strong>不可达：</strong>到达即回归本源</p>
+                        <p><strong>噬界者：</strong>来自此处，目标是打破封印回归并吞噬两界</p>
+                    </div>
                 </div>
             </div>
 
@@ -304,26 +385,21 @@
                 </div>
             </div>
 
-            <!-- 更多内容可以继续添加 -->
-
         </main>
     </div>
 
     <script>
-        // 切换章节折叠
         function toggleSection(header) {
             const section = header.parentElement;
             section.classList.toggle('collapsed');
         }
 
-        // 切换导航组折叠
         function toggleNavGroup(header) {
             const group = header.parentElement;
             group.classList.toggle('collapsed');
             header.classList.toggle('active');
         }
 
-        // 导航高亮
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));

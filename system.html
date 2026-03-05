@@ -63,12 +63,12 @@
 
                 <div class="nav-group">
                     <div class="nav-group-header" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">成长系统</span>
+                        <span class="nav-group-title">觉醒系统</span>
                         <span class="nav-toggle">▼</span>
                     </div>
                     <div class="nav-group-content">
-                        <a href="#anchor-system" class="nav-item">9锚点成长系统</a>
                         <a href="#awakening" class="nav-item">觉醒方式</a>
+                        <a href="#frequency-adapt" class="nav-item">频率适应</a>
                     </div>
                 </div>
             </nav>
@@ -230,100 +230,114 @@
                 </div>
             </div>
 
-            <!-- 9锚点系统 -->
-            <div class="section" id="anchor-system">
+            <!-- 觉醒系统 -->
+            <div class="section" id="awakening">
                 <div class="section-header" onclick="toggleSection(this)">
                     <div class="section-title">
-                        <span class="section-icon">⚓</span>
-                        9锚点成长系统
+                        <span class="section-icon">✨</span>
+                        觉醒方式
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
                     <div class="info-box">
-                        <strong>核心机制</strong><br>
-                        陈默作为"锚点"，拥有<strong>9个锚点节点</strong>，对应9个大型章节。每个章节解锁一个锚点能力，推进主线剧情，深化与特定角色的羁绊。
+                        <strong>界行者觉醒</strong><br>
+                        普通人觉醒为界行者的四种主要途径，每种方式都有其独特的风险与代价。
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid #22d3ee;">
+                        <h4 style="color: #22d3ee; margin-top: 0;">👁️ 先天觉醒</h4>
+                        <p><strong>特征：</strong>出生即具备界行者资质</p>
+                        <p><strong>代表：</strong>林夕（天生阴阳眼）</p>
+                        <p><strong>特点：</strong>能力稳定，成长潜力大，但童年常因"看见"而困扰</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid #8b5cf6;">
+                        <h4 style="color: #8b5cf6; margin-top: 0;">📜 契约觉醒</h4>
+                        <p><strong>特征：</strong>与阴界存在签订契约获得能力</p>
+                        <p><strong>代价：</strong>需履行契约条款，可能付出记忆、情感或寿命</p>
+                        <p><strong>特点：</strong>能力获取快，但受契约约束</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid #fbbf24;">
+                        <h4 style="color: #fbbf24; margin-top: 0;">🩸 血脉觉醒</h4>
+                        <p><strong>特征：</strong>古老血脉复苏，家族传承</p>
+                        <p><strong>代表：</strong>林氏、关氏等驱魔世家</p>
+                        <p><strong>特点：</strong>拥有家族秘术，但背负家族使命</p>
+                    </div>
+
+                    <div class="character-card" style="border-left: 4px solid #ef4444;">
+                        <h4 style="color: #ef4444; margin-top: 0;">⚠️ 强制觉醒</h4>
+                        <p><strong>特征：</strong>极端刺激下被动觉醒</p>
+                        <p><strong>风险：</strong>精神创伤、能力不稳定、侵蚀风险高</p>
+                        <p><strong>特点：</strong>觉醒过程痛苦，需长期心理辅导</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 频率适应 -->
+            <div class="section" id="frequency-adapt">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title">
+                        <span class="section-icon">📊</span>
+                        频率适应
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box">
+                        <strong>界行者能力层级</strong><br>
+                        根据对界域频率的适应程度，界行者可分为不同等级，决定其可探索的界域深度。
                     </div>
 
                     <table>
                         <tr>
-                            <th>锚点</th>
+                            <th>等级</th>
                             <th>名称</th>
-                            <th>解锁章节</th>
-                            <th>核心能力</th>
-                            <th>剧情主题</th>
+                            <th>适应频率</th>
+                            <th>能力特征</th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>观之眼</td>
-                            <td>第一章</td>
-                            <td>阴阳眼觉醒，看破虚妄</td>
-                            <td>入门、建立羁绊</td>
+                            <td>E</td>
+                            <td>初觉者</td>
+                            <td>30-40Hz</td>
+                            <td>刚觉醒，能力不稳定，只能在安全区活动</td>
                         </tr>
                         <tr>
-                            <td>2</td>
-                            <td>御之盾</td>
-                            <td>第二章</td>
-                            <td>界域抗性，保护他人</td>
-                            <td>成长、承担责任</td>
+                            <td>D</td>
+                            <td>见习行者</td>
+                            <td>40-50Hz</td>
+                            <td>掌握基础能力，可执行简单任务</td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>杀之刃</td>
-                            <td>第三章</td>
-                            <td>攻击型能力觉醒</td>
-                            <td>冲突、直面敌人</td>
+                            <td>C</td>
+                            <td>正式行者</td>
+                            <td>50-60Hz</td>
+                            <td>能力稳定，可独立执行常规任务</td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>愈之心</td>
-                            <td>第四章</td>
-                            <td>治愈与净化</td>
-                            <td>牺牲、理解生命</td>
+                            <td>B</td>
+                            <td>精英行者</td>
+                            <td>60-70Hz</td>
+                            <td>拥有独特技能，可应对高危任务</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>大师行者</td>
+                            <td>70-80Hz</td>
+                            <td>能力卓越，可短暂进入阴界深层</td>
                         </tr>
                         <tr style="background: rgba(251,191,36,0.1);">
-                            <td>5</td>
-                            <td>界之衡</td>
-                            <td>第五章</td>
-                            <td>操控界域频率</td>
-                            <td>真相、身份揭示（中点转折）</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>时之轮</td>
-                            <td>第六章</td>
-                            <td>时间感知、预知</td>
-                            <td>过去、记忆恢复</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>空之门</td>
-                            <td>第七章</td>
-                            <td>空间穿梭、界壁穿越</td>
-                            <td>两界、阴阳调和</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>魂之链</td>
-                            <td>第八章</td>
-                            <td>灵魂触碰、精神链接</td>
-                            <td>羁绊、与众生的联系</td>
-                        </tr>
-                        <tr style="background: rgba(244,63,94,0.1);">
-                            <td>9</td>
-                            <td>混沌之核</td>
-                            <td>第九章</td>
-                            <td>最终觉醒，与噬界者对话</td>
-                            <td>抉择、终结或新生</td>
+                            <td>S</td>
+                            <td>传说行者</td>
+                            <td>80-90Hz</td>
+                            <td>极为罕见，可自由穿梭阴阳两界</td>
                         </tr>
                     </table>
 
-                    <div class="info-box warning" id="awakening">
-                        <strong>觉醒方式</strong><br>
-                        • <strong>先天觉醒</strong>：出生即具备（如林夕的阴阳眼）<br>
-                        • <strong>契约觉醒</strong>：与阴界存在签订契约获得能力<br>
-                        • <strong>血脉觉醒</strong>：古老血脉复苏（如林氏、关氏）<br>
-                        • <strong>强制觉醒</strong>：极端刺激下被动觉醒（高风险）
+                    <div class="info-box warning">
+                        <strong>侵蚀风险</strong><br>
+                        超过自身适应频率长时间活动会导致精神侵蚀，表现为幻觉、情绪失控，最终可能沦为"堕行者"。
                     </div>
                 </div>
             </div>

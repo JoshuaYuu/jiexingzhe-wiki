@@ -5,12 +5,309 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>角色档案 - 界行者Wiki</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 角色图鉴专用样式 */
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .character-thumb {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            text-decoration: none;
+            display: block;
+        }
+
+        .character-thumb:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.2);
+        }
+
+        .character-thumb-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--bg-hover) 0%, var(--bg-card) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .character-thumb-element {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .character-thumb-info {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .character-thumb-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            font-size: 0.9375rem;
+        }
+
+        .character-thumb-class {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .faction-section {
+            margin-bottom: 40px;
+        }
+
+        .faction-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .faction-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            background: var(--bg-hover);
+        }
+
+        .faction-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .faction-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* 角色详情弹窗 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-hover);
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .modal-header {
+            display: flex;
+            gap: 24px;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--bg-hover) 0%, var(--bg-card) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            flex-shrink: 0;
+            border: 3px solid var(--accent-cyan);
+        }
+
+        .modal-info h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .modal-body {
+            padding: 24px 32px;
+        }
+
+        .info-section {
+            margin-bottom: 24px;
+        }
+
+        .info-section h4 {
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .info-section p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            background: var(--bg-hover);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .character-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 12px;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .modal-avatar {
+                margin: 0 auto;
+            }
+
+            .stat-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="top-nav">
         <div class="top-nav-left">
             <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
-            <div class="search-box"><input type="text" placeholder="搜索..."></div>
+            <div class="search-box"><input type="text" placeholder="搜索角色..."></div>
         </div>
         <div class="top-nav-right">
             <a href="world.html" class="nav-link">核心世界观</a>
@@ -28,137 +325,416 @@
             <nav class="nav-menu">
                 <div class="nav-group">
                     <div class="nav-group-header active" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">折镜队</span>
+                        <span class="nav-group-title">角色图鉴</span>
                         <span class="nav-toggle">▼</span>
                     </div>
                     <div class="nav-group-content">
-                        <a href="#linxi" class="nav-item">林夕 · 队长</a>
-                        <a href="#guanfeng" class="nav-item">关锋 · 副队长</a>
-                        <a href="#chenmo" class="nav-item">陈默 · 主角</a>
+                        <a href="#zhejing" class="nav-item">折镜队</a>
+                        <a href="#bma" class="nav-item">BMA</a>
+                        <a href="#lin" class="nav-item">林氏家族</a>
+                        <a href="#jingguang" class="nav-item">净光宗</a>
+                        <a href="#xuanqing" class="nav-item">玄清观</a>
+                        <a href="#yin" class="nav-item">阴界势力</a>
                     </div>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-header" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">其他势力</span>
+                        <span class="nav-group-title">筛选</span>
                         <span class="nav-toggle">▼</span>
                     </div>
                     <div class="nav-group-content">
-                        <a href="#other-bma" class="nav-item">BMA其他成员</a>
-                        <a href="#other-lin" class="nav-item">林氏成员</a>
-                        <a href="#other-yin" class="nav-item">阴界角色</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('all')">全部职业</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('guandao')">观道</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('yudao')">御道</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('shadao')">杀道</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('yudao2')">愈道</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('guidao')">诡道</a>
+                        <a href="#" class="nav-item" onclick="filterByClass('tongdao')">通道</a>
                     </div>
                 </div>
             </nav>
         </aside>
 
         <main class="main-content">
-            <h1 class="page-title"><span>👥</span>角色档案</h1>
-            <p class="page-desc">折镜队全员与重要角色</p>
+            <h1 class="page-title"><span>👥</span>角色图鉴</h1>
+            <p class="page-desc">界行者世界中的主要角色一览</p>
 
-            <div class="section" id="linxi">
-                <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">🌙</span>林夕 · 折镜队队长</div>
-                    <span class="toggle-icon">▼</span>
+            <!-- 筛选栏 -->
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <span class="filter-label">职业：</span>
+                    <button class="filter-btn active" onclick="filterByClass('all')">全部</button>
+                    <button class="filter-btn" onclick="filterByClass('guandao')">👁️ 观道</button>
+                    <button class="filter-btn" onclick="filterByClass('yudao')">🛡️ 御道</button>
+                    <button class="filter-btn" onclick="filterByClass('shadao')">⚔️ 杀道</button>
+                    <button class="filter-btn" onclick="filterByClass('yudao2')">💚 愈道</button>
+                    <button class="filter-btn" onclick="filterByClass('guidao')">🎭 诡道</button>
+                    <button class="filter-btn" onclick="filterByClass('tongdao')">🌀 通道</button>
                 </div>
-                <div class="section-content">
-                    <div class="character-card">
-                        <div class="character-header">
-                            <div class="character-avatar">🌙</div>
-                            <div class="character-info">
-                                <h4>林夕 <span class="tag tag-success">队长</span> <span class="tag tag-primary">观道+杀道</span></h4>
-                                <div class="character-meta">
-                                    <span><strong>本名：</strong>林晚照</span>
-                                    <span><strong>年龄：</strong>24岁</span>
-                                    <span><strong>瞳色：</strong>淡金色（阴阳眼）</span>
-                                    <span><strong>发色：</strong>白色及腰长发</span>
-                                    <span><strong>体质：</strong>至阴体质（RH阴性血）</span>
-                                </div>
-                            </div>
+                <div class="filter-group">
+                    <span class="filter-label">元素：</span>
+                    <button class="filter-btn active" onclick="filterByElement('all')">全部</button>
+                    <button class="filter-btn" onclick="filterByElement('yin')">☯️ 阴</button>
+                    <button class="filter-btn" onclick="filterByElement('yang')">☀️ 阳</button>
+                    <button class="filter-btn" onclick="filterByElement('fire')">🔥 火</button>
+                    <button class="filter-btn" onclick="filterByElement('water')">💧 水</button>
+                    <button class="filter-btn" onclick="filterByElement('thunder')">⚡ 雷</button>
+                    <button class="filter-btn" onclick="filterByElement('ice')">❄️ 冰</button>
+                </div>
+            </div>
+
+            <!-- 折镜队 -->
+            <div class="faction-section" id="zhejing">
+                <div class="faction-header">
+                    <div class="faction-icon" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">🪞</div>
+                    <div>
+                        <div class="faction-title">折镜队</div>
+                        <div class="faction-desc">BMA亚太分部 · 外勤三队 · 精英行动小组</div>
+                    </div>
+                </div>
+                <div class="character-grid" data-faction="zhejing">
+                    <div class="character-thumb" data-class="guandao shadao" data-element="yin" onclick="openModal('linxi')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">🌙
+                            <span class="character-thumb-element">☯️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">林夕</div>
+                            <div class="character-thumb-class">观道/杀道 · 队长</div>
                         </div>
                     </div>
-
-                    <h4>出身背景</h4>
-                    <p>林夕出生于江南水乡的<strong>林氏驱魔世家</strong>，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。</p>
-
-                    <div class="info-box warning">
-                        <strong>12岁转折点</strong><br>
-                        中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。
+                    <div class="character-thumb" data-class="shadao" data-element="yang" onclick="openModal('guanfeng')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);">⚔️
+                            <span class="character-thumb-element">☀️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">关锋</div>
+                            <div class="character-thumb-class">杀道 · 副队长</div>
+                        </div>
                     </div>
-
-                    <h4>核心特征</h4>
-                    <p>白发金瞳，外冷内热。从被家族抛弃的混血女成长为独当一面的队长。</p>
-
-                    <div style="padding: 16px; background: var(--bg-hover); border-left: 4px solid var(--accent-cyan); border-radius: 0 8px 8px 0; margin: 16px 0; font-style: italic;">
-                        "我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"
+                    <div class="character-thumb" data-class="guandao" data-element="yin" onclick="openModal('chenmo')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #374151 0%, #4b5563 100%);">👤
+                            <span class="character-thumb-element">☯️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">陈默</div>
+                            <div class="character-thumb-class">观道 · 主角</div>
+                        </div>
+                    </div>
+                    <div class="character-thumb" data-class="yudao" data-element="earth" onclick="openModal('tieshan')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #3f3f46 0%, #52525b 100%);">🛡️
+                            <span class="character-thumb-element">⛰️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">铁山</div>
+                            <div class="character-thumb-class">御道 · 防御</div>
+                        </div>
+                    </div>
+                    <div class="character-thumb" data-class="yudao2" data-element="wood" onclick="openModal('suwanqing')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);">💚
+                            <span class="character-thumb-element">🌲</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">苏晚晴</div>
+                            <div class="character-thumb-class">愈道 · 医疗</div>
+                        </div>
+                    </div>
+                    <div class="character-thumb" data-class="guidao" data-element="soul" onclick="openModal('yexiaoqi')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);">🎭
+                            <span class="character-thumb-element">👻</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">叶小柒</div>
+                            <div class="character-thumb-class">诡道 · 技术</div>
+                        </div>
+                    </div>
+                    <div class="character-thumb" data-class="tongdao" data-element="water" onclick="openModal('yunmiao')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);">🌀
+                            <span class="character-thumb-element">💧</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">云渺</div>
+                            <div class="character-thumb-class">通道 · 机动</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="section" id="guanfeng">
-                <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">⚔️</span>关锋 · 副队长</div>
-                    <span class="toggle-icon">▼</span>
+            <!-- BMA -->
+            <div class="faction-section" id="bma">
+                <div class="faction-header">
+                    <div class="faction-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">🏢</div>
+                    <div>
+                        <div class="faction-title">BMA 界管局</div>
+                        <div class="faction-desc">Boundary Management Agency · 国际界域管理机构</div>
+                    </div>
                 </div>
-                <div class="section-content">
-                    <div class="character-card">
-                        <div class="character-header">
-                            <div class="character-avatar">⚔️</div>
-                            <div class="character-info">
-                                <h4>关锋 <span class="tag tag-success">副队长</span> <span class="tag tag-danger">杀道</span></h4>
-                                <div class="character-meta">
-                                    <span><strong>出身：</strong>退伍军人，关羽后人</span>
-                                    <span><strong>背景：</strong>净光宗还俗武者</span>
-                                </div>
-                            </div>
+                <div class="character-grid" data-faction="bma">
+                    <div class="character-thumb" data-class="guandao" data-element="yang" onclick="openModal('director')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">👔
+                            <span class="character-thumb-element">☀️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">局长</div>
+                            <div class="character-thumb-class">观道 · 亚太分部</div>
                         </div>
                     </div>
-                    <p>因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与林夕形成"一动一静"互补。</p>
+                    <div class="character-thumb" data-class="shadao" data-element="fire" onclick="openModal('sarah')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #9a3412 0%, #c2410c 100%);">🔥
+                            <span class="character-thumb-element">🔥</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">陈莎拉</div>
+                            <div class="character-thumb-class">杀道 · 北美分部</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="section" id="chenmo">
-                <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-title"><span class="section-icon">👤</span>陈默 · 主角</div>
-                    <span class="toggle-icon">▼</span>
+            <!-- 林氏家族 -->
+            <div class="faction-section" id="lin">
+                <div class="faction-header">
+                    <div class="faction-icon" style="background: linear-gradient(135deg, #701a75 0%, #a855f7 100%);">🏛️</div>
+                    <div>
+                        <div class="faction-title">林氏家族</div>
+                        <div class="faction-desc">江南驱魔世家 · 千年传承</div>
+                    </div>
                 </div>
-                <div class="section-content">
-                    <div class="character-card">
-                        <div class="character-header">
-                            <div class="character-avatar">👤</div>
-                            <div class="character-info">
-                                <h4>陈默 <span class="tag tag-primary">主角</span> <span class="tag tag-warning">9锚点</span></h4>
-                                <div class="character-meta">
-                                    <span><strong>年龄：</strong>22岁</span>
-                                    <span><strong>身份：</strong>第49代锚点</span>
-                                    <span><strong>职业：</strong>观道（初始）</span>
-                                </div>
-                            </div>
+                <div class="character-grid" data-faction="lin">
+                    <div class="character-thumb" data-class="guandao" data-element="yin" onclick="openModal('linjiazhu')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);">👑
+                            <span class="character-thumb-element">☯️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">林家主</div>
+                            <div class="character-thumb-class">观道 · 家主</div>
                         </div>
                     </div>
-                    <p>民俗学研究生，意外觉醒成为界行者。作为"锚点"，他的成长与两界平衡紧密相连。性格观察型，话不多但关键时刻可靠。</p>
+                    <div class="character-thumb" data-class="shadao" data-element="ice" onclick="openModal('linyu')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">❄️
+                            <span class="character-thumb-element">❄️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">林雨</div>
+                            <div class="character-thumb-class">杀道 · 嫡系</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <h4>命名含义</h4>
-                    <ul>
-                        <li><strong>陈</strong>：陈旧、沉淀，暗示与古老事物的联系</li>
-                        <li><strong>默</strong>：沉默、观察，符合玩家"观察者"视角</li>
-                        <li><strong>沉默</strong>：前期能力未显时的状态</li>
-                        <li><strong>默陈</strong>：谐音"墨尘"，暗示与阴阳、书写的联系</li>
-                    </ul>
+            <!-- 阴界势力 -->
+            <div class="faction-section" id="yin">
+                <div class="faction-header">
+                    <div class="faction-icon" style="background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);">👻</div>
+                    <div>
+                        <div class="faction-title">阴界势力</div>
+                        <div class="faction-desc">酆都、百鬼夜行、噬界者</div>
+                    </div>
+                </div>
+                <div class="character-grid" data-faction="yin">
+                    <div class="character-thumb" data-class="guidao" data-element="soul" onclick="openModal('yandiwang')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">👑
+                            <span class="character-thumb-element">👻</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">酆都大帝</div>
+                            <div class="character-thumb-class">诡道 · 阴界主宰</div>
+                        </div>
+                    </div>
+                    <div class="character-thumb" data-class="shadao" data-element="yin" onclick="openModal('heiwuchang')">
+                        <div class="character-thumb-img" style="background: linear-gradient(135deg, #020617 0%, #0f172a 100%);">⚫
+                            <span class="character-thumb-element">☯️</span>
+                        </div>
+                        <div class="character-thumb-info">
+                            <div class="character-thumb-name">黑白无常</div>
+                            <div class="character-thumb-class">杀道 · 阴差</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </main>
     </div>
 
+    <!-- 角色详情弹窗 -->
+    <div class="modal-overlay" id="characterModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        function toggleSection(header) { header.parentElement.classList.toggle('collapsed'); }
-        function toggleNavGroup(header) { header.parentElement.classList.toggle('collapsed'); header.classList.toggle('active'); }
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
+        function toggleNavGroup(header) {
+            header.parentElement.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        // 角色数据
+        const characters = {
+            linxi: {
+                name: '林夕',
+                title: '折镜队队长',
+                avatar: '🌙',
+                class: '观道/杀道',
+                element: '阴',
+                faction: '折镜队',
+                color: '#22d3ee',
+                meta: ['本名：林晚照', '年龄：24岁', '瞳色：淡金（阴阳眼）', '发色：白色及腰'],
+                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。',
+                quote: '"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"'
+            },
+            guanfeng: {
+                name: '关锋',
+                title: '折镜队副队长',
+                avatar: '⚔️',
+                class: '杀道',
+                element: '阳',
+                faction: '折镜队',
+                color: '#ef4444',
+                meta: ['出身：退伍军人', '背景：净光宗还俗武者', '血脉：关羽后人'],
+                story: '因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与林夕形成"一动一静"互补。手持青龙偃月刀残魂具现的武器，是队伍中的主要战力。',
+                quote: '"刀在人在，刀亡人亡。关某虽还俗，斩妖除魔之心不改。"'
+            },
+            chenmo: {
+                name: '陈默',
+                title: '主角 · 新晋界行者',
+                avatar: '👤',
+                class: '观道',
+                element: '阴',
+                faction: '折镜队',
+                color: '#94a3b8',
+                meta: ['年龄：22岁', '身份：民俗学研究生', '觉醒：强制觉醒'],
+                story: '民俗学研究生，意外卷入界域事件后觉醒成为界行者。性格观察型，话不多但关键时刻可靠。作为玩家视角角色，其成长与两界平衡紧密相连。',
+                quote: '"我只是个普通人，但既然看到了这个世界的真相，就不能装作没看见。"'
+            },
+            tieshan: {
+                name: '铁山',
+                title: '折镜队防御位',
+                avatar: '🛡️',
+                class: '御道',
+                element: '土',
+                faction: '折镜队',
+                color: '#10b981',
+                meta: ['身高：195cm', '体型：壮硕', '性格：沉稳可靠'],
+                story: '队伍中的坚实盾牌，拥有极强的防御能力。外表粗犷但内心细腻，总能在关键时刻保护队友。',
+                quote: '"有我在，没人能伤害我的队友。"'
+            },
+            suwanqing: {
+                name: '苏晚晴',
+                title: '折镜队医疗',
+                avatar: '💚',
+                class: '愈道',
+                element: '木',
+                faction: '折镜队',
+                color: '#ec4899',
+                meta: ['性格：温柔', '特长：治愈净化', '背景：中医世家'],
+                story: '队伍中的治愈者，擅长使用木系能力进行治疗和净化。性格温柔体贴，是队伍的心灵支柱。',
+                quote: '"只要还有一口气，我就能把你救回来。"'
+            },
+            yexiaoqi: {
+                name: '叶小柒',
+                title: '折镜队技术',
+                avatar: '🎭',
+                class: '诡道',
+                element: '魂',
+                faction: '折镜队',
+                color: '#8b5cf6',
+                meta: ['年龄：19岁', '特长：黑客技术', '性格：活泼跳脱'],
+                story: '队伍中的技术担当，擅长信息战和电子对抗。同时也精通幻术，能在战斗中制造混乱。',
+                quote: '"给我一台电脑，我能黑进阴间的系统给你看。"'
+            },
+            yunmiao: {
+                name: '云渺',
+                title: '折镜队机动',
+                avatar: '🌀',
+                class: '通道',
+                element: '水',
+                faction: '折镜队',
+                color: '#fbbf24',
+                meta: ['能力：空间移动', '性格：神秘', '背景：不明'],
+                story: '神秘的通道行者，能够进行短距离空间跳跃。负责队伍的战术转移和紧急救援。',
+                quote: '"空间对我来说，就像水一样流动。"'
+            }
+        };
+
+        function openModal(charId) {
+            const char = characters[charId];
+            if (!char) return;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-avatar" style="border-color: ${char.color}">${char.avatar}</div>
+                    <div class="modal-info">
+                        <h2>${char.name} <span style="font-size: 1rem; color: var(--text-secondary); font-weight: normal;">| ${char.title}</span></h2>
+                        <div class="modal-meta">
+                            <span class="tag tag-primary">${char.class}</span>
+                            <span class="tag tag-success">${char.element}属性</span>
+                            <span class="tag tag-warning">${char.faction}</span>
+                        </div>
+                        <div class="stat-row" style="margin-top: 16px;">
+                            ${char.meta.map(m => `
+                                <div class="stat-item">
+                                    <div class="stat-label">${m.split('：')[0]}</div>
+                                    <div class="stat-value">${m.split('：')[1]}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="info-section">
+                        <h4>角色背景</h4>
+                        <p>${char.story}</p>
+                    </div>
+                    <div class="info-section">
+                        <h4>经典台词</h4>
+                        <div style="padding: 16px; background: var(--bg-hover); border-left: 4px solid ${char.color}; border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-secondary);">
+                            ${char.quote}
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('characterModal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'characterModal') {
+                document.getElementById('characterModal').classList.remove('active');
+            }
+        }
+
+        // 筛选功能
+        function filterByClass(className) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.textContent.includes('观道') || btn.textContent.includes('御道') || 
+                    btn.textContent.includes('杀道') || btn.textContent.includes('愈道') ||
+                    btn.textContent.includes('诡道') || btn.textContent.includes('通道') ||
+                    btn.textContent === '全部') {
+                    btn.classList.remove('active');
+                }
             });
-        });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.character-thumb').forEach(thumb => {
+                if (className === 'all' || thumb.dataset.class.includes(className)) {
+                    thumb.style.display = 'block';
+                } else {
+                    thumb.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByElement(element) {
+            // 简化处理，实际项目中可以更复杂
+            if (element === 'all') {
+                document.querySelectorAll('.character-thumb').forEach(thumb => {
+                    thumb.style.display = 'block';
+                });
+            }
+        }
     </script>
 </body>
 </html>
