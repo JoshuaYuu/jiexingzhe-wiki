@@ -99,6 +99,12 @@
             font-size: 0.9rem;
         }
 
+        .nav-item.level-3 {
+            padding-left: 56px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
         /* 主内容区 */
         .main-content {
             flex: 1;
@@ -464,6 +470,10 @@
         [id] {
             scroll-margin-top: 20px;
         }
+
+        [id] {
+            scroll-margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -478,7 +488,10 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="#core" class="nav-item active">📌 核心概念</a>
+                <a href="#core" class="nav-item">📌 核心概念</a>
+                <a href="#core-world" class="nav-item level-2">世界架构</a>
+                <a href="#core-walker" class="nav-item level-2">界行者</a>
+                <a href="#core-situation" class="nav-item level-2">当前局势</a>
                 
                 <a href="#yang" class="nav-item">一、阳界势力</a>
                 <a href="#bma" class="nav-item level-2">界域管理局</a>
@@ -494,12 +507,22 @@
                 <a href="#shijie" class="nav-item level-2">噬界者</a>
                 
                 <a href="#characters" class="nav-item">三、角色档案</a>
-                <a href="#characters" class="nav-item level-2">界域管理局</a>
-                <a href="#characters" class="nav-item level-2">林氏驱魔世家</a>
-                <a href="#characters" class="nav-item level-2">净光宗</a>
-                <a href="#characters" class="nav-item level-2">玄清会</a>
-                <a href="#characters" class="nav-item level-2">阴界势力</a>
+                <a href="#char-bma-section" class="nav-item level-2">🏛️ 界域管理局</a>
+                <a href="#char-linxi" class="nav-item level-3">林夕</a>
+                <a href="#char-guanfeng" class="nav-item level-3">关锋</a>
+                <a href="#char-duanxian" class="nav-item level-3">断弦队</a>
+                <a href="#char-bufeng" class="nav-item level-3">捕风队</a>
+                <a href="#char-lin-section" class="nav-item level-2">🏮 林氏驱魔世家</a>
+                <a href="#char-jingguang-section" class="nav-item level-2">✨ 净光宗</a>
+                <a href="#char-xuanqing-section" class="nav-item level-2">☯️ 玄清会</a>
+                <a href="#char-yin-section" class="nav-item level-2">👻 阴界势力</a>
+                <a href="#char-shijie-card" class="nav-item level-3">噬界者</a>
+                
                 <a href="#terms" class="nav-item">四、专有名词</a>
+                <a href="#term-jieyu" class="nav-item level-2">界域</a>
+                <a href="#term-jieyao" class="nav-item level-2">界钥</a>
+                <a href="#term-jiexingzhe" class="nav-item level-2">界行者</a>
+                <a href="#term-yinyangyan" class="nav-item level-2">阴阳眼</a>
                 <a href="#todo" class="nav-item">五、待办事项</a>
             </nav>
         </aside>
@@ -510,7 +533,7 @@
             <section id="core">
                 <h2>📌 核心概念</h2>
 
-                <div class="section">
+                <div class="section" id="core-world">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">🌍</span>
@@ -532,7 +555,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="core-walker">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">👤</span>
@@ -550,7 +573,7 @@
                     </div>
                 </div>
 
-                <div class="section">
+                <div class="section" id="core-situation">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">⚡</span>
@@ -936,7 +959,7 @@
                 <h2>三、角色档案</h2>
 
                 <!-- BMA 界域管理局 -->
-                <div class="section">
+                <div class="section" id="char-bma-section">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">🏛️</span>
@@ -949,7 +972,7 @@
                         <!-- 折镜队 -->
                         <h4 style="color: var(--accent-cyan); margin: 20px 0 12px;">🪞 「折镜」队（第1支特遣队）</h4>
                         
-                        <div class="character-card" id="linxi">
+                        <div class="character-card" id="char-linxi">
                             <div class="character-header">
                                 <div class="character-avatar">🌙</div>
                                 <div class="character-info">
@@ -958,6 +981,7 @@
                                         <span class="meta-item"><strong>本名：</strong>林晚照</span>
                                         <span class="meta-item"><strong>年龄：</strong>24岁</span>
                                         <span class="meta-item"><strong>身高：</strong>165cm</span>
+                                        <span class="meta-item"><strong>职位：</strong>「折镜」队队长</span>
                                         <span class="meta-item"><strong>瞳色：</strong>淡金色（阴阳眼）</span>
                                         <span class="meta-item"><strong>发色：</strong>白色及腰长发</span>
                                         <span class="meta-item"><strong>体质：</strong>至阴体质（RH阴性血）</span>
@@ -1037,9 +1061,10 @@
                                 <li><strong>独战群鬼</strong>：16岁时一人守在纸扎店门口，十七道伤，没让一只鬼进店</li>
                                 <li><strong>屋顶对话</strong>：递师弟一罐冰可乐，说"我第一次杀鬼也是十六岁"</li>
                                 <li><strong>崩溃时刻</strong>：被林家陷害，关锋重伤，主角被困，林夕白发散乱，金瞳血红，差点入魔</li>
-                            </ol>                        </div>
+                            </ol>
+                        </div>
 
-                        <div class="character-card">
+                        <div class="character-card" id="char-guanfeng">
                             <div class="character-header">
                                 <div class="character-avatar">⚔️</div>
                                 <div class="character-info">
@@ -1053,7 +1078,7 @@
                             <p>因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与林夕形成"一动一静"互补。</p>
                         </div>
 
-                        <h4 style="color: var(--accent-cyan); margin: 20px 0 12px;">❓ 「断弦」队（第2支特遣队）</h4>
+                        <h4 id="char-duanxian" style="color: var(--accent-cyan); margin: 20px 0 12px; scroll-margin-top: 20px;">❓ 「断弦」队（第2支特遣队）</h4>
                         <div class="character-card">
                             <div class="character-header">
                                 <div class="character-avatar">❓</div>
@@ -1064,7 +1089,7 @@
                             <p>「断弦」队成员待设计。</p>
                         </div>
 
-                        <h4 style="color: var(--accent-cyan); margin: 20px 0 12px;">❓ 「捕风」队（第3支特遣队）</h4>
+                        <h4 id="char-bufeng" style="color: var(--accent-cyan); margin: 20px 0 12px; scroll-margin-top: 20px;">❓ 「捕风」队（第3支特遣队）</h4>
                         <div class="character-card">
                             <div class="character-header">
                                 <div class="character-avatar">❓</div>
@@ -1079,7 +1104,7 @@
                 </div>
 
                 <!-- 林氏驱魔世家 -->
-                <div class="section">
+                <div class="section" id="char-lin-section">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">🏮</span>
@@ -1101,7 +1126,7 @@
                 </div>
 
                 <!-- 净光宗 -->
-                <div class="section">
+                <div class="section" id="char-jingguang-section">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">✨</span>
@@ -1116,7 +1141,7 @@
                 </div>
 
                 <!-- 玄清会 -->
-                <div class="section">
+                <div class="section" id="char-xuanqing-section">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">☯️</span>
@@ -1131,7 +1156,7 @@
                 </div>
 
                 <!-- 阴界势力 -->
-                <div class="section">
+                <div class="section" id="char-yin-section">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
                             <span class="section-icon">👻</span>
@@ -1174,8 +1199,8 @@
                             <p>归一者教团干部角色待设计。</p>
                         </div>
 
-                        <h4 style="color: var(--accent-cyan); margin: 20px 0 12px;">🌑 噬界者</h4>
-                        <div class="character-card">
+                        <h4 id="char-shijie" style="color: var(--accent-cyan); margin: 20px 0 12px; scroll-margin-top: 20px;">🌑 噬界者</h4>
+                        <div class="character-card" id="char-shijie-card">
                             <div class="character-header">
                                 <div class="character-avatar">🌑</div>
                                 <div class="character-info">
@@ -1188,43 +1213,63 @@
                     </div>
                 </div>
 
-            </section>
-
-            <!-- 专有名词 -->
+            </section><!-- 专有名词 -->
             <section id="terms">
                 <h2>四、专有名词表</h2>
 
-                <div class="section">
+                <div class="section" id="term-jieyu">
                     <div class="section-header" onclick="toggleSection(this)">
                         <div class="section-title">
-                            <span class="section-icon">📚</span>
-                            术语表
+                            <span class="section-icon">🌀</span>
+                            界域
                         </div>
                         <span class="toggle-icon">▼</span>
                     </div>
                     <div class="section-content">
-                        <table>
-                            <tr>
-                                <th>术语</th>
-                                <th>解释</th>
-                            </tr>
-                            <tr>
-                                <td>界域</td>
-                                <td>两界重叠的危险异空间</td>
-                            </tr>
-                            <tr>
-                                <td>界钥</td>
-                                <td>开启两界通道的关键物品</td>
-                            </tr>
-                            <tr>
-                                <td>界行者</td>
-                                <td>能穿梭两界的特殊存在</td>
-                            </tr>
-                            <tr>
-                                <td>阴阳眼</td>
-                                <td>能看破阴阳的特殊视力</td>
-                            </tr>
-                        </table>
+                        <p><strong>定义：</strong>两界重叠的危险异空间</p>
+                        <p>界域是阳界与阴界发生重叠时产生的特殊空间，其中阴阳二气交错混乱，常伴随各种异常现象。界域有大有小，小者仅一间房屋，大者可覆盖整个街区。界域内部时间流速、空间结构均可能与现实世界不同。</p>
+                    </div>
+                </div>
+
+                <div class="section" id="term-jieyao">
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <div class="section-title">
+                            <span class="section-icon">🗝️</span>
+                            界钥
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <p><strong>定义：</strong>开启两界通道的关键物品</p>
+                        <p>界钥是打开或稳定界域通道的媒介，形态各异，可能是古物、法器，甚至是特定的人或生物。持有界钥者可以主动开启或关闭界域入口，是界行者执行任务时的重要工具。</p>
+                    </div>
+                </div>
+
+                <div class="section" id="term-jiexingzhe">
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <div class="section-title">
+                            <span class="section-icon">👤</span>
+                            界行者
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <p><strong>定义：</strong>能穿梭两界的特殊存在</p>
+                        <p>界行者是指能够自由往返于阳界与阴界之间的特殊人群。成为界行者的途径包括：先天觉醒阴阳眼、后天与阴界存在签订契约、或出身驱魔世家继承血脉能力。界行者通常具有感知阴阳、对抗鬼怪的能力。</p>
+                    </div>
+                </div>
+
+                <div class="section" id="term-yinyangyan">
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <div class="section-title">
+                            <span class="section-icon">👁️</span>
+                            阴阳眼
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <p><strong>定义：</strong>能看破阴阳的特殊视力</p>
+                        <p>阴阳眼是界行者最核心的天赋能力之一，拥有者可以看见常人无法察觉的阴气、鬼怪、以及两界重叠之处。阴阳眼觉醒时通常伴有明显的生理特征，如林夕觉醒后头发变白、瞳孔变为淡金色。情绪激动时，阴阳眼会发出微光。</p>
                     </div>
                 </div>
             </section>
