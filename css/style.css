@@ -1,5 +1,54 @@
 /* 《界行者》Wiki 共享样式 */
 
+/* ===== 图片保护 - 禁止保存 ===== */
+/* 禁止图片选择和拖拽 */
+img, .character-avatar, .gallery-image, .faction-emblem, .branch-icon {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -ms-user-drag: none !important;
+    user-drag: none !important;
+    -webkit-touch-callout: none !important;
+    pointer-events: none !important;
+}
+
+/* 允许图片上的链接点击，但禁止保存 */
+a img, .wiki-link img {
+    pointer-events: auto !important;
+}
+
+/* 禁止背景图片保存 */
+[style*="background-image"] {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* 弹窗/模态框中的图片保护 */
+.modal img, .popup img, .dialog img, [class*="modal"] img, [class*="popup"] img, [class*="dialog"] img {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -ms-user-drag: none !important;
+    user-drag: none !important;
+    pointer-events: none !important;
+}
+
+/* 禁止整个页面的文本选择（可选，根据需要启用） */
+/* body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+} */
+
 :root {
     /* ===== 主色调系统 ===== */
     /* 界域青 - 主品牌色，代表界域、平衡 */
