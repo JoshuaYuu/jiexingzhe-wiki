@@ -223,6 +223,67 @@
             font-size: 0.65rem;
         }
 
+        /* 图片放大模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            animation: zoomIn 0.3s;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .image-modal-close:hover {
+            color: var(--accent-cyan);
+        }
+
+        .image-modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f1f1f1;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         /* 主内容区 */
         .main-content {
             flex: 1;
@@ -1187,43 +1248,25 @@
 
                             <!-- 林夕角色概念图 -->
                             <div class="character-gallery" style="margin-top: 20px;">
-                                <h5 style="color: var(--accent-gold); margin-bottom: 12px;">📷 角色视觉设定</h5>
+                                <h5 style="color: var(--accent-gold); margin-bottom: 12px;">📷 角色视觉设定（点击放大）</h5>
                                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                                    <div class="image-card">
-                                        <img src="林夕/g3pip2k-1772694074387-593f4bc9.jpg" alt="林夕全身立绘" style="width: 100%; border-radius: 8px; display: block;">
+                                    <div class="image-card" onclick="openImageModal(this)" style="cursor: pointer;">
+                                        <img src="林夕/g3pip2k-1772694074387-593f4bc9.jpg" alt="林夕全身立绘" style="width: 100%; border-radius: 8px; display: block; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                         <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">全身立绘 - 月夜持符</div>
                                     </div>
-                                    <div class="image-card">
-                                        <img src="林夕/download_1772695763194.png" alt="林夕表情与姿态设定" style="width: 100%; border-radius: 8px; display: block;">
+                                    <div class="image-card" onclick="openImageModal(this)" style="cursor: pointer;">
+                                        <img src="林夕/download_1772695763194.png" alt="林夕表情与姿态设定" style="width: 100%; border-radius: 8px; display: block; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                         <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">四格设定 - 表情与姿态</div>
                                     </div>
                                 </div>
                                 <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px;">
-                                    <div class="image-card">
-                                        <img src="林夕/ai-image-2026-03-05-0fc59607.jpg" alt="林夕特写1" style="width: 100%; border-radius: 8px; display: block;">
+                                    <div class="image-card" onclick="openImageModal(this)" style="cursor: pointer;">
+                                        <img src="林夕/ai-image-2026-03-05-0fc59607.jpg" alt="林夕战斗姿态" style="width: 100%; border-radius: 8px; display: block; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                         <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">战斗姿态</div>
                                     </div>
-                                    <div class="image-card">
-                                        <img src="林夕/ai-image-2026-03-05-0601c711.jpg" alt="林夕特写2" style="width: 100%; border-radius: 8px; display: block;">
-                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">凝视</div>
-                                    </div>
-                                    <div class="image-card">
-                                        <img src="林夕/NanoBanana-2026-03-05.png" alt="丝袜细节" style="width: 100%; border-radius: 8px; display: block;">
+                                    <div class="image-card" onclick="openImageModal(this)" style="cursor: pointer;">
+                                        <img src="林夕/NanoBanana-2026-03-05.png" alt="云纹丝袜细节" style="width: 100%; border-radius: 8px; display: block; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
                                         <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">云纹丝袜细节</div>
-                                    </div>
-                                </div>
-                                <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px;">
-                                    <div class="image-card">
-                                        <img src="林夕/Gemini_Generated_Image_lttttalttttalttt.png" alt="林夕战斗场景" style="width: 100%; border-radius: 8px; display: block;">
-                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">战斗场景 - 荒野月夜</div>
-                                    </div>
-                                    <div class="image-card">
-                                        <img src="林夕/Gemini_Generated_Image_ho2boeho2boeho2b.png" alt="林夕施法" style="width: 100%; border-radius: 8px; display: block;">
-                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">施法场景 - 摇铃驱邪</div>
-                                    </div>
-                                    <div class="image-card">
-                                        <img src="林夕/Gemini_Generated_Image_dzl01sdzl01sdzl0.png" alt="林夕剧情分镜" style="width: 100%; border-radius: 8px; display: block;">
-                                        <div class="image-caption" style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 8px;">剧情分镜 - 日常/战斗/虚弱/渡气</div>
                                     </div>
                                 </div>
                             </div>
@@ -1652,6 +1695,48 @@
                 header.classList.add('active');
             });
         });
+
+        // 图片放大模态框功能
+        function openImageModal(card) {
+            const img = card.querySelector('img');
+            const caption = card.querySelector('.image-caption').textContent;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+
+            modalImg.src = img.src;
+            modalCaption.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框背景关闭
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (e.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
     </script>
+
+    <!-- 图片放大模态框 -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <span class="image-modal-close">&times;</span>
+        <img id="modalImage" class="image-modal-content">
+        <div id="modalCaption" class="image-modal-caption"></div>
+    </div>
 </body>
 </html>
