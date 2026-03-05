@@ -1,0 +1,24 @@
+name: Auto Sync from Gist
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # 每10分钟自动检查
+  workflow_dispatch:  # 也支持手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download from Gist
+        run: |
+          curl -L -o index.html https://gist.githubusercontent.com/JoshuaYuu/a57391240c66293031afbc27c598008e/raw/
+      
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html
+          git commit -m "Auto sync from Gist" || exit 0
+          git push
