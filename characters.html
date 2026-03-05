@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色档案 - 界行者Wiki</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
+            <div class="search-box"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link" style="color: var(--accent-cyan);">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">折镜队</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#linxi" class="nav-item">林夕 · 队长</a>
+                        <a href="#guanfeng" class="nav-item">关锋 · 副队长</a>
+                        <a href="#chenmo" class="nav-item">陈默 · 主角</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">其他势力</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#other-bma" class="nav-item">BMA其他成员</a>
+                        <a href="#other-lin" class="nav-item">林氏成员</a>
+                        <a href="#other-yin" class="nav-item">阴界角色</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title"><span>👥</span>角色档案</h1>
+            <p class="page-desc">折镜队全员与重要角色</p>
+
+            <div class="section" id="linxi">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">🌙</span>林夕 · 折镜队队长</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="character-card">
+                        <div class="character-header">
+                            <div class="character-avatar">🌙</div>
+                            <div class="character-info">
+                                <h4>林夕 <span class="tag tag-success">队长</span> <span class="tag tag-primary">观道+杀道</span></h4>
+                                <div class="character-meta">
+                                    <span><strong>本名：</strong>林晚照</span>
+                                    <span><strong>年龄：</strong>24岁</span>
+                                    <span><strong>瞳色：</strong>淡金色（阴阳眼）</span>
+                                    <span><strong>发色：</strong>白色及腰长发</span>
+                                    <span><strong>体质：</strong>至阴体质（RH阴性血）</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>出身背景</h4>
+                    <p>林夕出生于江南水乡的<strong>林氏驱魔世家</strong>，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。</p>
+
+                    <div class="info-box warning">
+                        <strong>12岁转折点</strong><br>
+                        中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。
+                    </div>
+
+                    <h4>核心特征</h4>
+                    <p>白发金瞳，外冷内热。从被家族抛弃的混血女成长为独当一面的队长。</p>
+
+                    <div style="padding: 16px; background: var(--bg-hover); border-left: 4px solid var(--accent-cyan); border-radius: 0 8px 8px 0; margin: 16px 0; font-style: italic;">
+                        "我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="guanfeng">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">⚔️</span>关锋 · 副队长</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="character-card">
+                        <div class="character-header">
+                            <div class="character-avatar">⚔️</div>
+                            <div class="character-info">
+                                <h4>关锋 <span class="tag tag-success">副队长</span> <span class="tag tag-danger">杀道</span></h4>
+                                <div class="character-meta">
+                                    <span><strong>出身：</strong>退伍军人，关羽后人</span>
+                                    <span><strong>背景：</strong>净光宗还俗武者</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>因意外觉醒祖先血脉获得斩鬼能力，性格沉稳少言，与林夕形成"一动一静"互补。</p>
+                </div>
+            </div>
+
+            <div class="section" id="chenmo">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">👤</span>陈默 · 主角</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="character-card">
+                        <div class="character-header">
+                            <div class="character-avatar">👤</div>
+                            <div class="character-info">
+                                <h4>陈默 <span class="tag tag-primary">主角</span> <span class="tag tag-warning">9锚点</span></h4>
+                                <div class="character-meta">
+                                    <span><strong>年龄：</strong>22岁</span>
+                                    <span><strong>身份：</strong>第49代锚点</span>
+                                    <span><strong>职业：</strong>观道（初始）</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>民俗学研究生，意外觉醒成为界行者。作为"锚点"，他的成长与两界平衡紧密相连。性格观察型，话不多但关键时刻可靠。</p>
+
+                    <h4>命名含义</h4>
+                    <ul>
+                        <li><strong>陈</strong>：陈旧、沉淀，暗示与古老事物的联系</li>
+                        <li><strong>默</strong>：沉默、观察，符合玩家"观察者"视角</li>
+                        <li><strong>沉默</strong>：前期能力未显时的状态</li>
+                        <li><strong>默陈</strong>：谐音"墨尘"，暗示与阴阳、书写的联系</li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleSection(header) { header.parentElement.classList.toggle('collapsed'); }
+        function toggleNavGroup(header) { header.parentElement.classList.toggle('collapsed'); header.classList.toggle('active'); }
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

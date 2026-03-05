@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧情大纲 - 界行者Wiki</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
+            <div class="search-box"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link" style="color: var(--accent-cyan);">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">整体架构</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#story-structure" class="nav-item">九界篇章</a>
+                        <a href="#anchor-chapter" class="nav-item">锚点与章节对应</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">第一界·人间篇</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#chapter1" class="nav-item">第一章：入职</a>
+                        <a href="#chapter2" class="nav-item">第二章：暗流</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">后续篇章</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#world2" class="nav-item">第二界·阴界篇</a>
+                        <a href="#world3" class="nav-item">第三界·镜界篇</a>
+                        <a href="#world4" class="nav-item">第四界·轮回篇</a>
+                        <a href="#world5" class="nav-item">第五界·混沌篇</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title"><span>📖</span>剧情大纲</h1>
+            <p class="page-desc">九界篇章，锚点觉醒，两界命运</p>
+
+            <div class="section" id="story-structure">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">📚</span>九界篇章结构</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div style="margin: 16px 0;">
+                        <div style="padding: 16px; margin: 8px 0; background: var(--bg-hover); border-radius: 8px; border-left: 4px solid var(--accent-cyan);">
+                            <h5 style="color: var(--accent-cyan); margin: 0 0 8px;">【第一界】人间篇（第1-2章）</h5>
+                            <p style="margin: 0; font-size: 0.9rem;">建立基础，认识队伍，解锁第1-2锚点</p>
+                        </div>
+                        <div style="padding: 16px; margin: 8px 0; background: var(--bg-hover); border-radius: 8px; border-left: 4px solid var(--accent-purple);">
+                            <h5 style="color: var(--accent-purple); margin: 0 0 8px;">【第二界】阴界篇（第3-4章）</h5>
+                            <p style="margin: 0; font-size: 0.9rem;">深入阴界，了解真相，解锁第3-4锚点</p>
+                        </div>
+                        <div style="padding: 16px; margin: 8px 0; background: var(--bg-hover); border-radius: 8px; border-left: 4px solid var(--accent-gold);">
+                            <h5 style="color: var(--accent-gold); margin: 0 0 8px;">【第三界】镜界篇（第5章 - 中点转折）</h5>
+                            <p style="margin: 0; font-size: 0.9rem;">身份揭示，重大转折，解锁第5锚点·界之衡</p>
+                        </div>
+                        <div style="padding: 16px; margin: 8px 0; background: var(--bg-hover); border-radius: 8px; border-left: 4px solid var(--danger);">
+                            <h5 style="color: var(--danger); margin: 0 0 8px;">【第四界】轮回篇（第6-7章）</h5>
+                            <p style="margin: 0; font-size: 0.9rem;">追溯过去，寻找本源，解锁第6-7锚点</p>
+                        </div>
+                        <div style="padding: 16px; margin: 8px 0; background: var(--bg-hover); border-radius: 8px; border-left: 4px solid #1f2937;">
+                            <h5 style="color: #9ca3af; margin: 0 0 8px;">【第五界】混沌篇（第8-9章）</h5>
+                            <p style="margin: 0; font-size: 0.9rem;">最终决战，做出抉择，解锁第8-9锚点</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="chapter1">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">📝</span>第一章：入职（详细剧情）</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box">
+                        <strong>章节定位</strong><br>
+                        入门教程篇，建立基础。陈默拜师、训练、首任务、入队。
+                    </div>
+
+                    <h4>剧情节点</h4>
+                    <ul>
+                        <li><strong>【1-1】拜师</strong>：陈默被林夕带到龙虎山，拜见张老天师，初次接触修行者世界</li>
+                        <li><strong>【1-2】训练</strong>：基础训练（体能、符箓、法器），遇到折镜队其他成员</li>
+                        <li><strong>【1-3】首任务</strong>：简单的C级界域清理任务，陈默因经验不足陷入危险</li>
+                        <li><strong>【1-4】入队</strong>：正式加入折镜队，成为第7名成员，获得专属装备</li>
+                        <li><strong>【1-5】暗流</strong>：发现归一者教团的渗透迹象，击败教团先锋</li>
+                    </ul>
+
+                    <div class="info-box success">
+                        <strong>本章解锁</strong><br>
+                        • 第1锚点：观之眼（基础）<br>
+                        • 职业定位：观道（侦查/辅助）<br>
+                        • 核心羁绊：林夕（师姐）、关锋（导师）
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="chapter2">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">📝</span>第二章：暗流（详细剧情）</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="info-box">
+                        <strong>章节定位</strong><br>
+                        成长篇，扩展世界观。七大城市接连出现诡异事件，各方势力登场。
+                    </div>
+
+                    <h4>剧情节点</h4>
+                    <ul>
+                        <li><strong>【2-1】都市传说</strong>：七大城市接连出现诡异事件，陈默和队伍分头调查</li>
+                        <li><strong>【2-2】各方势力</strong>：接触净光宗行走「无相」、玄清会剑修「凌霄」</li>
+                        <li><strong>【2-3】林氏阴影</strong>：林家派人接触陈默，陈默得知林夕的过去</li>
+                        <li><strong>【2-4】侵蚀</strong>：陈默首次体验界域侵蚀的痛苦，林夕帮助他稳定</li>
+                        <li><strong>【2-5】归一之影</strong>：归一者教团发动袭击，击败教团干部「无面」</li>
+                    </ul>
+
+                    <div class="info-box success">
+                        <strong>本章解锁</strong><br>
+                        • 第2锚点：御之盾（基础）<br>
+                        • 职业扩展：可切换副职业<br>
+                        • 核心羁绊：林夕（灵魂共鸣）
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleSection(header) { header.parentElement.classList.toggle('collapsed'); }
+        function toggleNavGroup(header) { header.parentElement.classList.toggle('collapsed'); header.classList.toggle('active'); }
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

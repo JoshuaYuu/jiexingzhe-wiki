@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专有名词 - 界行者Wiki</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <a href="index.html" class="logo"><span>🌌</span><span>界行者Wiki</span></a>
+            <div class="search-box"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">基础概念</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#term-jieyu" class="nav-item">界域</a>
+                        <a href="#term-jieyao" class="nav-item">界钥</a>
+                        <a href="#term-jiebi" class="nav-item">界壁</a>
+                        <a href="#term-fengyin" class="nav-item">封印</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">能力相关</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#term-yinyangyan" class="nav-item">阴阳眼</a>
+                        <a href="#term-jingguang" class="nav-item">净光</a>
+                        <a href="#term-maodian" class="nav-item">锚点</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title"><span>📖</span>专有名词</h1>
+            <p class="page-desc">术语表与概念解释</p>
+
+            <div class="section" id="term-jieyu">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">🌀</span>界域</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>定义：</strong>阳界与阴界之间的夹缝，不稳定、危险、充满机遇。</p>
+                    <p><strong>特征：</strong></p>
+                    <ul>
+                        <li>以<strong>频率（Hz）</strong>衡量活跃度</li>
+                        <li>30Hz以下与阳界无异，100Hz接近混沌界</li>
+                        <li>界行者能力随频率升高而增强，但侵蚀风险也增加</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="term-jieyao">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">🔑</span>界钥</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>定义：</strong>打开界域通道的关键道具或能力。</p>
+                    <p><strong>类型：</strong></p>
+                    <ul>
+                        <li><strong>实体界钥：</strong>特殊法器、符箓</li>
+                        <li><strong>能力界钥：</strong>特定体质（如至阴体质）</li>
+                        <li><strong>血脉界钥：</strong>古老家族传承</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="term-yinyangyan">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">👁️</span>阴阳眼</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>定义：</strong>能看到阴界和界域的特殊视觉能力。</p>
+                    <p><strong>等级：</strong></p>
+                    <ul>
+                        <li><strong>一级：</strong>看到鬼怪轮廓</li>
+                        <li><strong>二级：</strong>看到阴气流动</li>
+                        <li><strong>三级：</strong>看到界域边界（林夕级别）</li>
+                        <li><strong>四级：</strong>看到因果线（传说级）</li>
+                    </ul>
+                    <p><strong>副作用：</strong>长期开启会导致头痛、视力下降，严重时永久失明。</p>
+                </div>
+            </div>
+
+            <div class="section" id="term-maodian">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-title"><span class="section-icon">⚓</span>锚点</div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p><strong>定义：</strong>稳定两界平衡的特殊存在，每代只有一人。</p>
+                    <p><strong>陈默：</strong>第49代锚点，拥有9个锚点节点，对应9个章节的能力解锁。</p>
+                    <p><strong>作用：</strong></p>
+                    <ul>
+                        <li>稳定周围界域频率</li>
+                        <li>抵抗混沌侵蚀</li>
+                        <li>关键时刻可暂时"锚定"界壁，防止崩溃</li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleSection(header) { header.parentElement.classList.toggle('collapsed'); }
+        function toggleNavGroup(header) { header.parentElement.classList.toggle('collapsed'); header.classList.toggle('active'); }
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
