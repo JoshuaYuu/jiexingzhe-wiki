@@ -337,20 +337,7 @@
                         <a href="#yin" class="nav-item">阴界势力</a>
                     </div>
                 </div>
-                <div class="nav-group">
-                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
-                        <span class="nav-group-title">快速跳转</span>
-                        <span class="nav-toggle">▼</span>
-                    </div>
-                    <div class="nav-group-content">
-                        <a href="#zhejing" class="nav-item">折镜队</a>
-                        <a href="#bma" class="nav-item">BMA</a>
-                        <a href="#lin" class="nav-item">林氏家族</a>
-                        <a href="#jingguang" class="nav-item">净光宗</a>
-                        <a href="#xuanqing" class="nav-item">玄清观</a>
-                        <a href="#yin" class="nav-item">阴界势力</a>
-                    </div>
-                </div>
+
             </nav>
         </aside>
 
@@ -580,10 +567,29 @@
                 element: '阴',
                 faction: '折镜队',
                 color: '#22d3ee',
-                meta: ['本名：林晚照', '年龄：24岁', '瞳色：淡金（阴阳眼）', '发色：白色及腰', '体质：至阴体质'],
-                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。<br><br><strong>12岁转折点：</strong>中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。<br><br><strong>核心特征：</strong>白发金瞳，外冷内热。从被家族抛弃的混血女成长为独当一面的队长。表面冷酷，内心珍视每一个队友。',
+                meta: ['本名：林晚照', '年龄：24岁', '身高：165cm', '瞳色：淡金（阴阳眼）', '发色：白色及腰', '体质：至阴体质（RH阴性血）'],
+                story: '林夕出生于江南水乡的林氏驱魔世家，世代以驱邪捉鬼为业。然而她并非嫡系正统——母亲是旁支女儿，父亲是普通人。在讲究血脉纯正的家族，她的出身被视为"不洁"。<br><br><strong>12岁转折点：</strong>中元节偷溜进祖坟，遇百年厉鬼，凭一腔孤勇周旋到天亮。当长辈找到她时，看到的是浑身是血、双眼泛着淡金色、徒手撕碎厉鬼残魂的林夕。那一夜，她觉醒了阴阳眼，也白了头发。随后被逐出家族。<br><br><strong>成长经历：</strong><br>• <strong>12-20岁</strong>：在纸扎店帮忙，疯狂自学驱魔术，16岁开始接"小活儿"，人称"白发小先生"<br>• <strong>20岁</strong>：处理"镜中鬼"事件被BMA注意，张老天师收为关门弟子，入走阴司改名"林夕"，在龙虎山修炼四年<br>• <strong>24岁</strong>：外勤三队成立，任队长<br><br><strong>性格特征：</strong>外冷内热，嘴硬心软；害怕被抛弃（童年阴影）。任务中冷静果断，面对鬼怪凌厉危险，有"白发修罗"的绰号。',
                 quote: '"我命由我不由天，不由林家，不由这至阴的体质。我是林夕，走阴司外勤三队队长，专门处理那些你们搞不定的案子。"',
-                image: 'images/linxi.png'
+                image: 'images/linxi.png',
+                appearance: {
+                    coat: '白色短款中式立领开衫（盘扣），短款露腰，敞开穿，袖口宽大飘逸',
+                    inner: '黑色运动内衣（长款），盖住腹部，只露腰线',
+                    accessory: '简约黑色皮质choker（无吊坠）',
+                    bottom: '黑色高腰战术短裤（修身剪裁）',
+                    socks: '左腿：黑色丝袜配白色云纹印花（布满整腿）；右腿：纯黑色丝袜',
+                    shoes: '黑色时尚马丁靴（侧边拉链，厚底）',
+                    belt: '黑色皮质腰带，挂三枚小青铜铃铛'
+                },
+                abilities: [
+                    {name: '阴阳眼', type: '天赋', desc: '淡金色瞳孔，看破阴阳、感知阴气、看穿鬼怪本质'},
+                    {name: '至阴体质', type: '天赋', desc: 'RH阴性血，对阴气亲和力极高，但也易被阴物觊觎'},
+                    {name: '寻龙定穴', type: '战斗', desc: '观察地势气流，找到阴地的"眼"和"门"'},
+                    {name: '铃铛术', type: '战斗', desc: '以青铜铃为媒介，摄魂、定位、音波攻击'},
+                    {name: '渡气', type: '特殊', desc: '将自身阴气渡给濒死之人，与主角的定情技能'}
+                ],
+                likes: '冰可乐（压力大时灌半瓶）、辣火锅、糯米糕；冻顶乌龙；古琴曲（尤其《广陵散》）；爬屋顶看月亮、扎纸人解压；收集各地铃铛',
+                dislikes: '香菜、苦瓜；镜子（童年阴影）、祠堂；被说"像林家人"；雷雨',
+                quirks: '紧张时摸腰带铃铛；思考时用符箓纸折纸飞机；战斗前挽起袖口；失眠时数铃铛声（三短一长）；私藏一罐纸星星写愿望'
             },
             guanfeng: {
                 name: '关锋',
@@ -668,7 +674,8 @@
                 `<img src="${char.image}" alt="${char.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='${char.avatar}'">` :
                 char.avatar;
 
-            modalBody.innerHTML = `
+            // 基础内容
+            let modalHTML = `
                 <div class="modal-header">
                     <div class="modal-avatar" style="border-color: ${char.color}; overflow: hidden;">${avatarContent}</div>
                     <div class="modal-info">
@@ -692,7 +699,46 @@
                     <div class="info-section">
                         <h4>角色背景</h4>
                         <p>${char.story}</p>
-                    </div>
+                    </div>`;
+
+            // 外观设定（如果有）
+            if (char.appearance) {
+                modalHTML += `
+                    <div class="info-section">
+                        <h4>外观设定</h4>
+                        <table style="width: 100%; margin: 12px 0;">
+                            <tr><th>部位</th><th>设计</th></tr>
+                            ${Object.entries(char.appearance).map(([key, value]) => {
+                                const labels = {coat: '外衣', inner: '内搭', accessory: '配饰', bottom: '下装', socks: '丝袜', shoes: '鞋子', belt: '腰带'};
+                                return `<tr><td>${labels[key] || key}</td><td>${value}</td></tr>`;
+                            }).join('')}
+                        </table>
+                    </div>`;
+            }
+
+            // 能力设定（如果有）
+            if (char.abilities) {
+                modalHTML += `
+                    <div class="info-section">
+                        <h4>能力与技能</h4>
+                        <table style="width: 100%; margin: 12px 0;">
+                            <tr><th>类型</th><th>名称</th><th>说明</th></tr>
+                            ${char.abilities.map(a => `<tr><td>${a.type}</td><td>${a.name}</td><td>${a.desc}</td></tr>`).join('')}
+                        </table>
+                    </div>`;
+            }
+
+            // 喜好（如果有）
+            if (char.likes || char.dislikes || char.quirks) {
+                modalHTML += `<div class="info-section"><h4>日常与喜好</h4>`;
+                if (char.likes) modalHTML += `<p><strong>喜欢的：</strong>${char.likes}</p>`;
+                if (char.dislikes) modalHTML += `<p><strong>讨厌的：</strong>${char.dislikes}</p>`;
+                if (char.quirks) modalHTML += `<p><strong>小怪癖：</strong>${char.quirks}</p>`;
+                modalHTML += `</div>`;
+            }
+
+            // 经典台词
+            modalHTML += `
                     <div class="info-section">
                         <h4>经典台词</h4>
                         <div style="padding: 16px; background: var(--bg-hover); border-left: 4px solid ${char.color}; border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-secondary);">
@@ -701,6 +747,8 @@
                     </div>
                 </div>
             `;
+
+            modalBody.innerHTML = modalHTML;
             document.getElementById('characterModal').classList.add('active');
         }
 
