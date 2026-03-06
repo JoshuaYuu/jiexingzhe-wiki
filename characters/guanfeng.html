@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关锋 - 折镜队副队长、优雅武者、关羽后人 | 角色档案 | 界行者Wiki</title>
+    <meta name="description" content="关锋，界行者折镜队副队长，杀道觉醒者，关羽后人。了解他的背景故事、外观设定、能力技能和人物关系。">
+    <meta name="keywords" content="关锋, 界行者, 折镜队, 杀道, 关羽后人, 优雅武者, 角色设定">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="关锋 - 折镜队副队长 | 界行者Wiki">
+    <meta property="og:description" content="优雅武者，杀道觉醒者，折镜队副队长关锋的完整档案。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/characters/guanfeng.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- 图片保护 -->
+    <script src="../js/image-protection.js"></script>
+    <style>
+        .character-header {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-darker) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e0e7ff 0%, #fbbf24 100%);
+        }
+
+        .character-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            flex-shrink: 0;
+            border: 3px solid #e0e7ff;
+            box-shadow: 0 0 20px rgba(224, 231, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .character-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+
+        .character-info {
+            flex: 1;
+        }
+
+        .character-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .character-title {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .character-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .character-tag {
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .character-tag.primary {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--yang-gold);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .character-tag.secondary {
+            background: rgba(224, 231, 255, 0.15);
+            color: #e0e7ff;
+            border: 1px solid rgba(224, 231, 255, 0.3);
+        }
+
+        .character-tag.tertiary {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .character-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+        }
+
+        .character-meta-item {
+            padding: 12px 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+        }
+
+        .character-meta-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .character-meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+
+        .section-tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .section-tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+
+        .section-tab.active {
+            color: #e0e7ff;
+            background: rgba(224, 231, 255, 0.1);
+            border-color: rgba(224, 231, 255, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .story-section {
+            margin-bottom: 24px;
+        }
+
+        .story-section h4 {
+            color: #e0e7ff;
+            margin-bottom: 12px;
+            font-size: 1.125rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #e0e7ff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #e0e7ff;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 24px;
+            bottom: -20px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-age {
+            font-size: 0.875rem;
+            color: #e0e7ff;
+            font-weight: 600;
+            min-width: 60px;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .appearance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .appearance-item {
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            border-left: 3px solid #e0e7ff;
+        }
+
+        .appearance-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .appearance-value {
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .quote-box {
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(224, 231, 255, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%);
+            border-left: 4px solid #e0e7ff;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 24px 0;
+        }
+
+        .quote-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .quote-author {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .relations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .relation-card {
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .relation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .relation-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 12px;
+        }
+
+        .relation-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .relation-type {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .dual-state {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .state-box {
+            padding: 16px;
+            border-radius: var(--radius-md);
+        }
+
+        .state-box.normal {
+            background: rgba(224, 231, 255, 0.1);
+            border: 1px solid rgba(224, 231, 255, 0.3);
+        }
+
+        .state-box.battle {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .state-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .state-box.normal .state-title {
+            color: #e0e7ff;
+        }
+
+        .state-box.battle .state-title {
+            color: var(--yang-gold);
+        }
+
+        @media (max-width: 768px) {
+            .character-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+            }
+
+            .character-avatar {
+                margin: 0 auto;
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+            }
+
+            .character-name {
+                font-size: 1.875rem;
+            }
+
+            .section-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .section-tab {
+                white-space: nowrap;
+            }
+
+            .dual-state {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="../index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span>界行者Wiki</span>
+            </a>
+            <form action="../search.html" method="get" class="search-box" style="margin: 0;">
+                <input type="text" name="q" placeholder="搜索..." autocomplete="off">
+            </form>
+        </div>
+        <div class="top-nav-right">
+            <a href="../world.html" class="nav-link">核心世界观</a>
+            <a href="../system.html" class="nav-link">界行者系统</a>
+            <a href="../factions.html" class="nav-link">势力设定</a>
+            <a href="../characters.html" class="nav-link" style="color: var(--accent-cyan);">角色档案</a>
+            <a href="../map.html" class="nav-link">世界地图</a>
+            <a href="../story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <!-- 移动端侧边栏遮罩 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- 主体 -->
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">角色信息</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#overview" class="nav-item">概览</a>
+                        <a href="#story" class="nav-item">背景故事</a>
+                        <a href="#appearance" class="nav-item">外观设定</a>
+                        <a href="#abilities" class="nav-item">能力技能</a>
+                        <a href="#relations" class="nav-item">人物关系</a>
+                    </div>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">相关链接</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="../characters.html" class="nav-item">← 返回角色列表</a>
+                        <a href="linxi.html" class="nav-item">林夕</a>
+                        <a href="chenmo.html" class="nav-item">默</a>
+                        <a href="../characters.html#zhejing" class="nav-item">折镜队</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <!-- 面包屑导航 -->
+            <nav class="breadcrumb">
+                <a href="../index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    首页
+                </a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="../characters.html">角色图鉴</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">🗡️ 关锋</span>
+            </nav>
+
+            <!-- 角色头部信息 -->
+            <div class="character-header" id="overview">
+                <div class="character-avatar">🗡️</div>
+                <div class="character-info">
+                    <h1 class="character-name">关锋</h1>
+                    <p class="character-title">折镜队副队长 · 优雅武者 · 关羽后人</p>
+                    <div class="character-tags">
+                        <span class="character-tag primary">杀道 · The Blade</span>
+                        <span class="character-tag secondary">阳属性</span>
+                        <span class="character-tag tertiary">武圣血脉</span>
+                    </div>
+                    <div class="character-meta-grid">
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">代号</div>
+                            <div class="character-meta-value">关队</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">年龄</div>
+                            <div class="character-meta-value">28岁</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">身高</div>
+                            <div class="character-meta-value">182cm</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">瞳色</div>
+                            <div class="character-meta-value">浅灰/金橙</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">发色</div>
+                            <div class="character-meta-value">淡蓝及颈</div>
+                        </div>
+                        <div class="character-meta-item">
+                            <div class="character-meta-label">身份</div>
+                            <div class="character-meta-value">退役军人</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 标签页导航 -->
+            <div class="section-tabs">
+                <button class="section-tab active" onclick="switchTab('story')">📖 背景故事</button>
+                <button class="section-tab" onclick="switchTab('appearance')">👤 外观设定</button>
+                <button class="section-tab" onclick="switchTab('abilities')">✨ 能力技能</button>
+                <button class="section-tab" onclick="switchTab('relations')">👥 人物关系</button>
+            </div>
+
+            <!-- 背景故事 -->
+            <div class="tab-content active" id="story">
+                <div class="story-section">
+                    <h4>童年与家族</h4>
+                    <p>关锋出生在一个没落的武术世家，祖上自称是<strong>关羽的旁支后裔</strong>。小时候，他被祖父逼着练习家传的"春秋刀法"，但年幼的关锋对这种"老古董"毫无兴趣。</p>
+                    <div class="quote-box">
+                        <p class="quote-text">"现在都什么年代了，谁还练这个？"</p>
+                        <p class="quote-author">—— 12岁的关锋把木刀扔在地上</p>
+                    </div>
+                    <p>祖父没有生气，只是叹了口气："等你遇到真正想保护的人，就会明白刀的意义。"</p>
+                </div>
+
+                <div class="story-section">
+                    <h4>少年叛逆期</h4>
+                    <p>进入青春期的关锋彻底叛逆，<strong>留长发、染颜色、穿奇装异服</strong>，整天泡在地下乐队和艺术展里。18岁那年，他和父亲大吵一架后离家出走。</p>
+                    <div class="quote-box">
+                        <p class="quote-text">"我去追寻我自己的路了。"</p>
+                        <p class="quote-author">—— 离家时的宣言</p>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>特种部队生涯</h4>
+                    <p>离家后的关锋阴差阳错地参了军。"我只是想找个地方管管自己。"</p>
+                    <p>但军队发现了他惊人的天赋——<strong>冷静、果断、精准</strong>。他被选入特种部队，成为狙击手。在7年的军旅生涯中，他执行了无数次任务，每一次都能全身而退。</p>
+                    <div class="quote-box">
+                        <p class="quote-text">"我擅长等待，然后在最恰当的时机扣下扳机。"</p>
+                        <p class="quote-author">—— 关锋形容自己的战斗风格</p>
+                    </div>
+                    <p>26岁那年，一次任务中，他的小队遭遇了超自然事件——他们面对的不再是人类敌人，而是某种无法解释的存在。队友一个个倒下，关锋第一次感到无力。</p>
+                    <p>就在他以为自己要交代在那里时，一个穿月白襦裙的姑娘出现了。</p>
+                    <p>那是他第一次见到<strong>林夕</strong>。</p>
+                </div>
+
+                <div class="story-section">
+                    <h4>退役与觉醒</h4>
+                    <p>那次事件后，关锋才知道这个世界还有"另一面"。他退役后，被林夕招募进了走阴司——不是因为他相信什么"阴阳两界"，而是因为他想弄清楚：<strong>那些杀死他队友的，到底是什么东西？</strong></p>
+                    <p>在走阴司的训练中，他发现自己竟然有"望气"的天赋——那是<strong>关羽血脉中流传下来的能力</strong>。当他第一次握住那把祖传的青龙偃月刀时，刀身竟然泛起了金橙色的光芒。</p>
+                    <div class="quote-box">
+                        <p class="quote-text">"原来如此，这就是祖父说的'保护'。"</p>
+                        <p class="quote-author">—— 关锋看着手中的刀，嘴角第一次露出了笑意</p>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>折镜队成立</h4>
+                    <p>走阴司外勤三队"折镜队"成立，林夕任队长，关锋任副队长。</p>
+                    <p>最初只有他们两个人，后来陆续加入了<a href="chenmo.html" class="wiki-link">默</a>、铁山、苏晚晴、叶小柒、云渺。关锋从最初的"独狼"，慢慢学会了团队协作。</p>
+                    <div class="quote-box">
+                        <p class="quote-text">"我以前觉得刀是用来杀人的，现在我知道，它也是用来保护人的。"</p>
+                        <p class="quote-author">—— 一次任务后的感悟</p>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>性格特质</h4>
+                    
+                    <div class="dual-state">
+                        <div class="state-box normal">
+                            <div class="state-title">🎨 表层：优雅冷峻的艺术家</div>
+                            <ul style="margin: 0; padding-left: 16px; color: var(--text-secondary);">
+                                <li>淡漠疏离：对大多数人和事都不感兴趣</li>
+                                <li>美学偏执：有自己的审美标准</li>
+                                <li>毒舌刻薄：不鸣则已，一鸣见血</li>
+                            </ul>
+                        </div>
+                        <div class="state-box battle">
+                            <div class="state-title">⚔️ 里层：战斗狂热的保护者</div>
+                            <ul style="margin: 0; padding-left: 16px; color: var(--text-secondary);">
+                                <li>战斗狂热：平时慵懒，战斗时眼睛发亮</li>
+                                <li>武痴本性：经常"偶遇"默并要求对练</li>
+                                <li>护短：对认可的人会露出罕见的温柔</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="quote-box">
+                        <p class="quote-text">林夕："这任务很难。"<br>关锋："那就让它简单点。"</p>
+                        <p class="quote-author">—— 经典对话</p>
+                    </div>
+                    <div class="quote-box">
+                        <p class="quote-text">默："关哥，这招怎么破？"<br>关锋：（打量三秒）"用脸。"</p>
+                        <p class="quote-author">—— 日常毒舌</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 外观设定 -->
+            <div class="tab-content" id="appearance">
+                <div class="story-section">
+                    <h4>整体风格</h4>
+                    <p><strong>潮流艺术家 × 冷峻贵族 × 现代武者</strong></p>
+                    <p>参考风格：P5喜多川佑介（潮流艺术感）+ 崩铁星期日（冷峻优雅感）</p>
+                    
+                    <div class="info-box" style="margin-top: 12px;">
+                        <strong>气质关键词</strong><br>
+                        • <strong>优雅冷峻</strong>：像星期日一样从容不迫<br>
+                        • <strong>艺术不羁</strong>：像喜多川一样有自己风格<br>
+                        • <strong>战斗狂热</strong>：一旦进入战斗状态判若两人
+                    </div>
+                </div>
+
+                <div class="appearance-grid">
+                    <div class="appearance-item">
+                        <div class="appearance-label">发型</div>
+                        <div class="appearance-value"><strong>淡蓝色及颈中长发</strong>，层次感剪裁，前额刘海遮住一侧眉毛（增添神秘感），发尾微微外翘，随性不羁。偶尔扎低马尾（战斗时）。</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">面部特征</div>
+                        <div class="appearance-value">瘦长瓜子脸，线条柔和但锋利。细长剑眉，微微蹙起自带忧郁感。高挺精致鼻梁，薄唇 rarely 有表情。白皙冷调皮肤。</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">瞳色（双状态）</div>
+                        <div class="appearance-value"><strong>平时</strong>：浅灰色瞳孔，眼神淡漠疏离，仿佛看透一切<br>
+                        <strong>战斗时</strong>：金橙色瞳孔觉醒，像燃烧的太阳</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">上身</div>
+                        <div class="appearance-value"><strong>象牙白长款风衣</strong>（及膝，高级感）<br>
+                        • 修身剪裁，突出肩线<br>
+                        • 领口立领设计，可竖起遮半张脸<br>
+                        • 左胸：金色极简"关"字胸针<br>
+                        • 内衬：深红色丝绸（拉开时露出）<br>
+                        <strong>内搭</strong>：黑色高领衬衫（丝质，高级感）</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">下身</div>
+                        <div class="appearance-value">黑色修身西裤（非工装，更优雅）<br>
+                        黑色切尔西靴（皮面，高级感）</div>
+                    </div>
+                    <div class="appearance-item">
+                        <div class="appearance-label">配饰</div>
+                        <div class="appearance-value">• 颈部：多层银色细链 + 黑色宝石吊坠<br>
+                        • 手腕：右手皮质手环（银色扣）<br>
+                        • 耳饰：右耳单枚银色耳坠（长款，垂至下颌）<br>
+                        • 戒指：食指和中指各一枚银色戒指</div>
+                    </div>
+                </div>
+
+                <div class="story-section" style="margin-top: 24px;">
+                    <h4>武器：青龙偃月刀 · 斩邪（优雅改良版）</h4>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>外观描述</strong><br>
+                        • <strong>类型</strong>：长柄大刀，全长1.8米<br>
+                        • <strong>刀身</strong>：象牙白涂层（与风衣呼应），刀刃泛着金橙色光芒<br>
+                        • <strong>刀柄</strong>：黑色缠绳，银色金属护手（精致雕花）<br>
+                        • <strong>装饰</strong>：刀身无传统纹样，采用极简几何线条；刀穗为白金双色丝带<br>
+                        • <strong>收纳</strong>：可折叠，收起后如白色手杖
+                    </div>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>战斗特性</strong><br>
+                        • 平时收起如手杖，优雅从容<br>
+                        • 战斗时展开，金橙光芒大盛<br>
+                        • 配合杀道能力，一刀斩邪
+                    </div>
+                </div>
+
+                <div class="story-section" style="margin-top: 24px;">
+                    <h4>双状态对比</h4>
+                    <table style="margin-top: 12px;">
+                        <tr>
+                            <th>状态</th>
+                            <th>气质</th>
+                            <th>瞳孔</th>
+                            <th>动作</th>
+                        </tr>
+                        <tr>
+                            <td><strong>平时</strong></td>
+                            <td>优雅淡漠</td>
+                            <td>浅灰</td>
+                            <td>从容缓慢</td>
+                        </tr>
+                        <tr style="background: rgba(251, 191, 36, 0.1);">
+                            <td><strong>战斗</strong></td>
+                            <td>狂热暴力</td>
+                            <td>金橙</td>
+                            <td>凌厉迅猛</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 能力技能 -->
+            <div class="tab-content" id="abilities">
+                <div class="story-section">
+                    <h4>杀道 · The Blade</h4>
+                    <p>关锋觉醒的职业是<strong>杀道</strong>——纯粹为战斗而生的道路。配合祖传的青龙偃月刀和武圣血脉，他是折镜队最强的输出位。</p>
+                    
+                    <div class="character-card" style="border-left: 4px solid #fbbf24; margin-top: 12px;">
+                        <strong>核心能力</strong><br>
+                        • <strong>望气</strong>：关羽血脉传承，可看见敌人的"气"之流动，预判攻击<br>
+                        • <strong>春秋刀法</strong>：家传刀法，刚柔并济，一刀可斩邪祟<br>
+                        • <strong>杀意感知</strong>：对杀意极度敏感，可预判敌人攻击轨迹<br>
+                        • <strong>武圣觉醒</strong>：瞳孔变为金橙色时，战斗力大幅提升
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>战斗风格</h4>
+                    <p>关锋的战斗风格是<strong>"优雅而致命"</strong>——</p>
+                    <ul style="color: var(--text-secondary); line-height: 1.8;">
+                        <li>平时从容不迫，仿佛在散步</li>
+                        <li>一旦出手，快如闪电，一击必杀</li>
+                        <li>擅长等待最佳时机，然后一刀斩敌</li>
+                        <li>与林夕配合时，一攻一守，默契无间</li>
+                    </ul>
+                </div>
+
+                <div class="story-section">
+                    <h4>经典战技</h4>
+                    <div class="character-card" style="border-left: 4px solid #fbbf24; margin-top: 12px;">
+                        <strong>青龙斩</strong><br>
+                        刀身金橙光芒大盛，一刀斩出，刀气如龙，可斩开界域。
+                    </div>
+                    <div class="character-card" style="border-left: 4px solid #fbbf24; margin-top: 12px;">
+                        <strong>春秋·断</strong><br>
+                        春秋刀法终极奥义，一刀断生死，可斩断敌人的"气"之连接。
+                    </div>
+                    <div class="character-card" style="border-left: 4px solid #fbbf24; margin-top: 12px;">
+                        <strong>武圣降临</strong><br>
+                        完全觉醒武圣血脉，全身金橙光芒，战力翻倍，但消耗巨大。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 人物关系 -->
+            <div class="tab-content" id="relations">
+                <div class="story-section">
+                    <h4>折镜队关系网</h4>
+                    <div class="relations-grid">
+                        <div class="relation-card">
+                            <div class="relation-avatar">🌙</div>
+                            <div class="relation-name">林夕</div>
+                            <div class="relation-type">队长/知己</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="relation-avatar">⚓</div>
+                            <div class="relation-name">默</div>
+                            <div class="relation-type">新人/练手对象</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="relation-avatar">🛡️</div>
+                            <div class="relation-name">铁山</div>
+                            <div class="relation-type">武友</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="relation-avatar">💚</div>
+                            <div class="relation-name">苏晚晴</div>
+                            <div class="relation-type">队友</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="relation-avatar">💻</div>
+                            <div class="relation-name">叶小柒</div>
+                            <div class="relation-type">队友</div>
+                        </div>
+                        <div class="relation-card">
+                            <div class="relation-avatar">🌀</div>
+                            <div class="relation-name">云渺</div>
+                            <div class="relation-type">队友</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>详细关系</h4>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>林夕 · 队长/知己</strong><br>
+                        默契搭档，一动一静。林夕带他进入走阴司，是改变他命运的人。两人配合无间，一个眼神就知道对方要做什么。
+                    </div>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>默 · 新人/练手对象</strong><br>
+                        经常"指导"他，在他身上看到曾经的自己。虽然嘴上说"用脸"，但实际上很关心这个新人。
+                    </div>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>铁山 · 武友</strong><br>
+                        互相认可实力，偶尔切磋。两人都是实战派，有共同语言。
+                    </div>
+                    
+                    <div class="character-card" style="border-left: 4px solid #e0e7ff; margin-top: 12px;">
+                        <strong>家族 · 未和解</strong><br>
+                        表面断绝联系，内心想证明又后悔。这是关锋内心深处的软肋。
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <h4>称呼方式</h4>
+                    <div class="info-box">
+                        <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                            <li><strong>林夕</strong>：林队（私下）、队长（人前）</li>
+                            <li><strong>默</strong>：小默、新人</li>
+                            <li><strong>铁山/叶小柒/云渺</strong>：直接叫名字</li>
+                            <li><strong>苏晚晴</strong>：晚晴（较亲近）</li>
+                            <li><strong>走阴司晚辈</strong>：关队、关副队</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.section-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function toggleNavGroup(header) {
+            const group = header.parentElement;
+            group.classList.toggle('collapsed');
+            header.classList.toggle('active');
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
