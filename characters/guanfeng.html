@@ -359,6 +359,118 @@
             color: var(--yang-gold);
         }
 
+        /* 图片画廊 */
+        .gallery-section {
+            margin-bottom: 32px;
+        }
+
+        .gallery-row {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .gallery-row.horizontal {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-row.vertical {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            border-color: #e0e7ff;
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(224, 231, 255, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-row.vertical .gallery-item img {
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+
+        /* 图片模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .image-modal img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-modal-caption {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .image-modal-close:hover {
+            color: var(--text-primary);
+        }
+
         @media (max-width: 768px) {
             .character-header {
                 flex-direction: column;
@@ -388,6 +500,11 @@
             }
 
             .dual-state {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-row.horizontal,
+            .gallery-row.vertical {
                 grid-template-columns: 1fr;
             }
         }
@@ -518,6 +635,33 @@
 
             <!-- 背景故事 -->
             <div class="tab-content active" id="story">
+                <!-- 角色图片画廊 -->
+                <div class="gallery-section">
+                    <h4>角色设定图</h4>
+                    <!-- 横版图片行 -->
+                    <div class="gallery-row horizontal">
+                        <div class="gallery-item" onclick="openImageModal('images/guanfeng/Gemini_Generated_Image_6dn5am6dn5am6dn5.png', '优雅冷面 - 概念图A')">
+                            <img src="images/guanfeng/Gemini_Generated_Image_6dn5am6dn5am6dn5.png" alt="优雅冷面A">
+                            <div class="gallery-caption">优雅冷面 - 概念图A</div>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('images/guanfeng/Gemini_Generated_Image_8wboga8wboga8wbo.png', '优雅冷面 - 概念图B')">
+                            <img src="images/guanfeng/Gemini_Generated_Image_8wboga8wboga8wbo.png" alt="优雅冷面B">
+                            <div class="gallery-caption">优雅冷面 - 概念图B</div>
+                        </div>
+                    </div>
+                    <!-- 竖版图片行 -->
+                    <div class="gallery-row vertical">
+                        <div class="gallery-item" onclick="openImageModal('images/guanfeng/Gemini_Generated_Image_59pycu59pycu59py.png', '淡蓝长发 - 特写')">
+                            <img src="images/guanfeng/Gemini_Generated_Image_59pycu59pycu59py.png" alt="淡蓝长发">
+                            <div class="gallery-caption">淡蓝长发 - 特写</div>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('images/guanfeng/Gemini_Generated_Image_kr15xkkr15xkkr15.png', '战斗觉醒 - 金橙瞳孔')">
+                            <img src="images/guanfeng/Gemini_Generated_Image_kr15xkkr15xkkr15.png" alt="战斗觉醒">
+                            <div class="gallery-caption">战斗觉醒 - 金橙瞳孔</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="story-section">
                     <h4>童年与家族</h4>
                     <p>关锋出生在一个没落的武术世家，祖上自称是<strong>关羽的旁支后裔</strong>。小时候，他被祖父逼着练习家传的"春秋刀法"，但年幼的关锋对这种"老古董"毫无兴趣。</p>
@@ -822,6 +966,15 @@
         </main>
     </div>
 
+    <!-- 图片模态框 -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.section-tab').forEach(tab => {
@@ -853,6 +1006,30 @@
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+
+        // 图片模态框功能
+        function openImageModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('modalImage');
+            const cap = document.getElementById('modalCaption');
+            img.src = src;
+            cap.textContent = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
         });
 
         document.addEventListener('DOMContentLoaded', function() {
