@@ -369,6 +369,20 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
+        .gallery-row.horizontal:has(> :only-child) {
+            grid-template-columns: 1fr;
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-row.vertical:has(> :only-child) {
+            grid-template-columns: 1fr;
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .gallery-item {
             position: relative;
             border-radius: var(--radius-md);
@@ -688,26 +702,29 @@
                 <!-- 角色图片画廊 -->
                 <div class="gallery-section">
                     <h4>角色设定图</h4>
-                    <!-- 横版图片行 (16:9) -->
+                    <!-- 第一行：横版图片 (16:9) -->
                     <div class="gallery-row horizontal">
                         <div class="gallery-item" onclick="openImageModal('images/chenmo/观道状态_概念图A.png', '观道状态 - 概念图A')">
                             <img src="images/chenmo/观道状态_概念图A.png" alt="观道状态A">
                             <div class="gallery-caption">观道状态 - 概念图A</div>
                         </div>
-                        <div class="gallery-item" onclick="openImageModal('images/chenmo/观道状态_概念图B.png', '观道状态 - 概念图B')">
-                            <img src="images/chenmo/观道状态_概念图B.png" alt="观道状态B">
-                            <div class="gallery-caption">观道状态 - 概念图B</div>
-                        </div>
-                    </div>
-                    <!-- 竖版图片行 (4:3) -->
-                    <div class="gallery-row vertical">
                         <div class="gallery-item" onclick="openImageModal('images/chenmo/观道罗盘_武器设定.png', '观道罗盘 - 武器设定')">
                             <img src="images/chenmo/观道罗盘_武器设定.png" alt="观道罗盘">
                             <div class="gallery-caption">观道罗盘 - 武器设定</div>
                         </div>
+                    </div>
+                    <!-- 第二行：横版图片 (16:9) -->
+                    <div class="gallery-row horizontal">
                         <div class="gallery-item" onclick="openImageModal('images/chenmo/战斗状态.png', '战斗状态')">
                             <img src="images/chenmo/战斗状态.png" alt="战斗状态">
                             <div class="gallery-caption">战斗状态</div>
+                        </div>
+                    </div>
+                    <!-- 第三行：竖版图片 (3:4) -->
+                    <div class="gallery-row vertical">
+                        <div class="gallery-item" onclick="openImageModal('images/chenmo/观道状态_概念图B.png', '观道状态 - 概念图B')">
+                            <img src="images/chenmo/观道状态_概念图B.png" alt="观道状态B">
+                            <div class="gallery-caption">观道状态 - 概念图B</div>
                         </div>
                     </div>
                 </div>
