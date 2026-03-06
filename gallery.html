@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画廊 - CG、设定图、视觉素材 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》视觉画廊，收录游戏CG、角色设定图、场景设计稿等精美视觉素材。">
+    <meta name="keywords" content="界行者, CG, 画廊, 设定图, 视觉素材, 游戏美术">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/image-protection.js"></script>
+    <style>
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-darker) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--boundary-cyan) 0%, var(--yin-purple) 50%, var(--yang-gold) 100%);
+        }
+
+        .gallery-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--boundary-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        /* 分类标签 */
+        .gallery-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-tab:hover {
+            border-color: var(--boundary-cyan);
+            color: var(--text-primary);
+        }
+
+        .gallery-tab.active {
+            background: linear-gradient(135deg, var(--boundary-cyan) 0%, var(--boundary-cyan-dark) 100%);
+            color: white;
+            border-color: var(--boundary-cyan);
+            box-shadow: 0 0 20px var(--boundary-cyan-glow);
+        }
+
+        /* 图片网格 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            aspect-ratio: 16/10;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--boundary-cyan);
+            box-shadow: 0 12px 40px rgba(34, 211, 238, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .gallery-item-category {
+            font-size: 0.75rem;
+            color: var(--boundary-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 分类标题 */
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 40px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-title.cg {
+            color: var(--yang-gold);
+            border-color: var(--yang-gold);
+        }
+
+        .category-title.design {
+            color: var(--boundary-cyan);
+            border-color: var(--boundary-cyan);
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* 图片模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .image-modal img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        }
+
+        .image-modal-caption {
+            text-align: center;
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .image-modal-close:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .image-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: var(--text-primary);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-modal-nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .image-modal-nav.prev {
+            left: -80px;
+        }
+
+        .image-modal-nav.next {
+            right: -80px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 1.875rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
+            }
+
+            .image-modal-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span>界行者Wiki</span>
+            </a>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+            <a href="gallery.html" class="nav-link" style="color: var(--boundary-cyan);">画廊</a>
+            <a href="library.html" class="nav-link">藏经阁</a>
+        </div>
+    </nav>
+
+    <!-- 移动端侧边栏遮罩 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <div class="gallery-container">
+        <!-- 页面标题 -->
+        <div class="gallery-header">
+            <h1 class="gallery-title">🎨 画廊</h1>
+            <p class="gallery-subtitle">收录《界行者》精美CG、角色设定、场景设计等视觉素材</p>
+        </div>
+
+        <!-- 分类标签 -->
+        <div class="gallery-tabs">
+            <button class="gallery-tab active" onclick="switchTab('all')">
+                <span>📁</span> 全部
+            </button>
+            <button class="gallery-tab" onclick="switchTab('cg')">
+                <span>🎬</span> CG插画
+            </button>
+            <button class="gallery-tab" onclick="switchTab('design')">
+                <span>✏️</span> 设定图
+            </button>
+        </div>
+
+        <!-- CG分类 -->
+        <div id="cg-section" class="gallery-section">
+            <h2 class="category-title cg">
+                <span>🎬</span> CG插画
+            </h2>
+            <div class="gallery-grid" id="cg-grid">
+                <!-- CG图片将通过JS动态加载 -->
+            </div>
+        </div>
+
+        <!-- 设定图分类 -->
+        <div id="design-section" class="gallery-section">
+            <h2 class="category-title design">
+                <span>✏️</span> 设定图
+            </h2>
+            <div class="gallery-grid" id="design-grid">
+                <!-- 设定图将通过JS动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片模态框 -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <button class="image-modal-nav prev" onclick="navigateImage(-1)">&#8249;</button>
+            <button class="image-modal-nav next" onclick="navigateImage(1)">&#8250;</button>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script>
+        // 图片数据
+        const galleryData = {
+            cg: [
+                { src: 'collection/museum/cg/CG_额头相抵_灵魂共鸣.png', title: '额头相抵 · 灵魂共鸣', category: 'CG' },
+                { src: 'collection/museum/cg/CG_微醺之夜_卸下防备.png', title: '微醺之夜 · 卸下防备', category: 'CG' },
+                { src: 'collection/museum/cg/CG_雨中守护_为你撑伞.png', title: '雨中守护 · 为你撑伞', category: 'CG' },
+                { src: 'collection/museum/cg/CG_月下疗伤_膝枕温情.png', title: '月下疗伤 · 膝枕温情', category: 'CG' },
+                { src: 'collection/museum/cg/amusement-park.png', title: '游乐园', category: 'CG' },
+                { src: 'collection/museum/cg/beach-sunset.png', title: '海滩日落', category: 'CG' },
+                { src: 'collection/museum/cg/cafe-boba-tea.png', title: '奶茶店', category: 'CG' },
+                { src: 'collection/museum/cg/casual-shopping.png', title: '购物时光', category: 'CG' },
+                { src: 'collection/museum/cg/festival-fireworks.png', title: '节日烟花', category: 'CG' },
+                { src: 'collection/museum/cg/concept-dual-fighter.png', title: '双人战斗概念', category: 'CG' }
+            ],
+            design: [
+                { src: 'collection/museum/design/ComfyUI_00016_.png', title: '角色设计', category: '设定图' },
+                { src: 'collection/museum/design/detail-stockings.png', title: '细节设计', category: '设定图' },
+                { src: 'collection/museum/design/full-body-night-mountain.png', title: '全身设定', category: '设定图' },
+                { src: 'collection/museum/design/Gemini_Generated_Image_2g38g02g38g02g38.png', title: '角色概念', category: '设定图' },
+                { src: 'collection/museum/design/Gemini_Generated_Image_cv618wcv618wcv61.png', title: '角色概念', category: '设定图' },
+                { src: 'collection/museum/design/Gemini_Generated_Image_po2m0spo2m0spo2m.png', title: '角色概念', category: '设定图' },
+                { src: 'collection/museum/design/Gemini_Generated_Image_qjunwdqjunwdqjun.png', title: '角色概念', category: '设定图' }
+            ]
+        };
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        // 初始化画廊
+        function initGallery() {
+            renderGallery('cg', 'cg-grid');
+            renderGallery('design', 'design-grid');
+        }
+
+        // 渲染画廊
+        function renderGallery(type, containerId) {
+            const container = document.getElementById(containerId);
+            const images = galleryData[type];
+            
+            if (!images || images.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📂</div>
+                        <p>暂无${type === 'cg' ? 'CG' : '设定图'}素材</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = images.map((img, index) => `
+                <div class="gallery-item" onclick="openImageModal('${type}', ${index})">
+                    <img src="${img.src}" alt="${img.title}" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <div class="gallery-item-title">${img.title}</div>
+                        <div class="gallery-item-category">${img.category}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 切换标签
+        function switchTab(tab) {
+            // 更新按钮状态
+            document.querySelectorAll('.gallery-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.gallery-tab').classList.add('active');
+
+            // 显示/隐藏分类
+            const cgSection = document.getElementById('cg-section');
+            const designSection = document.getElementById('design-section');
+
+            if (tab === 'all') {
+                cgSection.style.display = 'block';
+                designSection.style.display = 'block';
+            } else if (tab === 'cg') {
+                cgSection.style.display = 'block';
+                designSection.style.display = 'none';
+            } else if (tab === 'design') {
+                cgSection.style.display = 'none';
+                designSection.style.display = 'block';
+            }
+        }
+
+        // 打开图片模态框
+        function openImageModal(type, index) {
+            currentImages = galleryData[type];
+            currentIndex = index;
+            showCurrentImage();
+            
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 显示当前图片
+        function showCurrentImage() {
+            const img = currentImages[currentIndex];
+            document.getElementById('modalImage').src = img.src;
+            document.getElementById('modalCaption').textContent = `${img.title} · ${img.category}`;
+        }
+
+        // 关闭模态框
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 导航图片
+        function navigateImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            showCurrentImage();
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeImageModal();
+            if (e.key === 'ArrowLeft') navigateImage(-1);
+            if (e.key === 'ArrowRight') navigateImage(1);
+        });
+
+        // 移动端侧边栏切换
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar) {
+                sidebar.classList.toggle('open');
+            }
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+</html>

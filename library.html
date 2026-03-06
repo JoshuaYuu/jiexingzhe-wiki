@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藏经阁 - 小说文库、主线剧情、支线故事 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》藏经阁，收录主线剧情小说、支线故事、角色外传等文学作品。">
+    <meta name="keywords" content="界行者, 小说, 藏经阁, 主线剧情, 支线故事, 文学作品">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .library-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .library-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-darker) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .library-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--yin-purple) 0%, var(--boundary-cyan) 50%, var(--yang-gold) 100%);
+        }
+
+        .library-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--yin-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .library-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        /* 小说系列标签 */
+        .series-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .series-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .series-tab:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .series-tab.active {
+            background: linear-gradient(135deg, var(--yin-purple) 0%, var(--yin-purple-dark) 100%);
+            color: white;
+            border-color: var(--yin-purple);
+        }
+
+        /* 书籍卡片网格 */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--yin-purple);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .book-cover {
+            height: 160px;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-hover) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);
+        }
+
+        .book-status {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .book-status.ongoing {
+            background: rgba(52, 211, 153, 0.2);
+            color: var(--success);
+        }
+
+        .book-status.completed {
+            background: rgba(96, 165, 250, 0.2);
+            color: var(--info);
+        }
+
+        .book-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .book-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .book-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .book-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* 章节列表 */
+        .chapters-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .chapters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chapters-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .chapter-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .chapter-item:hover {
+            border-color: var(--yin-purple);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .chapter-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--yin-purple) 0%, var(--yin-purple-dark) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .chapter-info {
+            flex: 1;
+        }
+
+        .chapter-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .chapter-date {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .chapter-status {
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+        }
+
+        .chapter-status.new {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--yang-gold);
+        }
+
+        /* 阅读器模态框 */
+        .reader-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-darker);
+            z-index: 2000;
+            flex-direction: column;
+        }
+
+        .reader-modal.active {
+            display: flex;
+        }
+
+        .reader-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .reader-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .reader-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .reader-close:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .reader-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .reader-text {
+            font-size: 1.125rem;
+            line-height: 2;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+        }
+
+        .reader-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+        }
+
+        .reader-nav-btn {
+            padding: 12px 24px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reader-nav-btn:hover:not(:disabled) {
+            border-color: var(--yin-purple);
+            color: var(--text-primary);
+        }
+
+        .reader-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .library-title {
+                font-size: 1.875rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reader-content {
+                padding: 24px 16px;
+            }
+
+            .reader-text {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span>界行者Wiki</span>
+            </a>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+            <a href="gallery.html" class="nav-link">画廊</a>
+            <a href="library.html" class="nav-link" style="color: var(--boundary-cyan);">藏经阁</a>
+        </div>
+    </nav>
+
+    <!-- 移动端侧边栏遮罩 -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <div class="library-container">
+        <!-- 页面标题 -->
+        <div class="library-header">
+            <h1 class="library-title">📚 藏经阁</h1>
+            <p class="library-subtitle">收录《界行者》主线剧情、支线故事、角色外传等文学作品</p>
+        </div>
+
+        <!-- 系列标签 -->
+        <div class="series-tabs">
+            <button class="series-tab active" onclick="switchSeries('main')">
+                <span>📖</span> 主线剧情
+            </button>
+            <button class="series-tab" onclick="switchSeries('side')">
+                <span>🌿</span> 支线故事
+            </button>
+            <button class="series-tab" onclick="switchSeries('extra')">
+                <span>✨</span> 角色外传
+            </button>
+        </div>
+
+        <!-- 书籍列表 -->
+        <div id="books-container" class="books-grid">
+            <!-- 书籍卡片将通过JS动态生成 -->
+        </div>
+
+        <!-- 章节列表（选中书籍后显示） -->
+        <div id="chapters-container" class="chapters-section" style="display: none;">
+            <div class="chapters-header">
+                <h3 class="chapters-title" id="selected-book-title">章节列表</h3>
+                <button onclick="closeChapters()" style="background: none; border: none; color: var(--text-secondary); cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="chapters-list" id="chapters-list">
+                <!-- 章节列表将通过JS动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 阅读器模态框 -->
+    <div class="reader-modal" id="readerModal">
+        <div class="reader-header">
+            <div class="reader-title" id="reader-title">章节标题</div>
+            <button class="reader-close" onclick="closeReader()">&times;</button>
+        </div>
+        <div class="reader-content">
+            <div class="reader-text" id="reader-text">正在加载...</div>
+        </div>
+        <div class="reader-nav">
+            <button class="reader-nav-btn" id="prev-chapter" onclick="navigateChapter(-1)">
+                <span>&#8249;</span> 上一章
+            </button>
+            <button class="reader-nav-btn" id="next-chapter" onclick="navigateChapter(1)">
+                下一章 <span>&#8250;</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 书籍数据
+        const libraryData = {
+            main: [
+                {
+                    id: 'main-1',
+                    title: '界行者：倒悬村篇',
+                    desc: '第零章至第一章。新人界行者默的入职考核，倒悬村的诡异事件，与林夕的初次相遇。',
+                    cover: '🏔️',
+                    status: '连载中',
+                    chapters: 2,
+                    words: '约4万字',
+                    updateDate: '2026-03-04',
+                    chapterList: [
+                        { number: 0, title: '入职前的意外考核', file: 'collection/novel/主线/界行者_第零章_入职前的意外考核_扩充版.txt' },
+                        { number: 1, title: '新人报到与外围招募', file: 'collection/novel/主线/界行者_第一章_新人报到与外围招募_扩充版.txt' }
+                    ]
+                }
+            ],
+            side: [
+                // 支线故事待添加
+            ],
+            extra: [
+                // 角色外传待添加
+            ]
+        };
+
+        let currentSeries = 'main';
+        let currentBook = null;
+        let currentChapterIndex = 0;
+
+        // 初始化
+        function initLibrary() {
+            renderBooks('main');
+        }
+
+        // 渲染书籍列表
+        function renderBooks(series) {
+            const container = document.getElementById('books-container');
+            const books = libraryData[series];
+
+            if (!books || books.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <div class="empty-state-icon">📝</div>
+                        <p>该分类下暂无作品，敬请期待</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = books.map(book => `
+                <div class="book-card" onclick="selectBook('${series}', '${book.id}')">
+                    <div class="book-cover">
+                        ${book.cover}
+                        <span class="book-status ${book.status === '连载中' ? 'ongoing' : 'completed'}">${book.status}</span>
+                    </div>
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-desc">${book.desc}</div>
+                        <div class="book-meta">
+                            <span>📄 ${book.chapters}章</span>
+                            <span>📝 ${book.words}</span>
+                            <span>📅 ${book.updateDate}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 切换系列
+        function switchSeries(series) {
+            currentSeries = series;
+            
+            // 更新标签状态
+            document.querySelectorAll('.series-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.closest('.series-tab').classList.add('active');
+
+            // 隐藏章节列表
+            document.getElementById('chapters-container').style.display = 'none';
+
+            // 渲染书籍
+            renderBooks(series);
+        }
+
+        // 选择书籍
+        function selectBook(series, bookId) {
+            const book = libraryData[series].find(b => b.id === bookId);
+            if (!book) return;
+
+            currentBook = book;
+            currentChapterIndex = 0;
+
+            // 显示章节列表
+            document.getElementById('selected-book-title').textContent = book.title + ' - 章节列表';
+            document.getElementById('chapters-container').style.display = 'block';
+
+            // 渲染章节列表
+            const chaptersList = document.getElementById('chapters-list');
+            chaptersList.innerHTML = book.chapterList.map((chapter, index) => `
+                <div class="chapter-item" onclick="readChapter(${index})">
+                    <div class="chapter-number">${chapter.number}</div>
+                    <div class="chapter-info">
+                        <div class="chapter-name">第${chapter.number}章：${chapter.title}</div>
+                        <div class="chapter-date">点击阅读</div>
+                    </div>
+                    ${index === book.chapterList.length - 1 ? '<span class="chapter-status new">最新</span>' : ''}
+                </div>
+            `).join('');
+
+            // 滚动到章节列表
+            document.getElementById('chapters-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 关闭章节列表
+        function closeChapters() {
+            document.getElementById('chapters-container').style.display = 'none';
+        }
+
+        // 阅读章节
+        async function readChapter(index) {
+            if (!currentBook) return;
+            
+            currentChapterIndex = index;
+            const chapter = currentBook.chapterList[index];
+
+            // 显示阅读器
+            document.getElementById('reader-title').textContent = 
+                `${currentBook.title} - 第${chapter.number}章：${chapter.title}`;
+            document.getElementById('readerModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // 加载文本内容
+            try {
+                const response = await fetch(chapter.file);
+                const text = await response.text();
+                document.getElementById('reader-text').textContent = text;
+            } catch (error) {
+                document.getElementById('reader-text').textContent = '加载失败，请稍后重试。\n\n错误信息：' + error.message;
+            }
+
+            // 更新导航按钮状态
+            updateNavButtons();
+        }
+
+        // 关闭阅读器
+        function closeReader() {
+            document.getElementById('readerModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 章节导航
+        function navigateChapter(direction) {
+            const newIndex = currentChapterIndex + direction;
+            if (newIndex >= 0 && newIndex < currentBook.chapterList.length) {
+                readChapter(newIndex);
+            }
+        }
+
+        // 更新导航按钮状态
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prev-chapter');
+            const nextBtn = document.getElementById('next-chapter');
+
+            prevBtn.disabled = currentChapterIndex === 0;
+            nextBtn.disabled = currentChapterIndex === currentBook.chapterList.length - 1;
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('readerModal');
+            if (!modal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeReader();
+            if (e.key === 'ArrowLeft' && currentChapterIndex > 0) navigateChapter(-1);
+            if (e.key === 'ArrowRight' && currentChapterIndex < currentBook.chapterList.length - 1) navigateChapter(1);
+        });
+
+        // 移动端侧边栏切换
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            if (sidebar) {
+                sidebar.classList.toggle('open');
+            }
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', initLibrary);
+    </script>
+</body>
+</html>
