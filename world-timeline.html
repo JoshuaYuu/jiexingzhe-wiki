@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界历史时间线 - 混沌纪至现代 | 界行者Wiki</title>
+    <meta name="description" content="《界行者》完整世界历史：从混沌初开到现代，记录三界形成、锚点体系建立、各大势力兴衰的重要历史时刻。">
+    <meta name="keywords" content="界行者历史, 世界时间线, 混沌纪, 封神纪, 锚点, 界域历史, 驱魔世家">
+    <meta name="author" content="界行者Wiki">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="世界历史时间线 - 界行者Wiki">
+    <meta property="og:description" content="从混沌初开到现代，探索界行者世界的完整历史。">
+    <meta property="og:type" content="article">
+    <link rel="canonical" href="https://jiexingzhe.wiki/world-timeline.html">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/image-protection.js"></script>
+    <style>
+        /* 时间线样式 */
+        .timeline-container {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, 
+                #1f2937 0%,      /* 混沌纪 - 深灰 */
+                #7c3aed 15%,     /* 开天纪 - 紫 */
+                #4f46e5 30%,     /* 封神纪 - 靛蓝 */
+                #0891b2 50%,     /* 近古纪 - 青 */
+                #d97706 75%,     /* 近代纪 - 金 */
+                #dc2626 100%     /* 现代纪 - 红 */
+            );
+        }
+
+        .timeline-era {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-era-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-left: 8px;
+        }
+
+        .timeline-era-marker {
+            position: absolute;
+            left: -40px;
+            width: 22px;
+            height: 22px;
+            background: var(--bg-card);
+            border: 4px solid var(--boundary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 16px var(--boundary-cyan);
+            z-index: 1;
+        }
+
+        .timeline-era-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-era-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-top: 4px;
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s;
+        }
+
+        .timeline-event:hover {
+            border-color: var(--boundary-cyan);
+            transform: translateX(6px);
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.1);
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            background: var(--boundary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--boundary-cyan);
+        }
+
+        .timeline-event-date {
+            font-size: 0.875rem;
+            color: var(--boundary-cyan);
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-event-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-event-desc {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .timeline-event-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-event-tag {
+            padding: 4px 10px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .timeline-event-tag.world { background: rgba(251, 191, 36, 0.15); color: var(--yang-gold); }
+        .timeline-event-tag.faction { background: rgba(139, 92, 246, 0.15); color: var(--yin-purple); }
+        .timeline-event-tag.character { background: rgba(34, 211, 238, 0.15); color: var(--boundary-cyan); }
+        .timeline-event-tag.conflict { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .timeline-event-tag.system { background: rgba(52, 211, 153, 0.15); color: var(--success); }
+
+        /* 时代颜色 */
+        .era-chaos { --era-color: #1f2937; }
+        .era-creation { --era-color: #7c3aed; }
+        .era-gods { --era-color: #4f46e5; }
+        .era-ancient { --era-color: #0891b2; }
+        .era-modern { --era-color: #d97706; }
+        .era-present { --era-color: #dc2626; }
+
+        .timeline-era.era-chaos .timeline-era-marker { border-color: #1f2937; box-shadow: 0 0 16px rgba(31, 41, 55, 0.5); }
+        .timeline-era.era-creation .timeline-era-marker { border-color: #7c3aed; box-shadow: 0 0 16px #7c3aed; }
+        .timeline-era.era-gods .timeline-era-marker { border-color: #4f46e5; box-shadow: 0 0 16px #4f46e5; }
+        .timeline-era.era-ancient .timeline-era-marker { border-color: #0891b2; box-shadow: 0 0 16px #0891b2; }
+        .timeline-era.era-modern .timeline-era-marker { border-color: #d97706; box-shadow: 0 0 16px #d97706; }
+        .timeline-era.era-present .timeline-era-marker { border-color: #dc2626; box-shadow: 0 0 16px #dc2626; }
+
+        /* 时代介绍卡片 */
+        .era-intro {
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            border-left: 4px solid;
+        }
+
+        .era-intro.chaos { background: rgba(31, 41, 55, 0.15); border-color: #1f2937; }
+        .era-intro.creation { background: rgba(124, 58, 237, 0.1); border-color: #7c3aed; }
+        .era-intro.gods { background: rgba(79, 70, 229, 0.1); border-color: #4f46e5; }
+        .era-intro.ancient { background: rgba(8, 145, 178, 0.1); border-color: #0891b2; }
+        .era-intro.modern { background: rgba(217, 119, 6, 0.1); border-color: #d97706; }
+        .era-intro.present { background: rgba(220, 38, 38, 0.1); border-color: #dc2626; }
+
+        .era-intro h4 {
+            margin: 0 0 8px;
+            font-size: 1.125rem;
+        }
+
+        .era-intro p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding-left: 24px;
+            }
+
+            .timeline-era-marker {
+                left: -32px;
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+            }
+
+            .timeline-event::before {
+                left: -28px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .timeline-era-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-left">
+            <button class="mobile-menu-toggle" onclick="toggleMobileSidebar()" aria-label="打开菜单">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--boundary-cyan);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span>界行者Wiki</span>
+            </a>
+            <form action="search.html" method="get" class="search-box" style="margin: 0;"><input type="text" name="q" placeholder="搜索..." autocomplete="off"></form>
+        </div>
+        <div class="top-nav-right">
+            <a href="world.html" class="nav-link">核心世界观</a>
+            <a href="system.html" class="nav-link">界行者系统</a>
+            <a href="factions.html" class="nav-link">势力设定</a>
+            <a href="characters.html" class="nav-link">角色档案</a>
+            <a href="map.html" class="nav-link">世界地图</a>
+            <a href="story.html" class="nav-link">剧情大纲</a>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-title">目录</div>
+            
+            <div class="canon-legend">
+                <div class="canon-legend-title">Canon状态说明</div>
+                <span class="canon-badge canon-established">已确定</span>
+                <span class="canon-badge canon-proposed">提议中</span>
+                <span class="canon-badge canon-speculative">推测</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <div class="nav-group-header active" onclick="toggleNavGroup(this)">
+                        <span class="nav-group-title">历史纪元</span>
+                        <span class="nav-toggle">▼</span>
+                    </div>
+                    <div class="nav-group-content">
+                        <a href="#chaos" class="nav-item">混沌纪</a>
+                        <a href="#creation" class="nav-item">开天纪</a>
+                        <a href="#gods" class="nav-item">封神纪</a>
+                        <a href="#ancient" class="nav-item">近古纪</a>
+                        <a href="#modern" class="nav-item">近代纪</a>
+                        <a href="#present" class="nav-item">现代纪</a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <nav class="breadcrumb">
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    首页
+                </a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    世界历史时间线
+                </span>
+            </nav>
+
+            <h1 class="page-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                世界历史时间线
+            </h1>
+            <p class="page-desc">从混沌初开到现代，记录界行者世界的完整历史</p>
+
+            <div class="entry-meta">
+                <div class="entry-meta-item"><strong>Canon状态:</strong> <span class="canon-badge canon-established">已确定</span> / <span class="canon-badge canon-speculative">推测</span></div>
+                <div class="entry-meta-item"><strong>最后更新:</strong> 2026-03-07</div>
+                <div class="entry-meta-item"><strong>类别:</strong> 世界历史 / 时间线</div>
+            </div>
+
+            <div class="info-box">
+                <strong>历史纪元划分</strong><br>
+                界行者世界历史分为六大纪元：混沌纪（不可考）、开天纪（约10000年前）、封神纪（约5000-3000年前）、近古纪（约3000-500年前）、近代纪（约500-100年前）、现代纪（约100年前至今）。
+            </div>
+
+            <!-- 时间线内容 -->
+            <div class="timeline-container">
+                <!-- 混沌纪 -->
+                <div class="timeline-era era-chaos" id="chaos">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">混沌纪</div>
+                            <div class="timeline-era-desc">不可考 · 万物同源，阴阳未分</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro chaos">
+                        <h4 style="color: #6b7280;">纪元概述</h4>
+                        <p>世界处于纯粹的混沌状态，没有时间的概念，没有空间的边界。阴阳二气尚未分离，生死没有区别。这是<a href="world.html#chaos-realm" class="wiki-link">混沌界</a>唯一的时代，也是一切存在的源头。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            不可考
+                        </div>
+                        <div class="timeline-event-title">混沌初开前的永恒</div>
+                        <div class="timeline-event-desc">
+                            在时间的起点之前，世界是一片纯粹的虚无与满溢并存的矛盾状态。这里没有物质与能量的分别，没有生与死的界限，只有无尽的混沌在自我涌动。这种状态无法被人类的语言描述，任何试图理解它的尝试都会导致理智的崩溃。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">混沌</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            不可考
+                        </div>
+                        <div class="timeline-event-title">原初意识的诞生</div>
+                        <div class="timeline-event-desc">
+                            混沌中诞生了第一个"意识"——这不是生命，而是一种纯粹的"存在感知"。这个意识后来被称为"混沌原核"，它是<a href="world.html#chaos-realm" class="wiki-link">混沌界</a>第9重的核心，也是一切后来存在的源头。它既创造又毁灭，既给予又夺取，是纯粹的矛盾统一体。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">混沌原核</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            不可考
+                        </div>
+                        <div class="timeline-event-title">噬界者的诞生</div>
+                        <div class="timeline-event-desc">
+                            从混沌原核的"饥饿"中诞生了<a href="factions.html#shijie" class="wiki-link">噬界者</a>——一种以界域为食的古老存在。它们不是生命，而是混沌的延伸，本能地吞噬一切有序的存在，试图将世界重新归于混沌。噬界者的数量不明，但已知至少有三位强大的噬界者存在，它们被封印后仍试图重返阳界与阴界。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">噬界者</span>
+                            <span class="timeline-event-tag">敌对势力</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 开天纪 -->
+                <div class="timeline-era era-creation" id="creation">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">开天纪</div>
+                            <div class="timeline-era-desc">约10000年前 · 两界分离，秩序初建</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro creation">
+                        <h4 style="color: #7c3aed;">纪元概述</h4>
+                        <p>第一次大分离发生，<a href="world.html#yang-realm" class="wiki-link">阳界</a>与<a href="world.html#yin-realm" class="wiki-link">阴界</a>从混沌中分离。生者归于阳，亡者归于阴，世界开始有了秩序与法则。这是界行者世界最重要的转折点。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约10000年前
+                        </div>
+                        <div class="timeline-event-title">第一次大分离</div>
+                        <div class="timeline-event-desc">
+                            混沌原核的第一次"呼吸"导致了世界的第一次大分离。清轻者上升为阳，浊重者下沉为阴，<a href="world.html#yang-realm" class="wiki-link">阳界</a>与<a href="world.html#yin-realm" class="wiki-link">阴界</a>正式形成。这次分离不是瞬间完成的，而是持续了数千年的缓慢过程。在分离的过程中，两界之间形成了不稳定的重叠区域——这就是最早的<a href="world.html#boundary" class="wiki-link">界域</a>。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">两界分离</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约9500年前
+                        </div>
+                        <div class="timeline-event-title">界壁的形成</div>
+                        <div class="timeline-event-desc">
+                            随着两界逐渐稳定，一道天然的屏障在阴阳之间形成，后世称之为"界壁"。界壁的作用是防止两界过度融合，维持各自的秩序。但界壁并非完美，在某些特殊的地点和时刻，界壁会变得薄弱，形成<a href="world.html#boundary" class="wiki-link">界域</a>通道。这些薄弱点后来成为界行者们关注的重点。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">界壁</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约9000年前
+                        </div>
+                        <div class="timeline-event-title">第一批生灵的出现</div>
+                        <div class="timeline-event-desc">
+                            阳界开始孕育生命，从最简单的微生物到复杂的动植物。与此同时，阴界也开始接纳第一批亡者的灵魂。两界的生态系统逐渐建立，生与死的循环开始运转。值得注意的是，某些特殊的生灵天生就能感知到两界的存在，它们是第一批"觉醒者"的雏形。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">生命起源</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约8500年前
+                        </div>
+                        <div class="timeline-event-title">第一次噬界者入侵</div>
+                        <div class="timeline-event-desc">
+                            噬界者发现了正在形成的两界，试图将其重新吞噬回归混沌。这是两界面临的第一次重大危机。据后世传说，是混沌原核本身阻止了这次入侵——它似乎对正在形成的秩序产生了某种"兴趣"，不允许噬界者将其毁灭。但这一事件的真相已不可考。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag conflict">冲突</span>
+                            <span class="timeline-event-tag">噬界者</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 封神纪 -->
+                <div class="timeline-era era-gods" id="gods">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">封神纪</div>
+                            <div class="timeline-era-desc">约5000-3000年前 · 界行者诞生，锚点体系建立</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro gods">
+                        <h4 style="color: #4f46e5;">纪元概述</h4>
+                        <p>人类中出现第一批能够感知并穿越<a href="world.html#boundary" class="wiki-link">界域</a>的个体——界行者。<a href="world.html#terms" class="wiki-link">锚点</a>体系建立，驱魔组织开始形成。这是界行者文明的黄金时代，也是神话与传说真正发生的时代。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约5000年前
+                        </div>
+                        <div class="timeline-event-title">第一位界行者觉醒</div>
+                        <div class="timeline-event-desc">
+                            人类历史上第一位<a href="world.html#terms" class="wiki-link">界行者</a>在黄河流域觉醒。他的名字已不可考，后世称之为"启明者"。他天生拥有完整的<a href="world.html#terms" class="wiki-link">阴阳眼</a>，能够自由穿梭于两界之间。他的出现标志着人类开始主动介入阴阳两界的事务，不再只是被动的旁观者。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">启明者</span>
+                            <span class="timeline-event-tag">界行者</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="system">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约4800年前
+                        </div>
+                        <div class="timeline-event-title">锚点体系的建立</div>
+                        <div class="timeline-event-desc">
+                            启明者发现某些特殊的个体能够稳定两界边界，他们被称为"<a href="world.html#terms" class="wiki-link">锚点</a>"。第一代锚点出现，他们的存在能够抑制界域的扩张，防止两界过度融合。锚点体系由此建立，成为维护两界平衡的基石。启明者制定了锚点的传承规则：每一代锚点在死亡前必须找到下一代继承人。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag system">系统</span>
+                            <span class="timeline-event-tag">锚点</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约4500年前
+                        </div>
+                        <div class="timeline-event-title">第一批驱魔组织成立</div>
+                        <div class="timeline-event-desc">
+                            随着界行者数量的增加，开始有组织地对抗鬼怪和稳定界域。在古埃及、两河流域、印度河流域和黄河流域，几乎同时出现了第一批驱魔组织。这些组织后来发展成为各大驱魔世家的雏形。它们之间保持着松散的联络，共同维护着两界的平衡。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">驱魔组织</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约4000年前
+                        </div>
+                        <div class="timeline-event-title">酆都鬼城建立</div>
+                        <div class="timeline-desc">
+                            <a href="factions.html#fengdu" class="wiki-link">酆都鬼城</a>在阴界建立，成为亡者世界的统治中心。十位最初的域主（后称阎罗）共同建立了阴界的秩序，制定了亡者的轮回法则。酆都的建立标志着阴界从混乱走向秩序，也为阳界与阴界的交流提供了正式的渠道。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">酆都</span>
+                            <span class="timeline-event-tag">阴界</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="conflict">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约3500年前
+                        </div>
+                        <div class="timeline-event-title">诸神黄昏之战</div>
+                        <div class="timeline-event-desc">
+                            北欧地区发生大规模界域崩溃事件，被称为"诸神黄昏"。实际上是噬界者的一次大规模入侵，当地的界行者们（后世称之为"北欧诸神"）与之展开了殊死搏斗。最终，以奥丁、托尔等为首的界行者们牺牲自己，将入侵的噬界者封印在北欧的冰原之下。这场战役成为后世北欧神话的核心原型。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag conflict">冲突</span>
+                            <span class="timeline-event-tag">诸神黄昏</span>
+                            <span class="timeline-event-tag">噬界者</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约3000年前
+                        </div>
+                        <div class="timeline-event-title">第13代锚点封印噬界者</div>
+                        <div class="timeline-event-desc">
+                            第13代锚点"玄冥"发现了噬界者的真正弱点，牺牲自己将主要的噬界者封印于<a href="factions.html#mirror" class="wiki-link">镜中界</a>。这是界行者历史上最重要的胜利之一，但也付出了惨重的代价——玄冥的牺牲导致锚点传承出现了长达数百年的断层，直到新的锚点被发现。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">锚点</span>
+                            <span class="timeline-event-tag">玄冥</span>
+                            <span class="timeline-event-tag">封印</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约3000年前
+                        </div>
+                        <div class="timeline-event-title">封神纪结束</div>
+                        <div class="timeline-event-desc">
+                            随着噬界者被封印，界行者文明进入了一个相对和平的时期。封神纪的结束标志着"神话时代"的终结，界行者们开始从"神"的位置上退下，转而以更加隐秘的方式维护两界平衡。各大驱魔世家开始形成自己的传承体系，准备迎接下一个纪元。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">纪元更替</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 近古纪 -->
+                <div class="timeline-era era-ancient" id="ancient">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">近古纪</div>
+                            <div class="timeline-era-desc">约3000-500年前 · 驱魔世家兴起，BMA前身成立</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro ancient">
+                        <h4 style="color: #0891b2;">纪元概述</h4>
+                        <p>各大驱魔世家逐渐成型，<a href="factions.html#bma" class="wiki-link">BMA</a>的前身"镇邪会"成立。界行者们从神话传说走向历史幕后，开始以更系统、更隐秘的方式维护两界平衡。这是界行者组织化的时代。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约2500年前
+                        </div>
+                        <div class="timeline-event-title">林氏驱魔世家成立</div>
+                        <div class="timeline-event-desc">
+                            <a href="factions.html#lin" class="wiki-link">林氏驱魔世家</a>在江南地区正式成立，以血脉传承阴阳眼能力为核心。林氏的创始人林玄通是第15代锚点的弟子，他将锚点的部分能力融入家族血脉，使林氏后代天生具有较强的界域感知能力。林氏很快成为东方最强大的驱魔世家之一。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">林氏</span>
+                            <span class="timeline-event-tag">驱魔世家</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约2000年前
+                        </div>
+                        <div class="timeline-event-title">净光宗成立</div>
+                        <div class="timeline-event-desc">
+                            佛教驱魔宗派<a href="factions.html#jingguang" class="wiki-link">净光宗</a>成立，主张"净化"而非"消灭"鬼怪。净光宗的创始人是一位顿悟的僧人，他认为鬼怪也是众生，应当被超度而非消灭。这一理念与传统的驱魔组织产生了分歧，但也为界行者们提供了新的思路。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">净光宗</span>
+                            <span class="timeline-event-tag">佛教</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约1500年前
+                        </div>
+                        <div class="timeline-event-title">玄清观建立</div>
+                        <div class="timeline-event-desc">
+                            道教剑修组织<a href="factions.html#xuanqing" class="wiki-link">玄清观</a>在昆仑山脉建立，以剑入道，追求"一剑破万法"的极致。玄清观的创始人是一位隐世高人，他认为剑是沟通天地的媒介，通过剑修可以达到与界域共鸣的境界。玄清观的剑修们成为对抗高阶鬼怪的重要力量。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">玄清观</span>
+                            <span class="timeline-event-tag">道教</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            明朝（约600年前）
+                        </div>
+                        <div class="timeline-event-title">镇邪会成立</div>
+                        <div class="timeline-event-desc">
+                            各地驱魔世家联合成立"镇邪会"，这是<a href="factions.html#bma" class="wiki-link">BMA</a>的前身。镇邪会的成立是为了应对当时日益频繁的界域动荡，各世家放下成见，共同维护两界平衡。镇邪会制定了第一部《界域管理法》，规范了界行者们的行为准则。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">镇邪会</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            清朝（约300年前）
+                        </div>
+                        <div class="timeline-event-title">镇邪会官方化</div>
+                        <div class="timeline-event-desc">
+                            镇邪会获得朝廷认可，成为半官方组织。这一转变使镇邪会获得了更多的资源和支持，但也带来了更多的约束。镇邪会开始建立更完善的情报网络和快速反应机制，为后来的现代化改革奠定了基础。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">镇邪会</span>
+                            <span class="timeline-event-tag">官方化</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="conflict">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约500年前
+                        </div>
+                        <div class="timeline-event-title">百鬼夜行之乱</div>
+                        <div class="timeline-event-desc">
+                            阴界发生大规模动荡，大量鬼怪涌入阳界，形成"百鬼夜行"的灾难。镇邪会联合各大驱魔世家，经过数年苦战才将局势平息。这次事件暴露了现有体系的不足，促使界行者们开始思考更有效的组织方式。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag conflict">冲突</span>
+                            <span class="timeline-event-tag">百鬼夜行</span>
+                            <span class="timeline-event-tag">阴界动荡</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 近代纪 -->
+                <div class="timeline-era era-modern" id="modern">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">近代纪</div>
+                            <div class="timeline-era-desc">约500-100年前 · BMA现代化，界域科学兴起</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro modern">
+                        <h4 style="color: #d97706;">纪元概述</h4>
+                        <p>工业革命带来世界的剧变，<a href="factions.html#bma" class="wiki-link">BMA</a>开始现代化改革。科学方法被引入界域研究，界域科学体系建立。全球化使界行者组织成为跨国机构，七大分部体系形成。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            19世纪末
+                        </div>
+                        <div class="timeline-event-title">界域科学萌芽</div>
+                        <div class="timeline-event-desc">
+                            随着物理学和电磁学的发展，一些界行者开始尝试用科学方法研究界域现象。"界域频率"的概念被首次提出，界域不再是神秘的"异空间"，而是可以被测量、被分析的"特殊物理状态"。这标志着界域科学的萌芽。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag system">系统</span>
+                            <span class="timeline-event-tag">界域科学</span>
+                            <span class="timeline-event-tag">现代化</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            20世纪初
+                        </div>
+                        <div class="timeline-event-title">镇邪会现代化改革</div>
+                        <div class="timeline-event-desc">
+                            镇邪会进行全面现代化改革，引入科学管理方法，建立现代情报系统和快速反应部队。改革派的代表人物张道陵（与张玄同族）推动了这一进程，他认为界行者必须适应现代世界，否则将被时代淘汰。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">镇邪会</span>
+                            <span class="timeline-event-tag">改革</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            二战后
+                        </div>
+                        <div class="timeline-event-title">BMA正式成立</div>
+                        <div class="timeline-event-desc">
+                            二战结束后，镇邪会正式改组为界域管理局（Boundary Management Authority，简称BMA），成为跨国机构。BMA建立了全球七大分部体系，制定了统一的界域管理标准。这标志着界行者组织进入了一个全新的时代。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                            <span class="timeline-event-tag">成立</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            冷战时期
+                        </div>
+                        <div class="timeline-event-title">BMA与酆都的秘密协议</div>
+                        <div class="timeline-event-desc">
+                            BMA与<a href="factions.html#fengdu" class="wiki-link">酆都鬼城</a>达成秘密协议，建立了阳界与阴界的正式外交渠道。四大判官之首崔珏成为两界联络人，这一协议极大地提高了BMA处理阴界事务的效率。但协议的内容对外界严格保密，甚至连大多数BMA成员都不知情。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">BMA</span>
+                            <span class="timeline-event-tag">酆都</span>
+                            <span class="timeline-event-tag">秘密协议</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            约50年前
+                        </div>
+                        <div class="timeline-event-title">归一者教团出现</div>
+                        <div class="timeline-event-desc">
+                            极端组织<a href="factions.html#guiyi" class="wiki-link">归一者教团</a>开始出现，他们认为阳界与阴界应该合一，打破生死界限。最初，归一者只是一个小型邪教组织，但随着时间的推移，他们的影响力逐渐扩大。BMA开始关注这个组织，但并未意识到其背后的真正威胁。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">归一者</span>
+                            <span class="timeline-event-tag">敌对势力</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 现代纪 -->
+                <div class="timeline-era era-present" id="present">
+                    <div class="timeline-era-header">
+                        <div class="timeline-era-marker"></div>
+                        <div>
+                            <div class="timeline-era-title">现代纪</div>
+                            <div class="timeline-era-desc">约100年前至今 · 故事主线，命运交织</div>
+                        </div>
+                    </div>
+
+                    <div class="era-intro present">
+                        <h4 style="color: #dc2626;">纪元概述</h4>
+                        <p>游戏剧情发生的时代。<a href="characters.html#zhejing" class="wiki-link">折镜队</a>成立，<a href="characters/chenmo.html" class="wiki-link">默</a>觉醒为界行者，<a href="factions.html#guiyi" class="wiki-link">归一者</a>的阴谋逐渐浮出水面。两界的平衡再次面临重大考验。</p>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2000年
+                        </div>
+                        <div class="timeline-event-title">林夕出生</div>
+                        <div class="timeline-event-desc">
+                            <a href="characters/linxi.html" class="wiki-link">林夕</a>（本名林晚照）出生于<a href="factions.html#lin" class="wiki-link">林氏驱魔世家</a>，天生拥有<a href="world.html#terms" class="wiki-link">阴阳眼</a>。但由于母亲是旁支女、父亲是普通人的"双重混血"身份，她在林氏家族中地位尴尬。她的出生被家族中的保守派视为"不祥之兆"。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">林夕</span>
+                            <span class="timeline-event-tag">林氏</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2012年
+                        </div>
+                        <div class="timeline-event-title">林夕阴阳眼觉醒</div>
+                        <div class="timeline-event-desc">
+                            12岁的林夕在一次家族仪式中<a href="system.html#awakening" class="wiki-link">阴阳眼完全觉醒</a>，头发变白、瞳孔变为淡金色。这一异象吓坏了林氏保守派，他们认为这是"血脉污染"的证明。林夕的母亲为了保护她，主动带她离开林氏，从此林夕被家族除名，成为"不存在的人"。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">林夕</span>
+                            <span class="timeline-event-tag">觉醒</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="character">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2015年
+                        </div>
+                        <div class="timeline-event-title">林夕入BMA走阴司</div>
+                        <div class="timeline-event-desc">
+                            15岁的林夕被父亲林天行（已故）的旧识、<a href="factions/bma.html" class="wiki-link">BMA</a>总局长张玄收留，进入BMA走阴司接受系统的界行者训练。张玄发现了林夕的天赋，亲自指导她。在BMA，林夕第一次感受到了"家"的温暖，也结识了她未来的队友们。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag character">角色</span>
+                            <span class="timeline-event-tag">林夕</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="faction">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2020年
+                        </div>
+                        <div class="timeline-event-title">折镜队成立</div>
+                        <div class="timeline-event-desc">
+                            <a href="characters.html#zhejing" class="wiki-link">折镜队</a>在BMA亚太分部正式成立，林夕担任队长。折镜队是BMA最年轻的精英小队之一，成员包括林夕、关锋、以及其他几位年轻界行者。折镜队的名字来源于林夕的法宝"折镜"，象征着"折射真相、映照阴阳"的使命。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag faction">势力</span>
+                            <span class="timeline-event-tag">折镜队</span>
+                            <span class="timeline-event-tag">BMA</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="world">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2025年
+                        </div>
+                        <div class="timeline-event-title">界域动荡加剧</div>
+                        <div class="timeline-event-desc">
+                            全球范围内的界域异常事件急剧增加，<a href="factions.html#guiyi" class="wiki-link">归一者教团</a>的活动也变得更加频繁。BMA高层意识到，这可能预示着某种更大的危机。第48代锚点（身份保密）开始寻找下一代继承人，因为锚点的传承已经迫在眉睫。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag world">世界</span>
+                            <span class="timeline-event-tag">界域动荡</span>
+                            <span class="timeline-event-tag">归一者</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event" data-category="story">
+                        <div class="timeline-event-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                            2026年春
+                        </div>
+                        <div class="timeline-event-title">【游戏剧情开始】数据幽灵事件</div>
+                        <div class="timeline-event-desc">
+                            <a href="characters/chenmo.html" class="wiki-link">陈默</a>收到神秘邮件，前往东京调查数据鬼怪异常聚集事件，首次与<a href="characters.html#zhejing" class="wiki-link">折镜队</a>相遇。在事件中，陈默<a href="system.html#awakening" class="wiki-link">觉醒</a>为界行者（观道），正式加入折镜队。这是《界行者》游戏剧情的起点，也是两界命运转折的开始。
+                        </div>
+                        <div class="timeline-event-tags">
+                            <span class="timeline-event-tag story">剧情</span>
+                            <span class="timeline-event-tag">陈默</span>
+                            <span class="timeline-event-tag">折镜队</span>
+                            <span class="timeline-event-tag">觉醒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 48px;">
+                <strong>相关页面</strong><br>
+                <a href="story.html" class="wiki-link">剧情大纲</a> · 
+                <a href="world.html" class="wiki-link">核心世界观</a> · 
+                <a href="factions.html" class="wiki-link">势力设定</a> · 
+                <a href="characters.html" class="wiki-link">角色档案</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleSection(header) { header.parentElement.classList.toggle('collapsed'); }
+        function toggleNavGroup(header) { header.parentElement.classList.toggle('collapsed'); header.classList.toggle('active'); }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-scale').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
+</body>
+</html>
